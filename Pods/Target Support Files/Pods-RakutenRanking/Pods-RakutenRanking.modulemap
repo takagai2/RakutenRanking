@@ -1,0 +1,6 @@
+framework module Pods_RakutenRanking {
+  umbrella header "Pods-RakutenRanking-umbrella.h"
+
+  export *
+  module * { export * }
+}
