@@ -10,6 +10,88 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="bU6-Nt-ddL">
+            <objects>
+                <viewController id="SO0-kM-sWW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P66-85-dU5">
+                        <rect key="frame" x="0.0" y="0.0" width="750" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbY-QK-UfQ">
+                                <rect key="frame" x="0.0" y="20" width="750" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viI-yU-ys7">
+                                        <rect key="frame" x="0.0" y="0.0" width="750" height="647"/>
+                                        <subviews>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-2f-0Zz">
+                                                <rect key="frame" x="8" y="64" width="365" height="575"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lEX-MG-wkZ">
+                                                        <rect key="frame" x="0.0" y="28" width="365" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lEX-MG-wkZ" id="ImJ-Mp-NqJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="365" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・年代による絞り込み" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLT-5x-FFB">
+                                                <rect key="frame" x="420" y="112" width="174" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WFJ-O2-JvM">
+                                                <rect key="frame" x="405" y="141" width="317" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <segments>
+                                                    <segment title="総合"/>
+                                                    <segment title="10代"/>
+                                                    <segment title="20代"/>
+                                                    <segment title="30代"/>
+                                                    <segment title="40代"/>
+                                                    <segment title="50代~"/>
+                                                </segments>
+                                            </segmentedControl>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="CZg-2f-0Zz" secondAttribute="trailing" constant="377" id="2jA-rS-Ado"/>
+                                            <constraint firstItem="CZg-2f-0Zz" firstAttribute="leading" secondItem="viI-yU-ys7" secondAttribute="leading" constant="8" id="4I1-u8-Crq"/>
+                                            <constraint firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" constant="8" id="O5I-I9-CyB"/>
+                                            <constraint firstItem="CZg-2f-0Zz" firstAttribute="top" secondItem="viI-yU-ys7" secondAttribute="top" constant="64" id="djZ-tT-fOy"/>
+                                            <constraint firstAttribute="width" constant="750" id="plI-cf-u6u"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="viI-yU-ys7" secondAttribute="trailing" id="3JV-g2-nnv"/>
+                                    <constraint firstItem="viI-yU-ys7" firstAttribute="height" secondItem="UbY-QK-UfQ" secondAttribute="height" id="JP0-4M-a1r"/>
+                                    <constraint firstAttribute="bottom" secondItem="viI-yU-ys7" secondAttribute="bottom" id="Lxt-R2-QXd"/>
+                                    <constraint firstItem="viI-yU-ys7" firstAttribute="leading" secondItem="UbY-QK-UfQ" secondAttribute="leading" id="r34-Q3-6OL"/>
+                                    <constraint firstItem="viI-yU-ys7" firstAttribute="top" secondItem="UbY-QK-UfQ" secondAttribute="top" id="wlC-OA-Pzy"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="UbY-QK-UfQ" firstAttribute="bottom" secondItem="Ur5-Us-vf0" secondAttribute="bottom" id="GZz-hV-zAB"/>
+                            <constraint firstItem="UbY-QK-UfQ" firstAttribute="top" secondItem="Ur5-Us-vf0" secondAttribute="top" id="KXj-FO-s9W"/>
+                            <constraint firstItem="UbY-QK-UfQ" firstAttribute="trailing" secondItem="Ur5-Us-vf0" secondAttribute="trailing" id="LNs-Jh-EXI"/>
+                            <constraint firstItem="UbY-QK-UfQ" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="rkX-X3-Z6h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ur5-Us-vf0"/>
+                    </view>
+                    <size key="freeformSize" width="750" height="667"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1532.8" y="1091.6041979010495"/>
+        </scene>
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -144,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8V-aP-hB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1146.4000000000001" y="375.56221889055473"/>
+            <point key="canvasLocation" x="1233" y="376"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Qp-IJ-Qkn">
