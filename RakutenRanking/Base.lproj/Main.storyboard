@@ -78,10 +78,10 @@
             </objects>
             <point key="canvasLocation" x="420" y="1155"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="bU6-Nt-ddL">
             <objects>
-                <viewController id="SO0-kM-sWW" sceneMemberID="viewController">
+                <viewController id="SO0-kM-sWW" customClass="MenuViewController" customModule="RakutenRanking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P66-85-dU5">
                         <rect key="frame" x="0.0" y="0.0" width="750" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="750" height="603"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-2f-0Zz">
-                                                <rect key="frame" x="0.0" y="0.0" width="373" height="603"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="373" height="566"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lEX-MG-wkZ">
@@ -124,13 +124,16 @@
                                                     <segment title="40代"/>
                                                     <segment title="50代~"/>
                                                 </segments>
+                                                <connections>
+                                                    <action selector="chooseAge:" destination="SO0-kM-sWW" eventType="valueChanged" id="FUK-Gj-7go"/>
+                                                </connections>
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="CZg-2f-0Zz" secondAttribute="trailing" constant="377" id="2jA-rS-Ado"/>
                                             <constraint firstItem="CZg-2f-0Zz" firstAttribute="leading" secondItem="viI-yU-ys7" secondAttribute="leading" id="4I1-u8-Crq"/>
-                                            <constraint firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" id="O5I-I9-CyB"/>
+                                            <constraint firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" constant="37" id="czX-cV-gBw"/>
                                             <constraint firstItem="CZg-2f-0Zz" firstAttribute="top" secondItem="viI-yU-ys7" secondAttribute="top" id="djZ-tT-fOy"/>
                                             <constraint firstAttribute="width" constant="750" id="plI-cf-u6u"/>
                                         </constraints>
@@ -144,26 +147,38 @@
                                     <constraint firstItem="viI-yU-ys7" firstAttribute="top" secondItem="UbY-QK-UfQ" secondAttribute="top" id="wlC-OA-Pzy"/>
                                 </constraints>
                             </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="V67-uG-CQw">
+                                <rect key="frame" x="0.0" y="630" width="750" height="37"/>
+                                <color key="backgroundColor" red="0.57895482509999996" green="0.57895482509999996" blue="0.57895482509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="V67-uG-CQw" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="BME-so-9nL"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="bottom" secondItem="Ur5-Us-vf0" secondAttribute="bottom" id="GZz-hV-zAB"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="top" secondItem="Ur5-Us-vf0" secondAttribute="top" id="KXj-FO-s9W"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="trailing" secondItem="Ur5-Us-vf0" secondAttribute="trailing" id="LNs-Jh-EXI"/>
+                            <constraint firstItem="Ur5-Us-vf0" firstAttribute="trailing" secondItem="V67-uG-CQw" secondAttribute="trailing" id="Oqy-uP-N9i"/>
+                            <constraint firstItem="Ur5-Us-vf0" firstAttribute="bottom" secondItem="V67-uG-CQw" secondAttribute="bottom" id="gb4-TA-qG2"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="rkX-X3-Z6h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ur5-Us-vf0"/>
                     </view>
                     <size key="freeformSize" width="750" height="667"/>
+                    <connections>
+                        <outlet property="menuRanking" destination="CZg-2f-0Zz" id="86V-KU-Cra"/>
+                        <outlet property="pageControl" destination="V67-uG-CQw" id="rVG-QY-jgm"/>
+                        <outlet property="scrollView" destination="UbY-QK-UfQ" id="9Ts-En-gvS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1533" y="1155"/>
         </scene>
-        <!--Ranking-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RakutenRanking" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="View Controller" customClass="ViewController" customModule="RakutenRanking" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
