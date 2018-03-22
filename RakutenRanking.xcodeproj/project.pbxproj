@@ -14,6 +14,7 @@
 		59E6470220561A7700EFD54C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E6470120561A7700EFD54C /* Assets.xcassets */; };
 		59E6470520561A7700EFD54C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E6470320561A7700EFD54C /* LaunchScreen.storyboard */; };
 		59E6471020561A7700EFD54C /* RakutenRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6470F20561A7700EFD54C /* RakutenRankingTests.swift */; };
+		59F66C75206354AE00A86F41 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C74206354AE00A86F41 /* ConfigViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		59E6470B20561A7700EFD54C /* RakutenRankingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RakutenRankingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E6470F20561A7700EFD54C /* RakutenRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenRankingTests.swift; sourceTree = "<group>"; };
 		59E6471120561A7700EFD54C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59F66C74206354AE00A86F41 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		59E646F920561A7700EFD54C /* RakutenRanking */ = {
 			isa = PBXGroup;
 			children = (
+				59F66C74206354AE00A86F41 /* ConfigViewController.swift */,
 				59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */,
 				59E646FA20561A7700EFD54C /* AppDelegate.swift */,
 				59E646FC20561A7700EFD54C /* ViewController.swift */,
@@ -204,6 +207,7 @@
 			files = (
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,
 				59D6F97B20625FFC00FA3105 /* MainTableViewCell.swift in Sources */,
+				59F66C75206354AE00A86F41 /* ConfigViewController.swift in Sources */,
 				59E646FB20561A7700EFD54C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="420" y="375.56221889055473"/>
         </scene>
-        <!--View Controller-->
+        <!--Config View Controller-->
         <scene sceneID="kCr-W5-mMS">
             <objects>
-                <viewController id="ytB-cb-YjQ" sceneMemberID="viewController">
+                <viewController id="ytB-cb-YjQ" customClass="ConfigViewController" customModule="RakutenRanking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z6y-Ve-2KV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -302,15 +302,21 @@
                                 <rect key="frame" x="31" y="363" width="169" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="キャッシュクリアボタン"/>
+                                <connections>
+                                    <action selector="cacheClearBtn" destination="ytB-cb-YjQ" eventType="touchUpInside" id="Dk1-XX-pOJ"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zQo-Xo-vir">
-                                <rect key="frame" x="33" y="160" width="125" height="29"/>
+                                <rect key="frame" x="33" y="160" width="167" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="総合"/>
                                     <segment title="女性"/>
                                     <segment title="男性"/>
                                 </segments>
+                                <connections>
+                                    <action selector="chooseSex:" destination="ytB-cb-YjQ" eventType="valueChanged" id="LPd-rQ-qk0"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXP-nP-YC3">
                                 <rect key="frame" x="33" y="252" width="326" height="29"/>
@@ -323,11 +329,17 @@
                                     <segment title="40代"/>
                                     <segment title="50代~"/>
                                 </segments>
+                                <connections>
+                                    <action selector="chooseAge:" destination="ytB-cb-YjQ" eventType="valueChanged" id="V40-vu-vm4"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyw-dZ-RgS">
                                 <rect key="frame" x="31" y="471" width="184" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="お気に入りリセットボタン"/>
+                                <connections>
+                                    <action selector="favoResetBtn" destination="ytB-cb-YjQ" eventType="touchUpInside" id="pcw-42-uWu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -336,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8V-aP-hB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="376"/>
+            <point key="canvasLocation" x="1232.8" y="375.56221889055473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Qp-IJ-Qkn">
