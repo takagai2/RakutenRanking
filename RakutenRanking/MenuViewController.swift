@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UIScrollViewDelegate {
+class MenuViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuRanking: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -43,12 +43,45 @@ class MenuViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         scrollView.delegate = self
+        
+        self.menuRanking.delegate = self
+        self.menuRanking.dataSource = self
     }
     
     // スクロール停止時に呼び出される
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // ページコントロールに現在のページ番号を設定
         pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+    }
+    
+    // セル表示用のテストデータ
+    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
+    
+    // MARK: UITableViewDataSource
+    
+    // セクション数
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    // セル数
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.rankingList.count
+    }
+    
+    // セル内容
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuRankingCell", for: indexPath) as! MenuTableViewCell
+        
+        cell.rank.text = String(indexPath.row + 1)
+        cell.itemName.text = self.rankingList[indexPath.row]
+        return cell
+    }
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO タップ時の処理を実装
     }
     
     override func didReceiveMemoryWarning() {

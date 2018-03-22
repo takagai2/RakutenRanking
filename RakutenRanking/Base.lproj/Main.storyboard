@@ -96,13 +96,38 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="566"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="lEX-MG-wkZ">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuRankingCell" id="lEX-MG-wkZ" customClass="MenuTableViewCell" customModule="RakutenRanking" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="373" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lEX-MG-wkZ" id="ImJ-Mp-NqJ">
                                                             <rect key="frame" x="0.0" y="0.0" width="373" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9k-5X-fQJ">
+                                                                    <rect key="frame" x="15" y="0.0" width="42" height="44"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JW2-l2-vMc">
+                                                                    <rect key="frame" x="137" y="11" width="221" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oHY-XU-Fh9">
+                                                                    <rect key="frame" x="57" y="-11" width="64" height="64"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                </imageView>
+                                                            </subviews>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="itemImage" destination="oHY-XU-Fh9" id="6iB-Vv-ZRQ"/>
+                                                            <outlet property="itemName" destination="JW2-l2-vMc" id="5Bb-lS-52y"/>
+                                                            <outlet property="rank" destination="C9k-5X-fQJ" id="f36-gG-Gxy"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
@@ -125,7 +150,7 @@
                                                     <segment title="50代~"/>
                                                 </segments>
                                                 <connections>
-                                                    <action selector="chooseAge:" destination="SO0-kM-sWW" eventType="valueChanged" id="FUK-Gj-7go"/>
+                                                    <action selector="chooseAge:" destination="SO0-kM-sWW" eventType="valueChanged" id="qdN-6m-O6E"/>
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
@@ -166,14 +191,14 @@
                     </view>
                     <size key="freeformSize" width="750" height="667"/>
                     <connections>
-                        <outlet property="menuRanking" destination="CZg-2f-0Zz" id="86V-KU-Cra"/>
-                        <outlet property="pageControl" destination="V67-uG-CQw" id="rVG-QY-jgm"/>
-                        <outlet property="scrollView" destination="UbY-QK-UfQ" id="9Ts-En-gvS"/>
+                        <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
+                        <outlet property="pageControl" destination="V67-uG-CQw" id="Qhh-iu-kgE"/>
+                        <outlet property="scrollView" destination="UbY-QK-UfQ" id="RD9-fd-OOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533" y="1155"/>
+            <point key="canvasLocation" x="1532.8" y="1154.5727136431785"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -229,7 +254,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="itemImage" destination="OFD-4T-E8f" id="3DO-jo-Kdf"/>
+                                            <outlet property="itemImage" destination="OFD-4T-E8f" id="STc-cK-K05"/>
                                             <outlet property="itemName" destination="B2B-4q-UcW" id="vks-lz-TUs"/>
                                             <outlet property="rank" destination="KmJ-mN-RUr" id="q5W-4e-ry6"/>
                                         </connections>
