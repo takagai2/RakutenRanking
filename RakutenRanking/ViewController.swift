@@ -59,7 +59,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO タップ時のアクションを記述
+        // TODO 各商品ページを表示する
+        self.performSegue(withIdentifier: "toItemPage", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
