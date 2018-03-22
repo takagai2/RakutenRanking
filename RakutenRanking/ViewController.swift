@@ -20,6 +20,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.performSegue(withIdentifier: "toConfig", sender: nil)
     }
     
+    @IBAction func showFavoriteView(_ sender: Any){
+        self.performSegue(withIdentifier: "toFavoriteList", sender: nil)
+    }
+    
     let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
 
     override func viewDidLoad() {
