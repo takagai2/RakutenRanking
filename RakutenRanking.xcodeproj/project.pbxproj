@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
 		59D6F97B20625FFC00FA3105 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */; };
 		59E646FB20561A7700EFD54C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E646FA20561A7700EFD54C /* AppDelegate.swift */; };
 		59E646FD20561A7700EFD54C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E646FC20561A7700EFD54C /* ViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		59E646F720561A7700EFD54C /* RakutenRanking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RakutenRanking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E646FA20561A7700EFD54C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				59E6470120561A7700EFD54C /* Assets.xcassets */,
 				59E6470320561A7700EFD54C /* LaunchScreen.storyboard */,
 				59E6470620561A7700EFD54C /* Info.plist */,
+				59761EA32064EBCA0067964D /* CollectionViewCell.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */,
 				59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */,
 				59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */,
 				59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */,

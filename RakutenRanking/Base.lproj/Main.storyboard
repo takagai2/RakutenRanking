@@ -239,8 +239,16 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aux-V3-qh8">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
-                                    <barButtonItem title="Item" id="ryj-6D-2LN"/>
-                                    <barButtonItem title="Item" id="40d-b8-A67"/>
+                                    <barButtonItem title="List" id="ryj-6D-2LN">
+                                        <connections>
+                                            <action selector="changeToList:" destination="BYZ-38-t0r" id="FR4-Dl-54n"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Grid" id="40d-b8-A67">
+                                        <connections>
+                                            <action selector="changeToGrid:" destination="BYZ-38-t0r" id="Myx-hy-sIf"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem title="Item" id="wtO-fR-94U"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KWr-Ac-qj1"/>
                                     <barButtonItem title="config" id="aAe-6z-Kbb">
@@ -443,6 +451,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="V8v-dR-Qiz"/>
+        <segue reference="Hbb-sU-WCV"/>
     </inferredMetricsTieBreakers>
 </document>
