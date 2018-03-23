@@ -95,6 +95,7 @@
 			children = (
 				59E646FC20561A7700EFD54C /* ViewController.swift */,
 				59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */,
+				59761EA32064EBCA0067964D /* CollectionViewCell.swift */,
 				59F66C7620636ABE00A86F41 /* MenuViewController.swift */,
 				59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */,
 				59F66C74206354AE00A86F41 /* ConfigViewController.swift */,
@@ -106,7 +107,6 @@
 				59E6470120561A7700EFD54C /* Assets.xcassets */,
 				59E6470320561A7700EFD54C /* LaunchScreen.storyboard */,
 				59E6470620561A7700EFD54C /* Info.plist */,
-				59761EA32064EBCA0067964D /* CollectionViewCell.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";

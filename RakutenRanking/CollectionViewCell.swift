@@ -20,7 +20,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     private func setup() {
         layer.borderColor = UIColor.darkGray.cgColor
-        layer.borderWidth = 3.0
+        layer.borderWidth = 1.0
         
         contentView.addSubview(rankingListLabel)
     }
@@ -31,6 +31,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
