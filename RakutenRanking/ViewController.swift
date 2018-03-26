@@ -29,14 +29,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func changeToList(_ sender: Any){
         self.mainRanking.isHidden = false
         self.collectionView.removeFromSuperview()
+        self.removePageView()
     }
     
     @IBAction func changeToGrid(_ sender: Any){
         self.mainRanking.isHidden = true
         view.addSubview(collectionView)
+        self.removePageView()
     }
     
-    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
+    @IBAction func changeToPage(_ sender: Any){
+        self.mainRanking.isHidden = true
+        self.collectionView.removeFromSuperview()
+        self.setPageView()
+    }
+    
+    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
     
     private let collectionView: UICollectionView = {
         //セルのレイアウト設計
@@ -47,13 +55,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing = 0
         
-        let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - 100 ), collectionViewLayout: layout)
+        let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - 44 ), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         //セルの登録
         collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         return collectionView
     }()
     
+    var pageControl: UIPageControl! = nil
+    var scrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
 }
+
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // cellの個数設定
@@ -132,4 +143,69 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
 
 }
+
+extension ViewController: UIScrollViewDelegate {
+    
+    func setPageView() {
+        // ページ数
+        let page = rankingList.count
+        // ページのサイズ
+        let width = screenSize.width
+        let height = screenSize.height
+        
+        // UIScrollViewの設定
+        scrollView = UIScrollView()
+        scrollView.frame = CGRect(x: 0, y: 0, width: width, height: height - 44 )
+        scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        // scrollView全体のサイズ
+        scrollView.contentSize = CGSize(width: CGFloat(page) * width, height: height - 44)
+        
+        self.view.addSubview(scrollView)
+        
+        // TODO: ページごとのlabelの生成
+        for i in 0..<page {
+            let label: UILabel = UILabel()
+            label.frame = CGRect(x: CGFloat(i) * width + width/2 - 60, y: height/2 - 40, width: 120, height: 80)
+            label.textAlignment = NSTextAlignment.center
+            label.text = "\(i + 1)位"
+            scrollView.addSubview(label)
+        }
+        
+        // UIPageContolのインスタンス作成
+        pageControl = UIPageControl()
+        // pageControlの位置とサイズの設定
+        pageControl.frame = CGRect(x: -50, y: height - 90, width: width + 100, height: 50)
+        // 背景色の設定
+        pageControl.backgroundColor = UIColor.darkGray
+        // ページ数の設定
+        pageControl.numberOfPages = page
+        // 現在ページの設定
+        pageControl.currentPage = 0
+        // pageControlのスケールを小さくする
+        pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        // TODO: pageControlのタップに夜ページ移動を実装
+        
+        self.view.addSubview(pageControl)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        // スクロール距離＝1ページ（画面幅）
+        if fmod(scrollView.contentOffset.x, scrollView.frame.width) == 0 {
+            // ページの切り替え
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+        }
+    }
+    
+    func removePageView() {
+        if self.scrollView != nil {
+        self.scrollView.removeFromSuperview()
+        self.pageControl.removeFromSuperview()
+        } else {
+            print("pageViewはnil")
+        }
+    }
+    
+}
+
 

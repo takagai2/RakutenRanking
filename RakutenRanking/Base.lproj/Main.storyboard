@@ -249,7 +249,11 @@
                                             <action selector="changeToGrid:" destination="BYZ-38-t0r" id="Myx-hy-sIf"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" id="wtO-fR-94U"/>
+                                    <barButtonItem title="Item" id="wtO-fR-94U">
+                                        <connections>
+                                            <action selector="changeToPage:" destination="BYZ-38-t0r" id="Ad4-7x-Ilc"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KWr-Ac-qj1"/>
                                     <barButtonItem title="config" id="aAe-6z-Kbb">
                                         <connections>
@@ -451,6 +455,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Hbb-sU-WCV"/>
+        <segue reference="V8v-dR-Qiz"/>
     </inferredMetricsTieBreakers>
 </document>
