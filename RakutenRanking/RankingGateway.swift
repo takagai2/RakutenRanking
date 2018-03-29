@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RankingGateway: JsonObject, RankingGatewayProtocol {
+class RankingGateway: RankingGatewayProtocol {
     
     // 取得した情報を入れる空配列
     var nameArray: [String] = []

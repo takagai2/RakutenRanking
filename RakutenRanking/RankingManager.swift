@@ -8,14 +8,16 @@
 
 import Foundation
 
-class RankingManager: RankingGateway {
+class RankingManager {
     
     // TODO: ランキング種別ごとにURLを保持
     var url: String = ""
     
+    let rankingGateway: RankingGatewayProtocol = rankingGateway()
+    
     // TODO: segmentの選択結果によって取得するランキング種別を決定
     func getRanking() {
-        getRes(url: url)
+        rankingGateway.getRes(url: url)
     }
     
 }
