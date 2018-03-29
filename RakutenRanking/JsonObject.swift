@@ -10,22 +10,17 @@ import Foundation
 
 class JsonObject {
     
-    // JSONをパースして特定のデータを取得する
-    
-    func getName() {
-        // TODO: 商品名を取得する処理
+    func setData() {
+        // TODO: 受け取ったレスポンスを格納
     }
     
-    func getPrice() {
-        // TODO: 値段を取得する処理
-    }
-    
-    func getImageUrl() {
-        // TODO: 画像URLを取得する処理
-    }
-    
-    func getUrl() {
-        // TODO: 商品URLを取得する処理
+    func getItems() {
+        // TODO: パース
+        // TODO: 該当データ抽出
+        // TODO: Itemオブジェクト生成
+        // TODO: Itemオブジェクトにデータ代入
+        // TODO: Arrayに追加
+        
     }
     
 }

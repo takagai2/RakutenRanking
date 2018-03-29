@@ -10,11 +10,10 @@ import Foundation
 
 class RankingGateway: RankingGatewayProtocol {
     
-    var itemArray: [item] = []
+    var itemArray: [Item] = []
     
     func getRes(url: String) {
         // TODO: 通信処理を行ってレスポンスを取得
-        //       success -> パース -> 空配列に追加
     }
     
 }
