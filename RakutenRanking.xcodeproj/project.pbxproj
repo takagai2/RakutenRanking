@@ -12,6 +12,7 @@
 		59B937B4206B4DDF0076D56D /* JsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonObject.swift */; };
 		59B937B6206B4E580076D56D /* RankingGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B5206B4E580076D56D /* RankingGateway.swift */; };
 		59B937B8206B4ECA0076D56D /* RankingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B7206B4ECA0076D56D /* RankingManager.swift */; };
+		59B937BC206C8E900076D56D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937BB206C8E900076D56D /* Item.swift */; };
 		59D6F97B20625FFC00FA3105 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */; };
 		59E646FB20561A7700EFD54C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E646FA20561A7700EFD54C /* AppDelegate.swift */; };
 		59E646FD20561A7700EFD54C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E646FC20561A7700EFD54C /* ViewController.swift */; };
@@ -43,6 +44,7 @@
 		59B937B3206B4DDF0076D56D /* JsonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonObject.swift; sourceTree = "<group>"; };
 		59B937B5206B4E580076D56D /* RankingGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGateway.swift; sourceTree = "<group>"; };
 		59B937B7206B4ECA0076D56D /* RankingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingManager.swift; sourceTree = "<group>"; };
+		59B937BB206C8E900076D56D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		59D6F97A20625FFC00FA3105 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		59E646F720561A7700EFD54C /* RakutenRanking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RakutenRanking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E646FA20561A7700EFD54C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				59B937B3206B4DDF0076D56D /* JsonObject.swift */,
 				59B937B5206B4E580076D56D /* RankingGateway.swift */,
 				59B937B7206B4ECA0076D56D /* RankingManager.swift */,
+				59B937BB206C8E900076D56D /* Item.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,
 				59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */,
 				59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */,
+				59B937BC206C8E900076D56D /* Item.swift in Sources */,
 				59D6F97B20625FFC00FA3105 /* MainTableViewCell.swift in Sources */,
 				59F66C75206354AE00A86F41 /* ConfigViewController.swift in Sources */,
 				59B937B6206B4E580076D56D /* RankingGateway.swift in Sources */,

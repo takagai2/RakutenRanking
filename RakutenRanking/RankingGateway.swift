@@ -10,11 +10,7 @@ import Foundation
 
 class RankingGateway: RankingGatewayProtocol {
     
-    // 取得した情報を入れる空配列
-    var nameArray: [String] = []
-    var priceArray: [String] = []
-    var imageUrlArray: [String] = []
-    var urlArray: [String] = []
+    var itemArray: [item] = []
     
     func getRes(url: String) {
         // TODO: 通信処理を行ってレスポンスを取得

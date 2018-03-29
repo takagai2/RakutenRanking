@@ -10,10 +10,7 @@ import Foundation
 
 protocol RankingGatewayProtocol {
     
-    var nameArray: [String] { get set }
-    var priceArray: [String] { get set }
-    var imageUrlArray: [String] { get set }
-    var urlArray: [String] { get set }
+    var itemArray: [Item] { get set }
     
     func getRes(url: String)
     
