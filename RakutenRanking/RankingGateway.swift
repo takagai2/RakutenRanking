@@ -9,7 +9,7 @@
 import Foundation
 
 class RankingGateway: RankingGatewayProtocol {
-    
+
     // TODO: ランキング種別ごとにURLを保持
     private var urlOfOverall: String = ""
     private var urlOfFemale: String = ""
@@ -37,87 +37,17 @@ class RankingGateway: RankingGatewayProtocol {
         // seccess -> パース -> 空配列へ
     }
     
-    func getFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
+    func getRankingByGenderRes(gender: Gender) {
+        // TODO: 通信処理を行って対象の男女別ランキングのレスポンスを取得
         // seccess -> パース -> 空配列へ
     }
     
-    func getMaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
+    func getRankingByAgeRes(age: Age) {
+        // TODO: 通信処理を行って対象の年齢別ランキングのレスポンスを取得
         // seccess -> パース -> 空配列へ
     }
     
-    func get10sRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get20sRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get30sRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get40sRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get50sOverRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get10sFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get10sMaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get20sFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get20sMaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get30sFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get30sMaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get40sFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get40sMaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get50sOverFemaleRankingRes() {
-        // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        // seccess -> パース -> 空配列へ
-    }
-    
-    func get50sOverMaleRankingRes() {
+    func getRankingByGenderAgeRes(gender: Gender, age: Age) {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
         // seccess -> パース -> 空配列へ
     }
