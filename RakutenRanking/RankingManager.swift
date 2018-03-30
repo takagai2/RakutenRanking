@@ -25,26 +25,26 @@ enum Age {
 
 class RankingManager {
     
-    let rankingGateway: RankingGatewayProtocol = RankingGateway()
+    private let rankingGateway: RankingGatewayProtocol = RankingGateway()
     
     // 総合ランキング
     func getOverallRanking() {
-        // TODO: 総合ランキング呼び出し
+        rankingGateway.getOverallRankingRes()
     }
     
     // 男女別ランキング
     func getRankingByGender(gender: Gender) {
-        // 男女別ランキングの呼び出し
+        rankingGateway.getRankingByGenderRes(gender: gender)
     }
     
     // 年齢別ランキング
     func getRankingByAge(age: Age) {
-        // 年齢別ランキングの呼び出し
+        rankingGateway.getRankingByAgeRes(age: age)
     }
     
     // 男女年齢別ランキング
     func getRankingByGenderAge(gender: Gender, age: Age) {
-        // 男女年齢別ランキングの呼び出し
+        rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age)
         
     }
     
