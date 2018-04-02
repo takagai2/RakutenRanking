@@ -31,25 +31,109 @@ class RankingGateway: RankingGatewayProtocol {
     private var urlOf50sMale: String = ""
     
     var itemArray: [Item] = []
+    var testArray: [[String]] = [[], [], [], []]
+    
+    func getTestData(){
+        for i in 1...30 {
+            testArray[0].append("item" + "\(i)")
+            testArray[1].append("\(i)")
+            testArray[2].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=64x64")
+            testArray[3].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=128x128")
+        }
+    }
     
     func getOverallRankingRes() {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
+        self.getTestData()
+        
         // seccess -> パース -> 空配列へ
+        
     }
     
     func getRankingByGenderRes(gender: Gender) {
         // TODO: 通信処理を行って対象の男女別ランキングのレスポンスを取得
+        switch gender {
+        case .female:
+            // 女性総合ランキング取得
+            self.getTestData()
+        case .male:
+            // 男性総合ランキング取得
+            self.getTestData()
+        }
+        
         // seccess -> パース -> 空配列へ
     }
     
     func getRankingByAgeRes(age: Age) {
         // TODO: 通信処理を行って対象の年齢別ランキングのレスポンスを取得
+        switch age {
+        case .teens:
+            // 10代総合ランキング取得
+            self.getTestData()
+        case .twenties:
+            // 20台総合ランキング取得
+            self.getTestData()
+        case .thirties:
+            // 30台総合ランキング取得
+            self.getTestData()
+        case .forties:
+            // 40代総合ランキング取得
+            self.getTestData()
+        case .fiftiesOver:
+            // 50代以上総合ランキング取得
+            self.getTestData()
+        }
+        
         // seccess -> パース -> 空配列へ
     }
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age) {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
+        switch age {
+        case .teens:
+            if gender == .female {
+                // 10代女性総合ランキング取得
+                self.getTestData()
+            } else {
+                // 10代男性総合ランキング取得
+                self.getTestData()
+            }
+        case .twenties:
+            if gender == .female {
+                // 20代女性総合ランキング取得
+                self.getTestData()
+            } else {
+                // 20代男性総合ランキング取得
+                self.getTestData()
+            }
+        case .thirties:
+            if gender == .female {
+                // 30代女性総合ランキング取得
+                self.getTestData()
+            } else {
+                // 30代男性総合ランキング取得
+                self.getTestData()
+            }
+        case .forties:
+            if gender == .female {
+                // 40代女性総合ランキング取得
+                self.getTestData()
+            } else {
+                // 40代男性総合ランキング取得
+                self.getTestData()
+            }
+        case .fiftiesOver:
+            if gender == .female {
+                // 50代以上女性総合ランキング取得
+                self.getTestData()
+            } else {
+                // 50代以上男性総合ランキング取得
+                self.getTestData()
+            }
+        }
+        
         // seccess -> パース -> 空配列へ
+        
     }
     
 }
