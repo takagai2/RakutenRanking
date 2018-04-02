@@ -10,7 +10,7 @@ import Foundation
 
 class JsonObject {
     
-    let rankingGateway = RankingGateway()
+    private let rankingGateway = RankingGateway()
     
     func setData() {
         // TODO: 受け取ったレスポンスを格納

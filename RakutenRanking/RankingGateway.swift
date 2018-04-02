@@ -33,7 +33,7 @@ class RankingGateway: RankingGatewayProtocol {
     var itemArray: [Item] = []
     var testArray: [[String]] = [[], [], [], []]
     
-    let jsonObject = JsonObject()
+    private let jsonObject = JsonObject()
     
     func getTestData(){
         for i in 1...30 {
