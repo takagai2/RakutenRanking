@@ -50,7 +50,7 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         jsonObject.setData()
-        jsonObject.getItems()
+        
     }
     
     func getRankingByGenderRes(gender: Gender) {
@@ -66,7 +66,7 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         jsonObject.setData()
-        jsonObject.getItems()
+        
     }
     
     func getRankingByAgeRes(age: Age) {
@@ -91,7 +91,7 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         jsonObject.setData()
-        jsonObject.getItems()
+        
     }
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age) {
@@ -141,7 +141,7 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         jsonObject.setData()
-        jsonObject.getItems()
+        
     }
     
 }

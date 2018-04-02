@@ -10,14 +10,16 @@ import Foundation
 
 class JsonObject {
     
-    private let rankingGateway = RankingGateway()
+    let rankingGateway = RankingGateway()
     
     func setData() {
         // TODO: 受け取ったレスポンスを格納
-        let testJsonData: [[String]] = rankingGateway.testArray
+        let testJsonData = rankingGateway.testArray
+        
+        getItems(data: testJsonData)
     }
     
-    func getItems() {
+    func getItems(data: [[String]]) {
         // TODO: パース
         // TODO: 該当データ抽出
         // TODO: Itemオブジェクト生成
