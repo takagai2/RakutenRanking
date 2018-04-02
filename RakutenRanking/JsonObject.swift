@@ -10,11 +10,8 @@ import Foundation
 
 class JsonObject {
     
-    let rankingGateway = RankingGateway()
-    
     func setData(_ data: [[String]]) {
         // TODO: 受け取ったレスポンスを格納
-        let testJsonData = rankingGateway.testArray
         
         getItems(data: testJsonData)
     }
@@ -27,12 +24,7 @@ class JsonObject {
         // TODO: Arrayに追加
         for i in 0...29 {
             let item = Item()
-            item.name = "\(rankingGateway.testArray[0][i])"
-            item.price = "\(rankingGateway.testArray[1][i])"
-            item.imageUrlS = "\(rankingGateway.testArray[2][i])"
-            item.imageUrlM = "\(rankingGateway.testArray[3][i])"
-            
-            rankingGateway.itemArray.append(item)
+
         }
 
     }
