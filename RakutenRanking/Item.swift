@@ -12,7 +12,7 @@ class  Item {
     
     var name: String!
     var price: String!
-    var imageUrl: String!
-    var url: String!
+    var imageUrlS: String!
+    var imageUrlM: String!
     
 }

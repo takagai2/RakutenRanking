@@ -33,6 +33,8 @@ class RankingGateway: RankingGatewayProtocol {
     var itemArray: [Item] = []
     var testArray: [[String]] = [[], [], [], []]
     
+    let jsonObject = JsonObject()
+    
     func getTestData(){
         for i in 1...30 {
             testArray[0].append("item" + "\(i)")
@@ -47,7 +49,8 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         
         // seccess -> パース -> 空配列へ
-        
+        jsonObject.setData()
+        jsonObject.getItems()
     }
     
     func getRankingByGenderRes(gender: Gender) {
@@ -62,6 +65,8 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
+        jsonObject.setData()
+        jsonObject.getItems()
     }
     
     func getRankingByAgeRes(age: Age) {
@@ -85,6 +90,8 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
+        jsonObject.setData()
+        jsonObject.getItems()
     }
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age) {
@@ -133,7 +140,8 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        
+        jsonObject.setData()
+        jsonObject.getItems()
     }
     
 }
