@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
 		59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */; };
-		59B937B4206B4DDF0076D56D /* JsonObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonObject.swift */; };
+		59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonConverter.swift */; };
 		59B937B6206B4E580076D56D /* RankingGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B5206B4E580076D56D /* RankingGateway.swift */; };
 		59B937B8206B4ECA0076D56D /* RankingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B7206B4ECA0076D56D /* RankingManager.swift */; };
 		59B937BC206C8E900076D56D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937BB206C8E900076D56D /* Item.swift */; };
@@ -41,7 +41,7 @@
 /* Begin PBXFileReference section */
 		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGatewayProtocol.swift; sourceTree = "<group>"; };
-		59B937B3206B4DDF0076D56D /* JsonObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonObject.swift; sourceTree = "<group>"; };
+		59B937B3206B4DDF0076D56D /* JsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConverter.swift; sourceTree = "<group>"; };
 		59B937B5206B4E580076D56D /* RankingGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGateway.swift; sourceTree = "<group>"; };
 		59B937B7206B4ECA0076D56D /* RankingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingManager.swift; sourceTree = "<group>"; };
 		59B937BB206C8E900076D56D /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 				59E6470320561A7700EFD54C /* LaunchScreen.storyboard */,
 				59E6470620561A7700EFD54C /* Info.plist */,
 				59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */,
-				59B937B3206B4DDF0076D56D /* JsonObject.swift */,
+				59B937B3206B4DDF0076D56D /* JsonConverter.swift */,
 				59B937B5206B4E580076D56D /* RankingGateway.swift */,
 				59B937B7206B4ECA0076D56D /* RankingManager.swift */,
 				59B937BB206C8E900076D56D /* Item.swift */,
@@ -238,7 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59B937B4206B4DDF0076D56D /* JsonObject.swift in Sources */,
+				59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */,
 				59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */,
 				59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */,
 				59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */,

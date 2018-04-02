@@ -33,7 +33,7 @@ class RankingGateway: RankingGatewayProtocol {
     var itemArray: [Item] = []
     var testArray: [[String]] = [[], [], [], []]
     
-    private let jsonObject = JsonObject()
+    private let jsonConverter = JsonConverter()
     
     func getTestData(){
         for i in 1...30 {
@@ -49,7 +49,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData(testArray)
+        jsonConverter.getItems(testArray)
         
     }
     
@@ -65,7 +65,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData(testArray)
+        jsonConverter.getItems(testArray)
         
     }
     
@@ -90,7 +90,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData(testArray)
+        jsonConverter.getItems(testArray)
         
     }
     
@@ -140,7 +140,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData(testArray)
+        jsonConverter.getItems(testArray)
         
     }
     

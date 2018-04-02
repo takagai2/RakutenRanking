@@ -8,15 +8,9 @@
 
 import Foundation
 
-class JsonObject {
+class JsonConverter {
     
-    func setData(_ data: [[String]]) {
-        // TODO: 受け取ったレスポンスを格納
-        
-        getItems(data: testJsonData)
-    }
-    
-    func getItems(data: [[String]]) {
+    func getItems(_ data: [[String]]) {
         // TODO: パース
         // TODO: 該当データ抽出
         // TODO: Itemオブジェクト生成
@@ -24,9 +18,8 @@ class JsonObject {
         // TODO: Arrayに追加
         for i in 0...29 {
             let item = Item()
-
+            
         }
-
     }
     
 }
