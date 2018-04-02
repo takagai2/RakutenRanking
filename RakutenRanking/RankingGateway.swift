@@ -49,7 +49,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData()
+        jsonObject.setData(testArray)
         
     }
     
@@ -65,7 +65,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData()
+        jsonObject.setData(testArray)
         
     }
     
@@ -90,7 +90,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData()
+        jsonObject.setData(testArray)
         
     }
     
@@ -140,7 +140,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         // seccess -> パース -> 空配列へ
-        jsonObject.setData()
+        jsonObject.setData(testArray)
         
     }
     
