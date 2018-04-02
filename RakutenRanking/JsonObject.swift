@@ -12,7 +12,7 @@ class JsonObject {
     
     let rankingGateway = RankingGateway()
     
-    func setData() {
+    func setData(_ data: [[String]]) {
         // TODO: 受け取ったレスポンスを格納
         let testJsonData = rankingGateway.testArray
         
