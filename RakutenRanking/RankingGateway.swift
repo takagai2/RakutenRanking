@@ -31,16 +31,18 @@ class RankingGateway: RankingGatewayProtocol {
     private var urlOf50sMale: String = ""
     
     var itemArray: [Item] = []
-    var testArray: [[String]] = [[], [], [], []]
+    var testArray: [[String]] = [[]]
     
     private let jsonConverter = JsonConverter()
     
     func getTestData(){
         for i in 1...30 {
-            testArray[0].append("item" + "\(i)")
-            testArray[1].append("\(i)")
-            testArray[2].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=64x64")
-            testArray[3].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=128x128")
+            var test: [String] = []
+            test.append("item" + "\(i)")
+            test.append("\(i)")
+            test.append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=64x64")
+            test.append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=128x128")
+            testArray[i].append("\(test)")
         }
     }
     
