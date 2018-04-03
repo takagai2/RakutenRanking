@@ -10,14 +10,12 @@ import Foundation
 
 protocol RankingGatewayProtocol {
     
-    var itemArray: [Item] { get set }
+    func getOverallRankingRes(_ callback: ([Item]) -> Void)
     
-    func getOverallRankingRes()
+    func getRankingByGenderRes(gender: Gender, _ callback: ([Item]) -> Void)
     
-    func getRankingByGenderRes(gender: Gender)
+    func getRankingByAgeRes(age: Age, _ callback: ([Item]) -> Void)
     
-    func getRankingByAgeRes(age: Age)
-    
-    func getRankingByGenderAgeRes(gender: Gender, age: Age)
+    func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: ([Item]) -> Void)
     
 }
