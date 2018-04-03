@@ -20,8 +20,8 @@ class JsonConverter {
             // 各要素を抽出、代入
             item.name = datum[0]
             item.price = datum[1]
-            item.imageUrlS = datum[2]
-            item.imageUrlM = datum[3]
+            item.sSizeImageUrl = datum[2]
+            item.mSizeImageUrl = datum[3]
             // itemArrayに追加
             itemArray.append(item)
         }
