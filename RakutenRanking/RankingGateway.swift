@@ -45,16 +45,16 @@ class RankingGateway: RankingGatewayProtocol {
         }
     }
     
-    func getOverallRankingRes(_ closure: ([Item]) -> [Item]) {
+    func getOverallRankingRes(_ callback: ([Item]) -> Void) {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
         self.getTestData()
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
-        closure(itemArray)
+        callback(itemArray)
     }
     
-    func getRankingByGenderRes(gender: Gender, _ closure: ([Item]) -> [Item]) {
+    func getRankingByGenderRes(gender: Gender, _ callback: ([Item]) -> Void) {
         // TODO: 通信処理を行って対象の男女別ランキングのレスポンスを取得
         switch gender {
         case .female:
@@ -67,10 +67,10 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
-        closure(itemArray)
+        callback(itemArray)
     }
     
-    func getRankingByAgeRes(age: Age, _ closure: ([Item]) -> [Item]) {
+    func getRankingByAgeRes(age: Age, _ callback: ([Item]) -> Void) {
         // TODO: 通信処理を行って対象の年齢別ランキングのレスポンスを取得
         switch age {
         case .teens:
@@ -92,10 +92,10 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
-        closure(itemArray)
+        callback(itemArray)
     }
     
-    func getRankingByGenderAgeRes(gender: Gender, age: Age, _ closure: ([Item]) -> [Item]) {
+    func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: ([Item]) -> Void) {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
         switch age {
         case .teens:
@@ -142,7 +142,7 @@ class RankingGateway: RankingGatewayProtocol {
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
-        closure(itemArray)
+        callback(itemArray)
     }
     
 }

@@ -26,30 +26,38 @@ enum Age {
 class RankingManager {
     
     private let rankingGateway: RankingGatewayProtocol = RankingGateway()
-    private let closure = {(array: [Item]) -> [Item] in
-        let itemArray = array
-        return itemArray
-    }
-    
+
     // 総合ランキング
     func getOverallRanking() {
-        rankingGateway.getOverallRankingRes(self.closure)
+        rankingGateway.getOverallRankingRes({(array: [Item]) -> Void in
+            // TODO: Realmに保存する処理
+            // TODO: XXXViewControllerにItemを渡す処理
+        })
         
     }
     
     // 男女別ランキング
     func getRankingByGender(gender: Gender) {
-        rankingGateway.getRankingByGenderRes(gender: gender, self.closure)
+        rankingGateway.getRankingByGenderRes(gender: gender, {(array: [Item]) -> Void in
+            // TODO: Realmに保存する処理
+            // TODO: XXXViewControllerにItemを渡す処理
+        })
     }
     
     // 年齢別ランキング
     func getRankingByAge(age: Age) {
-        rankingGateway.getRankingByAgeRes(age: age, self.closure)
+        rankingGateway.getRankingByAgeRes(age: age, {(array: [Item]) -> Void in
+            // TODO: Realmに保存する処理
+            // TODO: XXXViewControllerにItemを渡す処理
+        })
     }
     
     // 男女年齢別ランキング
     func getRankingByGenderAge(gender: Gender, age: Age) {
-        rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, self.closure)
+        rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {(array: [Item]) -> Void in
+            // TODO: Realmに保存する処理
+            // TODO: XXXViewControllerにItemを渡す処理
+        })
         
     }
     
