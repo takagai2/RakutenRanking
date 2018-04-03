@@ -29,8 +29,7 @@ class RankingGateway: RankingGatewayProtocol {
     private var urlOf40sMale: String = ""
     private var urlOf50sFemale: String = ""
     private var urlOf50sMale: String = ""
-    
-    var itemArray: [Item] = []
+
     var testArray: [[String]] = [[]]
     
     private let jsonConverter = JsonConverter()

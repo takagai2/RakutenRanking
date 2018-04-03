@@ -10,8 +10,6 @@ import Foundation
 
 protocol RankingGatewayProtocol {
     
-    var itemArray: [Item] { get set }
-    
     func getOverallRankingRes()
     
     func getRankingByGenderRes(gender: Gender)
