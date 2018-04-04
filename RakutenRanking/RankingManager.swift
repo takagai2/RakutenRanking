@@ -26,12 +26,14 @@ enum Age {
 class RankingManager {
     
     private let rankingGateway: RankingGatewayProtocol = RankingGateway()
+    var itemArray: [Item] = []
 
     // 総合ランキング
     func getOverallRanking() {
         rankingGateway.getOverallRankingRes({(array: [Item]) -> Void in
             // TODO: Realmに保存する処理
             // TODO: XXXViewControllerにItemを渡す処理
+            itemArray = array
         })
         
     }
