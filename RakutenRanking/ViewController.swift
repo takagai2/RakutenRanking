@@ -65,6 +65,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var pageControl: UIPageControl! = nil
     var scrollView: UIScrollView!
     
+    // ランキングデータを格納する配列
+    let rankingItemList: Array = [Item]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,11 +77,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        //        view.addSubview(collectionView)
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
     }
     
+    // ランキングデータを取得し、配列に格納する
+    func getRankingItem() {
+        let rankingManager = RankingManager()
+        // rankingItemList = TODO: テストデータが入った[Item]を取得
+    }
     
     // MARK: UITableViewDatasource
     
@@ -199,8 +206,8 @@ extension ViewController: UIScrollViewDelegate {
     
     func removePageView() {
         if self.scrollView != nil {
-        self.scrollView.removeFromSuperview()
-        self.pageControl.removeFromSuperview()
+            self.scrollView.removeFromSuperview()
+            self.pageControl.removeFromSuperview()
         } else {
             print("pageViewはnil")
         }
