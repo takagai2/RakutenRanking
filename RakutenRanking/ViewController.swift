@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
-    let rankingItemList: Array = [Item]()
+    var rankingItemList: [Item] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,12 +79,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
+        
+        getRankingItem()
     }
     
     // ランキングデータを取得し、配列に格納する
     func getRankingItem() {
         let rankingManager = RankingManager()
-        // rankingItemList = TODO: テストデータが入った[Item]を取得
+        // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
+        rankingManager.getOverallRanking()
+        rankingItemList = rankingManager.itemArray
     }
     
     // MARK: UITableViewDatasource
@@ -96,7 +100,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingList.count
+        return self.rankingItemList.count
     }
     
     // セル内容
@@ -104,7 +108,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
 
         cell.rank.text = String(indexPath.row + 1)
-        cell.itemName.text = self.rankingList[indexPath.row]
+        cell.itemName.text = "\(self.rankingItemList[indexPath.row])"
         return cell
     }
     
@@ -116,7 +120,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
@@ -132,7 +135,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
-        let cellText = rankingList[indexPath.item]
+        let cellText = "\(rankingItemList[indexPath.item])"
         cell.setupContents(textName: cellText)
         
         return cell
@@ -144,8 +147,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 3.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("cocollectionViewのセル押された")
     }
 
@@ -155,7 +157,7 @@ extension ViewController: UIScrollViewDelegate {
     
     func setPageView() {
         // ページ数
-        let page = rankingList.count
+        let page = rankingItemList.count
         // ページのサイズ
         let width = screenSize.width
         let height = screenSize.height
