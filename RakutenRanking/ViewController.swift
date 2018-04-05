@@ -111,6 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.rank.text = String(indexPath.row + 1)
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
+        cell.itemImage.setImageWith(NSURL(string: "\(item.sSizeImageUrl!)")! as URL)
         return cell
     }
     
