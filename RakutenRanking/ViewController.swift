@@ -106,9 +106,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
-
+        let item = self.rankingItemList[indexPath.row]
         cell.rank.text = String(indexPath.row + 1)
-        cell.itemName.text = "\(self.rankingItemList[indexPath.row])"
+        cell.itemName.text = "\(item.name!)"
+        cell.itemPrice.text = "\(item.price!)円"
         return cell
     }
     
