@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0683333FD30193348C390594 /* Pods_RakutenRankingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */; };
 		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
 		59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */; };
 		59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonConverter.swift */; };
@@ -26,6 +27,7 @@
 		59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */; };
 		59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */; };
 		59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7E2063AD3700A86F41 /* WebViewController.swift */; };
+		8DF89DC683602D09790FB8C2 /* Pods_RakutenRanking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRankingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRanking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGatewayProtocol.swift; sourceTree = "<group>"; };
 		59B937B3206B4DDF0076D56D /* JsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConverter.swift; sourceTree = "<group>"; };
@@ -62,6 +67,9 @@
 		59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		59F66C7E2063AD3700A86F41 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.release.xcconfig"; sourceTree = "<group>"; };
+		72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.release.xcconfig"; sourceTree = "<group>"; };
+		E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DF89DC683602D09790FB8C2 /* Pods_RakutenRanking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,18 +85,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0683333FD30193348C390594 /* Pods_RakutenRankingTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E0401FBDAC39D0B9C25B927 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */,
+				1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		59E646EE20561A7700EFD54C = {
 			isa = PBXGroup;
 			children = (
 				59E646F920561A7700EFD54C /* RakutenRanking */,
 				59E6470E20561A7700EFD54C /* RakutenRankingTests */,
 				59E646F820561A7700EFD54C /* Products */,
+				0E0401FBDAC39D0B9C25B927 /* Frameworks */,
+				8C6E14C198D2C1650B9FCA26 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +156,17 @@
 			path = RakutenRankingTests;
 			sourceTree = "<group>";
 		};
+		8C6E14C198D2C1650B9FCA26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */,
+				6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */,
+				5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */,
+				72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +174,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59E6471420561A7700EFD54C /* Build configuration list for PBXNativeTarget "RakutenRanking" */;
 			buildPhases = (
+				4E9EFAA694BDA71FE8A815F2 /* [CP] Check Pods Manifest.lock */,
 				59E646F320561A7700EFD54C /* Sources */,
 				59E646F420561A7700EFD54C /* Frameworks */,
 				59E646F520561A7700EFD54C /* Resources */,
+				4E64449F8AD3AA48DFFD3F1E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 59E6471720561A7700EFD54C /* Build configuration list for PBXNativeTarget "RakutenRankingTests" */;
 			buildPhases = (
+				6DAD2FF5CFE3DAFF105265F0 /* [CP] Check Pods Manifest.lock */,
 				59E6470720561A7700EFD54C /* Sources */,
 				59E6470820561A7700EFD54C /* Frameworks */,
 				59E6470920561A7700EFD54C /* Resources */,
@@ -232,6 +267,71 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4E64449F8AD3AA48DFFD3F1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E9EFAA694BDA71FE8A815F2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RakutenRanking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DAD2FF5CFE3DAFF105265F0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RakutenRankingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		59E646F320561A7700EFD54C /* Sources */ = {
@@ -403,6 +503,7 @@
 		};
 		59E6471520561A7700EFD54C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +519,7 @@
 		};
 		59E6471620561A7700EFD54C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -433,6 +535,7 @@
 		};
 		59E6471820561A7700EFD54C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -450,6 +553,7 @@
 		};
 		59E6471920561A7700EFD54C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

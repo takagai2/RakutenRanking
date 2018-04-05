@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
