@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
@@ -65,6 +66,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var pageControl: UIPageControl! = nil
     var scrollView: UIScrollView!
     
+    // ランキングデータを格納する配列
+    var rankingItemList: [Item] = []
+    
+    // RankingManagerのインスタンス作成
+    private let rankingManager = RankingManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -74,11 +81,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        //        view.addSubview(collectionView)
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
+        
+        getRankingItem()
     }
     
+    // ランキングデータを取得し、配列に格納する
+    func getRankingItem() {
+        // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
+        rankingManager.getOverallRanking({(array: [Item]) -> Void in
+            rankingItemList = array
+            self.mainRanking.reloadData()
+        })
+    }
     
     // MARK: UITableViewDatasource
     
@@ -89,15 +105,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingList.count
+        return self.rankingItemList.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
-
-        cell.rank.text = String(indexPath.row + 1)
-        cell.itemName.text = self.rankingList[indexPath.row]
+        let item = self.rankingItemList[indexPath.row]
+        cell.rank.text = "\(indexPath.row + 1)"
+        cell.itemName.text = "\(item.name!)"
+        cell.itemPrice.text = "\(item.price!)円"
+        cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
     
@@ -109,7 +127,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
@@ -125,7 +142,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         
-        let cellText = rankingList[indexPath.item]
+        let cellText = "\(rankingItemList[indexPath.item])"
         cell.setupContents(textName: cellText)
         
         return cell
@@ -137,8 +154,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 3.0)
     }
     
-    func collectionView(_ collectionView: UICollectionView,
-                        didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("cocollectionViewのセル押された")
     }
 
@@ -148,7 +164,7 @@ extension ViewController: UIScrollViewDelegate {
     
     func setPageView() {
         // ページ数
-        let page = rankingList.count
+        let page = rankingItemList.count
         // ページのサイズ
         let width = screenSize.width
         let height = screenSize.height
@@ -199,8 +215,8 @@ extension ViewController: UIScrollViewDelegate {
     
     func removePageView() {
         if self.scrollView != nil {
-        self.scrollView.removeFromSuperview()
-        self.pageControl.removeFromSuperview()
+            self.scrollView.removeFromSuperview()
+            self.pageControl.removeFromSuperview()
         } else {
             print("pageViewはnil")
         }

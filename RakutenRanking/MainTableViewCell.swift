@@ -13,6 +13,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var rank: UILabel!
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemPrice: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
