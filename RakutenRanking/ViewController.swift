@@ -108,10 +108,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
         let item = self.rankingItemList[indexPath.row]
-        cell.rank.text = String(indexPath.row + 1)
+        cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
-        cell.itemImage.setImageWith(NSURL(string: "\(item.sSizeImageUrl!)")! as URL)
+        cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
     
