@@ -69,6 +69,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキングデータを格納する配列
     var rankingItemList: [Item] = []
     
+    // RankingManagerのインスタンス作成
+    private let rankingManager = RankingManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -86,10 +89,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // ランキングデータを取得し、配列に格納する
     func getRankingItem() {
-        let rankingManager = RankingManager()
         // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
-        rankingManager.getOverallRanking()
-        rankingItemList = rankingManager.itemArray
+        rankingManager.getOverallRanking({(array: [Item]) -> Void in
+            rankingItemList = array
+            self.mainRanking.reloadData()
+        })
     }
     
     // MARK: UITableViewDatasource
