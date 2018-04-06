@@ -26,7 +26,6 @@
 		59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */; };
 		59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */; };
 		59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */; };
-		59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7E2063AD3700A86F41 /* WebViewController.swift */; };
 		8DF89DC683602D09790FB8C2 /* Pods_RakutenRanking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +65,6 @@
 		59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		59F66C7E2063AD3700A86F41 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.release.xcconfig"; sourceTree = "<group>"; };
 		72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 				59F66C74206354AE00A86F41 /* ConfigViewController.swift */,
 				59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */,
 				59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */,
-				59F66C7E2063AD3700A86F41 /* WebViewController.swift */,
 				59E646FA20561A7700EFD54C /* AppDelegate.swift */,
 				59E646FE20561A7700EFD54C /* Main.storyboard */,
 				59E6470120561A7700EFD54C /* Assets.xcassets */,
@@ -342,7 +339,6 @@
 				59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */,
 				59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */,
 				59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */,
-				59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */,
 				59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */,
 				59B937B8206B4ECA0076D56D /* RankingManager.swift in Sources */,
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,

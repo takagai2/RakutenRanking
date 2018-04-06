@@ -122,7 +122,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO 各商品ページを表示する
-        self.performSegue(withIdentifier: "toItemPage", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

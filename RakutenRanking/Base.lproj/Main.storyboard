@@ -10,40 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Web View Controller-->
-        <scene sceneID="8TE-y7-nVl">
-            <objects>
-                <viewController id="YWS-EB-phJ" customClass="WebViewController" customModule="RakutenRanking" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yYh-n9-era">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWJ-9g-jVA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="hWJ-9g-jVA" firstAttribute="leading" secondItem="avN-69-ake" secondAttribute="leading" id="1TM-EY-w0A"/>
-                            <constraint firstItem="hWJ-9g-jVA" firstAttribute="top" secondItem="avN-69-ake" secondAttribute="top" id="8WQ-g4-iQh"/>
-                            <constraint firstItem="hWJ-9g-jVA" firstAttribute="bottom" secondItem="avN-69-ake" secondAttribute="bottom" id="NcN-7F-bk3"/>
-                            <constraint firstItem="hWJ-9g-jVA" firstAttribute="trailing" secondItem="avN-69-ake" secondAttribute="trailing" id="YD4-9r-TDG"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="avN-69-ake"/>
-                    </view>
-                    <connections>
-                        <outlet property="itemPage" destination="hWJ-9g-jVA" id="NWd-1U-OQR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="68V-YG-4u1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-423" y="1155"/>
-        </scene>
         <!--Favorite View Controller-->
         <scene sceneID="SDO-HY-JNT">
             <objects>
@@ -221,7 +187,6 @@
                         <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
                         <outlet property="pageControl" destination="V67-uG-CQw" id="Qhh-iu-kgE"/>
                         <outlet property="scrollView" destination="UbY-QK-UfQ" id="RD9-fd-OOz"/>
-                        <segue destination="YWS-EB-phJ" kind="show" identifier="toItemPage" id="V8v-dR-Qiz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -343,7 +308,6 @@
                         <segue destination="ytB-cb-YjQ" kind="show" identifier="toConfig" id="dK6-Vg-wrj"/>
                         <segue destination="SO0-kM-sWW" kind="show" identifier="toMenu" id="d7B-4m-biJ"/>
                         <segue destination="OpI-JF-obs" kind="show" identifier="toFavoriteList" id="j4B-Tc-Ejm"/>
-                        <segue destination="YWS-EB-phJ" kind="show" identifier="toItemPage" id="Hbb-sU-WCV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -462,7 +426,4 @@
             <point key="canvasLocation" x="-422" y="377"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="V8v-dR-Qiz"/>
-    </inferredMetricsTieBreakers>
 </document>
