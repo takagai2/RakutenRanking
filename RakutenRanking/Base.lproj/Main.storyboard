@@ -10,6 +10,62 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="jkv-Ic-zZC">
+            <objects>
+                <viewController id="5lQ-Fk-rcO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tFh-yQ-X2s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C4H-Ep-fzA">
+                                <rect key="frame" x="79" y="109" width="217" height="217"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="217" id="Xgw-8g-uIv"/>
+                                    <constraint firstAttribute="height" constant="217" id="bOE-fX-0Ws"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-yF-YDO">
+                                <rect key="frame" x="60" y="371" width="255" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="255" id="jfL-0d-MN3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is6-2k-Dvi">
+                                <rect key="frame" x="60" y="427" width="255" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
+                                <rect key="frame" x="269" y="473" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="tCP-yF-YDO" secondAttribute="trailing" constant="60" id="6xc-OY-VJz"/>
+                            <constraint firstItem="C4H-Ep-fzA" firstAttribute="top" secondItem="62m-xE-sPt" secondAttribute="top" constant="45" id="7se-UG-gSa"/>
+                            <constraint firstItem="tCP-yF-YDO" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="BPn-x6-Qd8"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="269" id="GVe-JP-P5l"/>
+                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="60" id="GfD-M0-pVF"/>
+                            <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
+                            <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
+                            <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
+                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="60" id="jI0-im-nzu"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="25" id="mbX-r4-OuW"/>
+                            <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kjg-cy-iHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-423.19999999999999" y="1154.5727136431785"/>
+        </scene>
         <!--Favorite View Controller-->
         <scene sceneID="SDO-HY-JNT">
             <objects>
@@ -65,6 +121,7 @@
                     </view>
                     <connections>
                         <outlet property="favoriteList" destination="sKa-qB-9TA" id="so6-vR-QmM"/>
+                        <segue destination="5lQ-Fk-rcO" kind="show" identifier="toDetail" id="BtZ-ch-crA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTW-OM-pU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -187,6 +244,7 @@
                         <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
                         <outlet property="pageControl" destination="V67-uG-CQw" id="Qhh-iu-kgE"/>
                         <outlet property="scrollView" destination="UbY-QK-UfQ" id="RD9-fd-OOz"/>
+                        <segue destination="5lQ-Fk-rcO" kind="show" identifier="toDetail" id="40y-Rc-Ga9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -308,6 +366,7 @@
                         <segue destination="ytB-cb-YjQ" kind="show" identifier="toConfig" id="dK6-Vg-wrj"/>
                         <segue destination="SO0-kM-sWW" kind="show" identifier="toMenu" id="d7B-4m-biJ"/>
                         <segue destination="OpI-JF-obs" kind="show" identifier="toFavoriteList" id="j4B-Tc-Ejm"/>
+                        <segue destination="5lQ-Fk-rcO" kind="show" identifier="toDetail" id="jvl-Fl-qlr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -426,4 +485,7 @@
             <point key="canvasLocation" x="-422" y="377"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="40y-Rc-Ga9"/>
+    </inferredMetricsTieBreakers>
 </document>
