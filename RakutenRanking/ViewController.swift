@@ -173,7 +173,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("cocollectionViewのセル押された")
+        collectionView.deselectItem(at: indexPath, animated: false)
+        // アイテム詳細画面を表示
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    // アイテム詳細画面へ渡す値をcellから取得
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        item = self.rankingItemList[indexPath.row]
     }
 
 }
