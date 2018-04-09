@@ -10,33 +10,47 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    let itemName: UILabel = {
+    // 商品名のlabelを生成
+    var itemName: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 20, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 0, y: 65, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
         label.textAlignment = .left
         return label
     }()
     
-    let itemPrice: UILabel = {
+    // 値段のlabelを生成
+    var itemPrice: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 40, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.textColor = UIColor.gray
+        label.textAlignment = .right
+        return label
+    }()
+    
+    // 順位のlabelを生成
+    var itemRank: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
         label.textAlignment = .left
         return label
+    }()
+    
+    // 商品画像を生成
+    var itemImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 12, y: 10, width: 100, height: 100))
+        return image
     }()
     
     private func setup() {
         layer.borderColor = UIColor.darkGray.cgColor
-        layer.borderWidth = 0.5
+        layer.borderWidth = 1.0
         
         contentView.addSubview(itemName)
         contentView.addSubview(itemPrice)
-    }
-    
-    func setupContents(name: String, price: String) {
-        itemName.text = name
-        itemPrice.text = price
+        contentView.addSubview(itemRank)
+        contentView.addSubview(itemImage)
     }
     
     override init(frame: CGRect) {

@@ -117,6 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
+        // TODO: 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
@@ -155,20 +156,20 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         item = self.rankingItemList[indexPath.row]
-        let itemName = " \(item.name!)"
-        let itemPrice = " \(item.price!)円"
-        cell.setupContents(name: itemName, price: itemPrice)
-        
+        cell.itemRank.text = " \(indexPath.row + 1)位"
+        cell.itemName.text = " \(item.name!)"
+        cell.itemPrice.text = " \(item.price!)円"
+        // TODO: 画像の非同期取得
+        cell.itemImage.setImageWith(URL(string: item.mSizeImageUrl!)!)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // 画面の横サイズの三分の一の大きさのcellサイズを指定
-        return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        return CGSize(width: screenSize.width / 3.0, height: screenSize.height / 4.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
