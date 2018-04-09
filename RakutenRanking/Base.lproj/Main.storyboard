@@ -44,7 +44,7 @@
                                 <rect key="frame" x="269" y="473" width="46" height="30"/>
                                 <state key="normal" title="Favo"/>
                                 <connections>
-                                    <action selector="favoButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="GhK-66-4RT"/>
+                                    <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
                                 </connections>
                             </button>
                         </subviews>

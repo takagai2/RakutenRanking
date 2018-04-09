@@ -81,7 +81,7 @@ class MenuViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO 各商品の詳細ページに遷移させる
+        // TODO: 各商品の詳細ページに遷移させる
     }
     
     override func didReceiveMemoryWarning() {

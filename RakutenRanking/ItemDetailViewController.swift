@@ -7,22 +7,27 @@
 //
 
 import UIKit
+import AFNetworking
 
 class ItemDetailViewController: UIViewController {
     
-    @IBOutlet weak var name: String!
-    @IBOutlet weak var price: String!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var price: UILabel!
     @IBOutlet weak var image: UIImageView!
     
-    @IBAction func favoButton(_ sender: Any) {
-        // TODO: お気に入り登録機能
+    @IBAction func favoriteButton(_ sender: Any) {
+        // TODO: お気に入り登録機能実装
+        print("favoriteButton押された")
     }
     
-    // TODO: 各商品のデータを取得して表示
+    var sendItem: Item!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.name.text = sendItem.name!
+        self.price.text = sendItem.price!
+        self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
     }
 
     override func didReceiveMemoryWarning() {
