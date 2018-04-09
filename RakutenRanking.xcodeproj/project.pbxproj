@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0683333FD30193348C390594 /* Pods_RakutenRankingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */; };
+		595702FB20779126002BAC97 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595702FA20779126002BAC97 /* ItemDetailViewController.swift */; };
 		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
 		59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */; };
 		59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonConverter.swift */; };
@@ -26,7 +27,6 @@
 		59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */; };
 		59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */; };
 		59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */; };
-		59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7E2063AD3700A86F41 /* WebViewController.swift */; };
 		8DF89DC683602D09790FB8C2 /* Pods_RakutenRanking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +44,7 @@
 		1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRankingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRanking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		595702FA20779126002BAC97 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGatewayProtocol.swift; sourceTree = "<group>"; };
 		59B937B3206B4DDF0076D56D /* JsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConverter.swift; sourceTree = "<group>"; };
@@ -66,7 +67,6 @@
 		59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
-		59F66C7E2063AD3700A86F41 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.release.xcconfig"; sourceTree = "<group>"; };
 		72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				59F66C74206354AE00A86F41 /* ConfigViewController.swift */,
 				59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */,
 				59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */,
-				59F66C7E2063AD3700A86F41 /* WebViewController.swift */,
+				595702FA20779126002BAC97 /* ItemDetailViewController.swift */,
 				59E646FA20561A7700EFD54C /* AppDelegate.swift */,
 				59E646FE20561A7700EFD54C /* Main.storyboard */,
 				59E6470120561A7700EFD54C /* Assets.xcassets */,
@@ -342,8 +342,8 @@
 				59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */,
 				59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */,
 				59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */,
-				59F66C7F2063AD3700A86F41 /* WebViewController.swift in Sources */,
 				59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */,
+				595702FB20779126002BAC97 /* ItemDetailViewController.swift in Sources */,
 				59B937B8206B4ECA0076D56D /* RankingManager.swift in Sources */,
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,
 				59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */,

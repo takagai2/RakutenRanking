@@ -68,6 +68,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // ランキングデータを格納する配列
     var rankingItemList: [Item] = []
+    // segueで値を渡すための変数
+    var item: Item!
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -111,7 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
-        let item = self.rankingItemList[indexPath.row]
+        item = self.rankingItemList[indexPath.row]
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
@@ -121,8 +123,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO 各商品ページを表示する
-        self.performSegue(withIdentifier: "toItemPage", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: false)
+        // アイテム詳細画面を表示する
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    // アイテム詳細画面へ渡す値をcellから取得
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        item = self.rankingItemList[indexPath.row]
+    }
+    
+    // アイテム詳細画面へ遷移時、値を渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            let itemDetailViewController = segue.destination as! ItemDetailViewController
+            itemDetailViewController.sendItem = self.item
+        }
     }
 
     override func didReceiveMemoryWarning() {
