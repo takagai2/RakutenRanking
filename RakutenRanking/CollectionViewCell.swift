@@ -10,23 +10,33 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    private let rankingListLabel: UILabel = {
+    let itemName: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 0, y: 20, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
-        label.textAlignment = .center
+        label.textAlignment = .left
+        return label
+    }()
+    
+    let itemPrice: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 40, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.textColor = UIColor.gray
+        label.textAlignment = .left
         return label
     }()
     
     private func setup() {
         layer.borderColor = UIColor.darkGray.cgColor
-        layer.borderWidth = 1.0
+        layer.borderWidth = 0.5
         
-        contentView.addSubview(rankingListLabel)
+        contentView.addSubview(itemName)
+        contentView.addSubview(itemPrice)
     }
     
-    func setupContents(textName: String) {
-        rankingListLabel.text = textName
+    func setupContents(name: String, price: String) {
+        itemName.text = name
+        itemPrice.text = price
     }
     
     override init(frame: CGRect) {

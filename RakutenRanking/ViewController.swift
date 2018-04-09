@@ -157,9 +157,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        
-        let cellText = "\(rankingItemList[indexPath.item])"
-        cell.setupContents(textName: cellText)
+        item = self.rankingItemList[indexPath.row]
+        let itemName = " \(item.name!)"
+        let itemPrice = " \(item.price!)円"
+        cell.setupContents(name: itemName, price: itemPrice)
         
         return cell
     }
