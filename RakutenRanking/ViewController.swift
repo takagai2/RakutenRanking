@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return collectionView
     }()
     
-    var pageControl: UIPageControl! = nil
+    var pageControl: UIPageControl!
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
@@ -240,8 +240,10 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // スクロール距離＝1ページ（画面幅）
         if fmod(scrollView.contentOffset.x, scrollView.frame.width) == 0 {
-            // ページの切り替え
-            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            // ページの切り替え（nliチェックしてからcurrentPageを設定）
+            if let control: UIPageControl = pageControl {
+                control.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            }
         }
     }
     
