@@ -45,8 +45,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.setPageView()
     }
     
-    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
-    
     private let collectionView: UICollectionView = {
         //セルのレイアウト設計
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -152,7 +150,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // cellの個数設定
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rankingList.count
+        return rankingItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
