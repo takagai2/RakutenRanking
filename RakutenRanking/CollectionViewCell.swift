@@ -11,7 +11,7 @@ import UIKit
 class CollectionViewCell: UICollectionViewCell {
     
     // 商品名のlabelを生成
-    var itemName: UILabel = {
+    let itemName: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 65, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
@@ -20,7 +20,7 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     // 値段のlabelを生成
-    var itemPrice: UILabel = {
+    let itemPrice: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
@@ -29,7 +29,7 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     // 順位のlabelを生成
-    var itemRank: UILabel = {
+    let itemRank: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
@@ -38,7 +38,7 @@ class CollectionViewCell: UICollectionViewCell {
     }()
     
     // 商品画像を生成
-    var itemImage: UIImageView = {
+    let itemImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 12, y: 10, width: 100, height: 100))
         return image
     }()
