@@ -213,11 +213,23 @@ extension ViewController: UIScrollViewDelegate {
         
         // TODO: ページごとのlabelの生成
         for i in 0..<page {
-            let label: UILabel = UILabel()
-            label.frame = CGRect(x: CGFloat(i) * width + width/2 - 60, y: height/2 - 40, width: 120, height: 80)
-            label.textAlignment = NSTextAlignment.center
-            label.text = "\(i + 1)位"
-            scrollView.addSubview(label)
+            let item = rankingItemList[i]
+            // 商品名のlabel生成
+            let itemName: UILabel = UILabel()
+            itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
+            itemName.textAlignment = .center
+            if let name: String = item.name {
+                itemName.text = "\(name)"
+            }
+            // 値段のlabel生成
+            let itemPrice: UILabel = UILabel()
+            itemPrice.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.5, width: 300, height: 40)
+            itemPrice.textAlignment = .center
+            if let price: String = item.price {
+                itemPrice.text = "\(price)円"
+            }
+            scrollView.addSubview(itemName)
+            scrollView.addSubview(itemPrice)
         }
         
         // UIPageContolのインスタンス作成
