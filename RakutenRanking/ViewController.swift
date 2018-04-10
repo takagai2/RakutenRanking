@@ -45,8 +45,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.setPageView()
     }
     
-    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
-    
     private let collectionView: UICollectionView = {
         //セルのレイアウト設計
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -152,7 +150,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // cellの個数設定
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rankingList.count
+        return rankingItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -213,11 +211,36 @@ extension ViewController: UIScrollViewDelegate {
         
         // TODO: ページごとのlabelの生成
         for i in 0..<page {
-            let label: UILabel = UILabel()
-            label.frame = CGRect(x: CGFloat(i) * width + width/2 - 60, y: height/2 - 40, width: 120, height: 80)
-            label.textAlignment = NSTextAlignment.center
-            label.text = "\(i + 1)位"
-            scrollView.addSubview(label)
+            let item = rankingItemList[i]
+            // 順位のlabel生成
+            let itemRank = UILabel()
+            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
+            itemRank.textAlignment = .center
+            itemRank.text = "\(i + 1)位"
+            // 商品名のlabel生成
+            let itemName: UILabel = UILabel()
+            itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
+            itemName.textAlignment = .center
+            if let name: String = item.name {
+                itemName.text = "\(name)"
+            }
+            // 値段のlabel生成
+            let itemPrice: UILabel = UILabel()
+            itemPrice.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.5, width: 300, height: 40)
+            itemPrice.textAlignment = .center
+            if let price: String = item.price {
+                itemPrice.text = "\(price)円"
+            }
+            // 商品画像を表示するimageView生成
+            let itemImage: UIImageView = UIImageView()
+            itemImage.frame = CGRect(x: CGFloat(i) * width + width/2 - 90, y: height/3 - 10, width: 180, height: 180)
+            if let image: String = item.mSizeImageUrl {
+                itemImage.setImageWith(URL(string: image)!)
+            }
+            scrollView.addSubview(itemName)
+            scrollView.addSubview(itemPrice)
+            scrollView.addSubview(itemRank)
+            scrollView.addSubview(itemImage)
         }
         
         // UIPageContolのインスタンス作成
