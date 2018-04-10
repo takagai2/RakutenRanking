@@ -159,10 +159,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         item = self.rankingItemList[indexPath.row]
         cell.itemRank.text = " \(indexPath.row + 1)位"
-        cell.itemName.text = " \(item.name!)"
-        cell.itemPrice.text = " \(item.price!)円"
-        // TODO: 画像の非同期取得
-        cell.itemImage.setImageWith(URL(string: item.mSizeImageUrl!)!)
+        // nilチェックしてからcellに代入
+        if let name: String = item.name {
+            cell.itemName.text = " \(name)"
+        }
+        if let price: String = item.price {
+            cell.itemPrice.text = "\(price)円"
+        }
+        if let image: String = item.mSizeImageUrl {
+            // TODO: 画像の非同期取得
+            cell.itemImage.setImageWith(URL(string: image)!)
+        }
         return cell
     }
     
