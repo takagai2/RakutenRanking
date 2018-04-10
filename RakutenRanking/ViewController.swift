@@ -214,6 +214,11 @@ extension ViewController: UIScrollViewDelegate {
         // TODO: ページごとのlabelの生成
         for i in 0..<page {
             let item = rankingItemList[i]
+            // 順位のlabel生成
+            let itemRank = UILabel()
+            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
+            itemRank.textAlignment = .center
+            itemRank.text = "\(i + 1)位"
             // 商品名のlabel生成
             let itemName: UILabel = UILabel()
             itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
@@ -228,8 +233,16 @@ extension ViewController: UIScrollViewDelegate {
             if let price: String = item.price {
                 itemPrice.text = "\(price)円"
             }
+            // 商品画像を表示するimageView生成
+            let itemImage: UIImageView = UIImageView()
+            itemImage.frame = CGRect(x: CGFloat(i) * width + width/2 - 90, y: height/3 - 10, width: 180, height: 180)
+            if let image: String = item.mSizeImageUrl {
+                itemImage.setImageWith(URL(string: image)!)
+            }
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
+            scrollView.addSubview(itemRank)
+            scrollView.addSubview(itemImage)
         }
         
         // UIPageContolのインスタンス作成
