@@ -10,23 +10,47 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
     
-    private let rankingListLabel: UILabel = {
+    // 商品名のlabelを生成
+    let itemName: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 0, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 0, y: 65, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
         label.textColor = UIColor.gray
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
+    }()
+    
+    // 値段のlabelを生成
+    let itemPrice: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.textColor = UIColor.gray
+        label.textAlignment = .right
+        return label
+    }()
+    
+    // 順位のlabelを生成
+    let itemRank: UILabel = {
+        let label = UILabel()
+        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        label.textColor = UIColor.gray
+        label.textAlignment = .left
+        return label
+    }()
+    
+    // 商品画像を生成
+    let itemImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 12, y: 10, width: 100, height: 100))
+        return image
     }()
     
     private func setup() {
         layer.borderColor = UIColor.darkGray.cgColor
         layer.borderWidth = 1.0
         
-        contentView.addSubview(rankingListLabel)
-    }
-    
-    func setupContents(textName: String) {
-        rankingListLabel.text = textName
+        contentView.addSubview(itemName)
+        contentView.addSubview(itemPrice)
+        contentView.addSubview(itemRank)
+        contentView.addSubview(itemImage)
     }
     
     override init(frame: CGRect) {

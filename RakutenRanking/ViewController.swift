@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return collectionView
     }()
     
-    var pageControl: UIPageControl! = nil
+    var pageControl: UIPageControl!
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
@@ -117,6 +117,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
+        // TODO: 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
@@ -155,23 +156,38 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        
-        let cellText = "\(rankingItemList[indexPath.item])"
-        cell.setupContents(textName: cellText)
-        
+        item = self.rankingItemList[indexPath.row]
+        cell.itemRank.text = " \(indexPath.row + 1)位"
+        // nilチェックしてからcellに代入
+        if let name: String = item.name {
+            cell.itemName.text = " \(name)"
+        }
+        if let price: String = item.price {
+            cell.itemPrice.text = "\(price)円"
+        }
+        if let image: String = item.mSizeImageUrl {
+            // TODO: 画像の非同期取得
+            cell.itemImage.setImageWith(URL(string: image)!)
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // 画面の横サイズの三分の一の大きさのcellサイズを指定
-        return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 3.0)
+        return CGSize(width: screenSize.width / 3.0, height: screenSize.height / 4.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("cocollectionViewのセル押された")
+        collectionView.deselectItem(at: indexPath, animated: false)
+        // アイテム詳細画面を表示
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    // アイテム詳細画面へ渡す値をcellから取得
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        item = self.rankingItemList[indexPath.row]
     }
 
 }
@@ -224,8 +240,10 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         // スクロール距離＝1ページ（画面幅）
         if fmod(scrollView.contentOffset.x, scrollView.frame.width) == 0 {
-            // ページの切り替え
-            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            // ページの切り替え（nliチェックしてからcurrentPageを設定）
+            if let control: UIPageControl = pageControl {
+                control.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.width)
+            }
         }
     }
     
