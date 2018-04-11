@@ -11,26 +11,6 @@ import AFNetworking
 
 class RankingGateway: RankingGatewayProtocol {
 
-    // TODO: ランキング種別ごとにURLを保持
-    
-    private var urlOfFemale: String = ""
-    private var urlOfMale: String = ""
-    private var urlOf10s: String = ""
-    private var urlOf20s: String = ""
-    private var urlOf30s: String = ""
-    private var urlOf40s: String = ""
-    private var urlOfOver50s: String = ""
-    private var urlOf10sFemale: String = ""
-    private var urlOf10sMale: String = ""
-    private var urlOf20sFemale: String = ""
-    private var urlOf20sMale: String = ""
-    private var urlOf30sFemale: String = ""
-    private var urlOf30sMale: String = ""
-    private var urlOf40sFemale: String = ""
-    private var urlOf40sMale: String = ""
-    private var urlOf50sFemale: String = ""
-    private var urlOf50sMale: String = ""
-
     var testArray: [[String]] = []
     
     private let jsonConverter = JsonConverter()
@@ -75,10 +55,14 @@ class RankingGateway: RankingGatewayProtocol {
         switch gender {
         case .female:
             // 女性総合ランキング取得
+            let urlOfFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&sex=1"
             self.getTestData()
+            self.getResponse(url: urlOfFemale)
         case .male:
             // 男性総合ランキング取得
+            let urlOfMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&sex=0"
             self.getTestData()
+            self.getResponse(url: urlOfMale)
         }
         
         // seccess -> パース -> 空配列へ
@@ -91,19 +75,29 @@ class RankingGateway: RankingGatewayProtocol {
         switch age {
         case .teens:
             // 10代総合ランキング取得
+            let urlOf10s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10"
             self.getTestData()
+            self.getResponse(url: urlOf10s)
         case .twenties:
             // 20台総合ランキング取得
+            let urlOf20s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20"
             self.getTestData()
+            self.getResponse(url: urlOf20s)
         case .thirties:
             // 30台総合ランキング取得
+            let urlOf30s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30"
             self.getTestData()
+            self.getResponse(url: urlOf30s)
         case .forties:
             // 40代総合ランキング取得
+            let urlOf40s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40"
             self.getTestData()
+            self.getResponse(url: urlOf40s)
         case .fiftiesOver:
             // 50代以上総合ランキング取得
+            let urlOf50s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50"
             self.getTestData()
+            self.getResponse(url: urlOf50s)
         }
         
         // seccess -> パース -> 空配列へ
@@ -117,42 +111,62 @@ class RankingGateway: RankingGatewayProtocol {
         case .teens:
             if gender == .female {
                 // 10代女性総合ランキング取得
+                let urlOf10sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10&sex=1"
                 self.getTestData()
+                self.getResponse(url: urlOf10sFemale)
             } else {
                 // 10代男性総合ランキング取得
+                let urlOf10sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10&sex=0"
                 self.getTestData()
+                self.getResponse(url: urlOf10sMale)
             }
         case .twenties:
             if gender == .female {
                 // 20代女性総合ランキング取得
+                let urlOf20sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20&sex=1"
                 self.getTestData()
+                self.getResponse(url: urlOf20sFemale)
             } else {
                 // 20代男性総合ランキング取得
+                let urlOf20sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20&sex=0"
                 self.getTestData()
+                self.getResponse(url: urlOf20sMale)
             }
         case .thirties:
             if gender == .female {
                 // 30代女性総合ランキング取得
+                let urlOf30sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30&sex=1"
                 self.getTestData()
+                self.getResponse(url: urlOf30sFemale)
             } else {
                 // 30代男性総合ランキング取得
+                let urlOf30sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30&sex=0"
                 self.getTestData()
+                self.getResponse(url: urlOf30sMale)
             }
         case .forties:
             if gender == .female {
                 // 40代女性総合ランキング取得
+                let urlOf40sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40&sex=1"
                 self.getTestData()
+                self.getResponse(url: urlOf40sFemale)
             } else {
                 // 40代男性総合ランキング取得
+                let urlOf40sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40&sex=0"
                 self.getTestData()
+                self.getResponse(url: urlOf40sMale)
             }
         case .fiftiesOver:
             if gender == .female {
                 // 50代以上女性総合ランキング取得
+                let urlOf50sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50&sex=1"
                 self.getTestData()
+                self.getResponse(url: urlOf50sFemale)
             } else {
                 // 50代以上男性総合ランキング取得
+                let urlOf50sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50&sex=0"
                 self.getTestData()
+                self.getResponse(url: urlOf50sMale)
             }
         }
         
