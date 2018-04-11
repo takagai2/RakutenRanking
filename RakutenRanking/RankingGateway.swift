@@ -12,7 +12,7 @@ import AFNetworking
 class RankingGateway: RankingGatewayProtocol {
 
     // TODO: ランキング種別ごとにURLを保持
-    private var urlOfOverall: String = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=[applicationId]"
+    
     private var urlOfFemale: String = ""
     private var urlOfMale: String = ""
     private var urlOf10s: String = ""
@@ -34,10 +34,11 @@ class RankingGateway: RankingGatewayProtocol {
     var testArray: [[String]] = []
     
     private let jsonConverter = JsonConverter()
+    private let key = AccessKey()
     
-    func getResponse(urlString: String) {
+    func getResponse(url: String) {
         let manager = AFHTTPSessionManager()
-        manager.get(urlString, parameters: nil,
+        manager.get(url, parameters: nil,
                     success: {(operation, responseObject) -> Void in
                         // TODO: response取得が成功した場合の処理
                         print("success!")
@@ -59,9 +60,10 @@ class RankingGateway: RankingGatewayProtocol {
     }
     
     func getOverallRankingRes(_ callback: ([Item]) -> Void) {
+        let urlOfOverall = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)"
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
         self.getTestData()
-        self.getResponse(urlString: urlOfOverall)
+        self.getResponse(url: urlOfOverall)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
