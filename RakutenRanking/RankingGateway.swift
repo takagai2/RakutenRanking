@@ -7,11 +7,12 @@
 //
 
 import Foundation
+import AFNetworking
 
 class RankingGateway: RankingGatewayProtocol {
 
     // TODO: ランキング種別ごとにURLを保持
-    private var urlOfOverall: String = ""
+    private var urlOfOverall: String = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=[applicationId]"
     private var urlOfFemale: String = ""
     private var urlOfMale: String = ""
     private var urlOf10s: String = ""
@@ -34,6 +35,19 @@ class RankingGateway: RankingGatewayProtocol {
     
     private let jsonConverter = JsonConverter()
     
+    func getResponse(urlString: String) {
+        let manager = AFHTTPSessionManager()
+        manager.get(urlString, parameters: nil,
+                    success: {(operation, responseObject) -> Void in
+                        // TODO: response取得が成功した場合の処理
+                        print("success!")
+                    },
+                    failure: {(operation, error) -> Void in
+                        // TODO: 失敗した場合の処理
+                        print("error! -> " + error.localizedDescription)
+                    })
+    }
+    
     func getTestData(){
         for i in 0...29 {
             testArray.append([String]())
@@ -47,6 +61,7 @@ class RankingGateway: RankingGatewayProtocol {
     func getOverallRankingRes(_ callback: ([Item]) -> Void) {
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
         self.getTestData()
+        self.getResponse(urlString: urlOfOverall)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
