@@ -12,7 +12,6 @@ import AFNetworking
 class RankingGateway: RankingGatewayProtocol {
 
     var testArray: [[String]] = []
-    private var itemArray: [Item] = []
     
     private let jsonConverter = JsonConverter()
     private let key = AccessKey()
@@ -24,7 +23,7 @@ class RankingGateway: RankingGatewayProtocol {
                         // TODO: response取得が成功した場合の処理
                         print("success!")
                         // seccess -> パース -> 空配列へ
-                        self.itemArray = self.jsonConverter.getItems(responseObject)
+                        self.jsonConverter.getItems(responseObject)
                     },
                     failure: {(operation, error) -> Void in
                         // TODO: 失敗した場合の処理
@@ -62,7 +61,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        callback(itemArray)
+        callback(jsonConverter.itemArray)
     }
     
     func getRankingByGenderRes(gender: Gender, _ callback: ([Item]) -> Void) {
@@ -71,7 +70,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        callback(itemArray)
+        callback(jsonConverter.itemArray)
     }
     
     func getRankingByAgeRes(age: Age, _ callback: ([Item]) -> Void) {
@@ -80,7 +79,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        callback(itemArray)
+        callback(jsonConverter.itemArray)
     }
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: ([Item]) -> Void) {
@@ -89,7 +88,7 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        callback(itemArray)
+        callback(jsonConverter.itemArray)
     }
     
 }

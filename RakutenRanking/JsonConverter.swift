@@ -11,8 +11,10 @@ import SwiftyJSON
 
 class JsonConverter {
     
-    func getItems(_ data: Any?) -> [Item] {
-        var itemArray: [Item] = []
+    var itemArray: [Item] = []
+    
+    func getItems(_ data: Any?) {
+        
         // TODO: パース
         let json = JSON(data!)
         
@@ -40,6 +42,5 @@ class JsonConverter {
             itemArray.append(item)
         }
         print(itemArray)
-        return itemArray
         }
 }
