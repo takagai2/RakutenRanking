@@ -65,7 +65,7 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByGenderRes(gender: Gender, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象の男女別ランキングのレスポンスを取得
-        let url = self.createUrl()
+        let url = self.createUrl(gender: gender)
         self.getTestData()
         self.getResponse(url: url)
         
@@ -76,7 +76,7 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByAgeRes(age: Age, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象の年齢別ランキングのレスポンスを取得
-        let url = self.createUrl()
+        let url = self.createUrl(age: age)
         self.getTestData()
         self.getResponse(url: url)
         
@@ -87,7 +87,7 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
-        let url = self.createUrl()
+        let url = self.createUrl(gender: gender, age: age)
         self.getTestData()
         self.getResponse(url: url)
         
