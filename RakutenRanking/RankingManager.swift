@@ -8,19 +8,19 @@
 
 import Foundation
 
-enum Gender {
+enum Gender: Int {
     
-    case male
-    case female
+    case male = 0
+    case female = 1
 }
 
-enum Age {
+enum Age: Int {
     
-    case teens
-    case twenties
-    case thirties
-    case forties
-    case fiftiesOver
+    case teens = 10
+    case twenties = 20
+    case thirties = 30
+    case forties = 40
+    case fiftiesOver = 50
 }
 
 class RankingManager {
