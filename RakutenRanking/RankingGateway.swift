@@ -29,6 +29,21 @@ class RankingGateway: RankingGatewayProtocol {
                     })
     }
     
+    func createUrl(gender: Gender!, age: Age!) {
+        var genderUrl = ""
+        var ageUrl = ""
+        if gender != nil {
+            genderUrl = "&sex=\(gender.rawValue)"
+        }
+        if age != nil {
+            ageUrl = "&age=\(age.rawValue)"
+        }
+        
+        let url = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)\(ageUrl)\(genderUrl)"
+        self.getTestData()
+        self.getResponse(url: url)
+    }
+    
     func getTestData(){
         for i in 0...29 {
             testArray.append([String]())
@@ -40,10 +55,8 @@ class RankingGateway: RankingGatewayProtocol {
     }
     
     func getOverallRankingRes(_ callback: ([Item]) -> Void) {
-        let urlOfOverall = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)"
         // TODO: 通信処理を行って対象のランキングのレスポンスを取得
-        self.getTestData()
-        self.getResponse(url: urlOfOverall)
+        self.createUrl(gender: nil, age: nil)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
@@ -55,14 +68,10 @@ class RankingGateway: RankingGatewayProtocol {
         switch gender {
         case .female:
             // 女性総合ランキング取得
-            let urlOfFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&sex=1"
-            self.getTestData()
-            self.getResponse(url: urlOfFemale)
+            self.createUrl(gender: gender, age: nil)
         case .male:
             // 男性総合ランキング取得
-            let urlOfMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&sex=0"
-            self.getTestData()
-            self.getResponse(url: urlOfMale)
+            self.createUrl(gender: gender, age: nil)
         }
         
         // seccess -> パース -> 空配列へ
@@ -75,29 +84,19 @@ class RankingGateway: RankingGatewayProtocol {
         switch age {
         case .teens:
             // 10代総合ランキング取得
-            let urlOf10s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10"
-            self.getTestData()
-            self.getResponse(url: urlOf10s)
+            self.createUrl(gender: nil, age: age)
         case .twenties:
             // 20台総合ランキング取得
-            let urlOf20s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20"
-            self.getTestData()
-            self.getResponse(url: urlOf20s)
+            self.createUrl(gender: nil, age: age)
         case .thirties:
             // 30台総合ランキング取得
-            let urlOf30s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30"
-            self.getTestData()
-            self.getResponse(url: urlOf30s)
+            self.createUrl(gender: nil, age: age)
         case .forties:
             // 40代総合ランキング取得
-            let urlOf40s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40"
-            self.getTestData()
-            self.getResponse(url: urlOf40s)
+            self.createUrl(gender: nil, age: age)
         case .fiftiesOver:
             // 50代以上総合ランキング取得
-            let urlOf50s = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50"
-            self.getTestData()
-            self.getResponse(url: urlOf50s)
+            self.createUrl(gender: nil, age: age)
         }
         
         // seccess -> パース -> 空配列へ
@@ -111,62 +110,43 @@ class RankingGateway: RankingGatewayProtocol {
         case .teens:
             if gender == .female {
                 // 10代女性総合ランキング取得
-                let urlOf10sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10&sex=1"
-                self.getTestData()
-                self.getResponse(url: urlOf10sFemale)
+                self.createUrl(gender: gender, age: age)
+                
             } else {
                 // 10代男性総合ランキング取得
-                let urlOf10sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=10&sex=0"
-                self.getTestData()
-                self.getResponse(url: urlOf10sMale)
+                self.createUrl(gender: gender, age: age)
             }
         case .twenties:
             if gender == .female {
                 // 20代女性総合ランキング取得
-                let urlOf20sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20&sex=1"
-                self.getTestData()
-                self.getResponse(url: urlOf20sFemale)
+                self.createUrl(gender: gender, age: age)
             } else {
                 // 20代男性総合ランキング取得
-                let urlOf20sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=20&sex=0"
-                self.getTestData()
-                self.getResponse(url: urlOf20sMale)
+                self.createUrl(gender: gender, age: age)
             }
         case .thirties:
             if gender == .female {
                 // 30代女性総合ランキング取得
-                let urlOf30sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30&sex=1"
-                self.getTestData()
-                self.getResponse(url: urlOf30sFemale)
+                self.createUrl(gender: gender, age: age)
             } else {
                 // 30代男性総合ランキング取得
-                let urlOf30sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=30&sex=0"
-                self.getTestData()
-                self.getResponse(url: urlOf30sMale)
+                self.createUrl(gender: gender, age: age)
             }
         case .forties:
             if gender == .female {
                 // 40代女性総合ランキング取得
-                let urlOf40sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40&sex=1"
-                self.getTestData()
-                self.getResponse(url: urlOf40sFemale)
+                self.createUrl(gender: gender, age: age)
             } else {
                 // 40代男性総合ランキング取得
-                let urlOf40sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=40&sex=0"
-                self.getTestData()
-                self.getResponse(url: urlOf40sMale)
+                self.createUrl(gender: gender, age: age)
             }
         case .fiftiesOver:
             if gender == .female {
                 // 50代以上女性総合ランキング取得
-                let urlOf50sFemale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50&sex=1"
-                self.getTestData()
-                self.getResponse(url: urlOf50sFemale)
+                self.createUrl(gender: gender, age: age)
             } else {
                 // 50代以上男性総合ランキング取得
-                let urlOf50sMale = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)&age=50&sex=0"
-                self.getTestData()
-                self.getResponse(url: urlOf50sMale)
+                self.createUrl(gender: gender, age: age)
             }
         }
         
