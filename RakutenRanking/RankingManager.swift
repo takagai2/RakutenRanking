@@ -38,7 +38,7 @@ class RankingManager {
     }
     
     // 男女別ランキング
-    func getRankingByGender(gender: Gender) {
+    func getRankingByGender(gender: Gender, _ callback: ([Item]) -> Void) {
         rankingGateway.getRankingByGenderRes(gender: gender, {(array: [Item]) -> Void in
             // TODO: Realmに保存する処理
             // XXXViewControllerにItemを渡す処理
@@ -47,7 +47,7 @@ class RankingManager {
     }
     
     // 年齢別ランキング
-    func getRankingByAge(age: Age) {
+    func getRankingByAge(age: Age, _ callback: ([Item]) -> Void) {
         rankingGateway.getRankingByAgeRes(age: age, {(array: [Item]) -> Void in
             // TODO: Realmに保存する処理
             // XXXViewControllerにItemを渡す処理
@@ -56,7 +56,7 @@ class RankingManager {
     }
     
     // 男女年齢別ランキング
-    func getRankingByGenderAge(gender: Gender, age: Age) {
+    func getRankingByGenderAge(gender: Gender, age: Age, _ callback: ([Item]) -> Void) {
         rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {(array: [Item]) -> Void in
             // TODO: Realmに保存する処理
             // XXXViewControllerにItemを渡す処理
