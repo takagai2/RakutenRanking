@@ -29,7 +29,7 @@ class RankingGateway: RankingGatewayProtocol {
                     })
     }
     
-    func createUrl(gender: Gender! = nil, age: Age! = nil) {
+    func createUrl(gender: Gender! = nil, age: Age! = nil) -> url {
         var genderUrl = ""
         var ageUrl = ""
         if gender != nil {
@@ -40,8 +40,7 @@ class RankingGateway: RankingGatewayProtocol {
         }
         
         let url = "https://app.rakuten.co.jp/services/api/IchibaItem/Ranking/20170628?applicationId=\(key.key)\(ageUrl)\(genderUrl)"
-        self.getTestData()
-        self.getResponse(url: url)
+        return url
     }
     
     func getTestData(){
@@ -56,8 +55,9 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getOverallRankingRes(_ callback: ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
-        self.createUrl()
-        
+        let url = self.createUrl()
+        self.getTestData()
+        self.getResponse(url: url)
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
         callback(itemArray)
@@ -65,7 +65,9 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByGenderRes(gender: Gender, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象の男女別ランキングのレスポンスを取得
-        self.createUrl(gender: gender)
+        let url = self.createUrl()
+        self.getTestData()
+        self.getResponse(url: url)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
@@ -74,7 +76,9 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByAgeRes(age: Age, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象の年齢別ランキングのレスポンスを取得
-        self.createUrl(age: age)
+        let url = self.createUrl()
+        self.getTestData()
+        self.getResponse(url: url)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
@@ -83,7 +87,9 @@ class RankingGateway: RankingGatewayProtocol {
     
     func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
-        self.createUrl(gender: gender, age: age)
+        let url = self.createUrl()
+        self.getTestData()
+        self.getResponse(url: url)
         
         // seccess -> パース -> 空配列へ
         let itemArray = jsonConverter.getItems(testArray)
