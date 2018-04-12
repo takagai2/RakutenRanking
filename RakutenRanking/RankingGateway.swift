@@ -12,6 +12,7 @@ import AFNetworking
 class RankingGateway: RankingGatewayProtocol {
 
     var testArray: [[String]] = []
+    private var itemArray: [Item] = []
     
     private let jsonConverter = JsonConverter()
     private let key = AccessKey()
@@ -22,6 +23,8 @@ class RankingGateway: RankingGatewayProtocol {
                     success: {(operation, responseObject) -> Void in
                         // TODO: response取得が成功した場合の処理
                         print("success!")
+                        // seccess -> パース -> 空配列へ
+                        self.itemArray = self.jsonConverter.getItems(responseObject)
                     },
                     failure: {(operation, error) -> Void in
                         // TODO: 失敗した場合の処理
@@ -58,8 +61,7 @@ class RankingGateway: RankingGatewayProtocol {
         let url = self.createUrl()
         self.getTestData()
         self.getResponse(url: url)
-        // seccess -> パース -> 空配列へ
-        let itemArray = jsonConverter.getItems(testArray)
+        
         callback(itemArray)
     }
     
@@ -69,8 +71,6 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        // seccess -> パース -> 空配列へ
-        let itemArray = jsonConverter.getItems(testArray)
         callback(itemArray)
     }
     
@@ -80,8 +80,6 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        // seccess -> パース -> 空配列へ
-        let itemArray = jsonConverter.getItems(testArray)
         callback(itemArray)
     }
     
@@ -91,8 +89,6 @@ class RankingGateway: RankingGatewayProtocol {
         self.getTestData()
         self.getResponse(url: url)
         
-        // seccess -> パース -> 空配列へ
-        let itemArray = jsonConverter.getItems(testArray)
         callback(itemArray)
     }
     
