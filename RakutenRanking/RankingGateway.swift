@@ -29,7 +29,7 @@ class RankingGateway: RankingGatewayProtocol {
                     })
     }
     
-    func createUrl(gender: Gender! = nil, age: Age! = nil) -> url {
+    func createUrl(gender: Gender! = nil, age: Age! = nil) -> String {
         var genderUrl = ""
         var ageUrl = ""
         if gender != nil {
