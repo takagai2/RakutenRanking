@@ -91,7 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func getRankingItem() {
         // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
         rankingManager.getOverallRanking({(array: [Item]) -> Void in
-            rankingItemList = array
+            self.rankingItemList = array
             self.mainRanking.reloadData()
         })
     }
