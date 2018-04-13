@@ -21,9 +21,8 @@ class RankingGateway: RankingGatewayProtocol {
                         // response取得が成功した場合の処理
                         print("success!")
                         // seccess -> パース -> 空配列へ
-                        self.jsonConverter.getItems(responseObject, {(array: [Item]) -> Void in
-                            callback(array)
-                        })
+                        let array = self.jsonConverter.getItems(responseObject)
+                        callback(array)
                     },
                     failure: {(operation, error) -> Void in
                         // TODO: 失敗した場合の処理

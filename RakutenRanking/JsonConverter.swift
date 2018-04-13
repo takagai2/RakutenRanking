@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class JsonConverter {
     
-    func getItems(_ data: Any?, _ callback: ([Item]) -> Void) {
+    func getItems(_ data: Any?) -> [Item] {
         var itemArray: [Item] = []
         // パース
         let rankingJson = JSON(data!)
@@ -27,6 +27,6 @@ class JsonConverter {
             // itemArrayに追加
             itemArray.append(item)
         }
-        callback(itemArray)
-        }
+        return itemArray
+    }
 }
