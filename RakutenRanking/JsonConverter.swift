@@ -13,7 +13,7 @@ class JsonConverter {
     
     func getItems(_ data: Any?, _ callback: ([Item]) -> Void) {
         var itemArray: [Item] = []
-        // TODO: パース
+        // パース
         let json = JSON(data!)
         
         json["Items"].forEach { (_, json) in

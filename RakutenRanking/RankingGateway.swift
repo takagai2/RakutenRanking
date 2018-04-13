@@ -10,8 +10,6 @@ import Foundation
 import AFNetworking
 
 class RankingGateway: RankingGatewayProtocol {
-
-    var testArray: [[String]] = []
     
     private let jsonConverter = JsonConverter()
     private let key = AccessKey()
@@ -20,7 +18,7 @@ class RankingGateway: RankingGatewayProtocol {
         let manager = AFHTTPSessionManager()
         manager.get(url, parameters: nil,
                     success: {(operation, responseObject) -> Void in
-                        // TODO: response取得が成功した場合の処理
+                        // response取得が成功した場合の処理
                         print("success!")
                         // seccess -> パース -> 空配列へ
                         self.jsonConverter.getItems(responseObject, {(array: [Item]) -> Void in
@@ -47,20 +45,9 @@ class RankingGateway: RankingGatewayProtocol {
         return url
     }
     
-    func getTestData(){
-        for i in 0...29 {
-            testArray.append([String]())
-            testArray[i].append("item" + "\(i + 1)")
-            testArray[i].append("\(i + 1)")
-            testArray[i].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=64x64")
-            testArray[i].append("https://thumbnail.image.rakuten.co.jp/@0_mall/tbsshopping/cabinet/img6/0084540_01.jpg?_ex=128x128")
-        }
-    }
-    
     func getOverallRankingRes(_ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
         let url = self.createUrl()
-        self.getTestData()
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
@@ -69,7 +56,6 @@ class RankingGateway: RankingGatewayProtocol {
     func getRankingByGenderRes(gender: Gender, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象の男女別ランキングのレスポンスを取得
         let url = self.createUrl(gender: gender)
-        self.getTestData()
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
@@ -78,7 +64,6 @@ class RankingGateway: RankingGatewayProtocol {
     func getRankingByAgeRes(age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象の年齢別ランキングのレスポンスを取得
         let url = self.createUrl(age: age)
-        self.getTestData()
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
@@ -87,7 +72,6 @@ class RankingGateway: RankingGatewayProtocol {
     func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
         let url = self.createUrl(gender: gender, age: age)
-        self.getTestData()
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
