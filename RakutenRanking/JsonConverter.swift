@@ -7,25 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class JsonConverter {
     
-    func getItems(_ data: [[String]]) -> [Item] {
+    func getItems(_ data: Any?) -> [Item] {
         var itemArray: [Item] = []
-        // TODO: パース
-
-        data.forEach{ (datum) in
+        // パース
+        let rankingJson = JSON(data!)
+        
+        rankingJson["Items"].forEach { (_, object) in
             // Itemオブジェクトを生成
             let item = Item()
             // 各要素を抽出、代入
-            item.name = datum[0]
-            item.price = datum[1]
-            item.sSizeImageUrl = datum[2]
-            item.mSizeImageUrl = datum[3]
+            item.name = object["Item"]["itemName"].string!
+            item.price = object["Item"]["itemPrice"].string!
+            item.sSizeImageUrl = object["Item"]["smallImageUrls"][0]["imageUrl"].string!
+            item.mSizeImageUrl = object["Item"]["mediumImageUrls"][0]["imageUrl"].string!
             // itemArrayに追加
             itemArray.append(item)
         }
         return itemArray
     }
-    
 }

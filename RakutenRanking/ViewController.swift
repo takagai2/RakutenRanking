@@ -90,8 +90,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキングデータを取得し、配列に格納する
     func getRankingItem() {
         // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
-        rankingManager.getOverallRanking({(array: [Item]) -> Void in
-            rankingItemList = array
+        rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.rankingItemList = array
             self.mainRanking.reloadData()
         })
     }
