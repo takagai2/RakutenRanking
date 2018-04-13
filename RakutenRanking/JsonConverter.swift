@@ -18,26 +18,14 @@ class JsonConverter {
         // TODO: パース
         let json = JSON(data!)
         
-        for i in 0...30 {
+        json["Items"].forEach { (_, json) in
             // Itemオブジェクトを生成
             let item = Item()
             // 各要素を抽出、代入
-            if let itemName = json["Items"][i]["Item"]["itemName"].string {
-                item.name = itemName
-                print(itemName)
-            }
-            if let itemPrice = json["Items"][i]["Item"]["itemPrice"].string {
-                item.price = itemPrice
-                print(itemPrice)
-            }
-            if let smallImageUrl = json["Items"][i]["Item"]["smallImageUrls"][0]["imageUrl"].string {
-                item.sSizeImageUrl = smallImageUrl
-                print(smallImageUrl)
-            }
-            if let mediumImageUrl = json["Items"][i]["Item"]["mediumImageUrls"][0]["imageUrl"].string {
-                item.mSizeImageUrl = mediumImageUrl
-                print(mediumImageUrl)
-            }
+            item.name = json["Item"]["itemName"].string!
+            item.price = json["Item"]["itemPrice"].string!
+            item.sSizeImageUrl = json["Item"]["smallImageUrls"][0]["imageUrl"].string!
+            item.mSizeImageUrl = json["Item"]["mediumImageUrls"][0]["imageUrl"].string!
             // itemArrayに追加
             itemArray.append(item)
         }
