@@ -113,6 +113,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.rankingItemList = array
                 print("総合ランキングを取得")
                 self.mainRanking.reloadData()
+                self.collectionView.reloadData()
             })
         case 1, 2:
             let genderType: Gender = Gender(rawValue: gender - 1)!
@@ -121,6 +122,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.rankingItemList = array
                 print("男女別総合ランキングを取得")
                 self.mainRanking.reloadData()
+                self.collectionView.reloadData()
             })
         case 10, 20, 30, 40, 50:
             let ageType: Age = Age(rawValue: age)!
@@ -129,6 +131,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.rankingItemList = array
                 print("年齢別総合ランキングを取得")
                 self.mainRanking.reloadData()
+                self.collectionView.reloadData()
             })
         case 11, 12, 21, 22, 31, 32, 41, 42, 51, 52:
             let genderType: Gender = Gender(rawValue: gender - 1)!
@@ -138,6 +141,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.rankingItemList = array
                 print("男女年齢別総合ランキングを取得")
                 self.mainRanking.reloadData()
+                self.collectionView.reloadData()
             })
         default:
             rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
@@ -145,6 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.rankingItemList = array
                 print("デフォルトで総合ランキングを取得")
                 self.mainRanking.reloadData()
+                self.collectionView.reloadData()
             })
         }
     }
