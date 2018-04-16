@@ -12,6 +12,9 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     var genderType: Int = 0
     var ageType: Int = 0
+    
+    @IBOutlet weak var genderSegment: UISegmentedControl!
+    @IBOutlet weak var ageSegment: UISegmentedControl!
 
     @IBAction func chooseSex(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
@@ -80,6 +83,11 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
         navigationController?.delegate = self
+        
+        print("genderType: ", genderType, "ageType: ", ageType)
+        genderSegment.selectedSegmentIndex = genderType
+        ageSegment.selectedSegmentIndex = ageType / 10
+        print(genderSegment.selectedSegmentIndex, ageSegment.selectedSegmentIndex)
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {

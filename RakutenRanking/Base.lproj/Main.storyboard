@@ -471,6 +471,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fsf-z8-Ucb"/>
                     </view>
+                    <connections>
+                        <outlet property="ageSegment" destination="cXP-nP-YC3" id="myi-A5-GRR"/>
+                        <outlet property="genderSegment" destination="zQo-Xo-vir" id="Mcz-M4-cXc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8V-aP-hB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
