@@ -10,8 +10,8 @@ import UIKit
 
 class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
-    private var genderType: Int = 0
-    private var ageType: Int = 0
+    var genderType: Int = 0
+    var ageType: Int = 0
 
     @IBAction func chooseSex(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {

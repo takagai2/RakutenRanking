@@ -192,6 +192,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // アイテム詳細画面へ遷移時、値を渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toConfig" {
+            let configViewController = segue.destination as! ConfigViewController
+            configViewController.genderType = self.gender
+            configViewController.ageType = self.age
+        }
+        
         if segue.identifier == "toDetail" {
             let itemDetailViewController = segue.destination as! ItemDetailViewController
             itemDetailViewController.sendItem = self.item
