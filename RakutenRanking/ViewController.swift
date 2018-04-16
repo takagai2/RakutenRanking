@@ -69,8 +69,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
-    var gender: Int = 0
-    var age: Int = 0
+    var gender: Int = 0 {
+        didSet {
+            print("New value = \(gender)")
+        }
+    }
+    var age: Int = 0 {
+        didSet {
+            print("New value = \(age)")
+        }
+    }
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -86,8 +94,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        getRankingItem(gender: gender, age: age)
+            print(gender, age)
+            getRankingItem(gender: gender, age: age)
     }
     
     // ランキングデータを取得し、配列に格納する
