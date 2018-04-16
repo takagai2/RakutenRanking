@@ -437,8 +437,8 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="総合"/>
-                                    <segment title="女性"/>
                                     <segment title="男性"/>
+                                    <segment title="女性"/>
                                 </segments>
                                 <connections>
                                     <action selector="chooseSex:" destination="ytB-cb-YjQ" eventType="valueChanged" id="LPd-rQ-qk0"/>

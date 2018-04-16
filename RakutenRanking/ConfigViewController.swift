@@ -20,13 +20,13 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
             genderType = 0
             print("総合を選択", "genderType: ", genderType)
         case 1:
-            // TOOD 女性を選択したときの処理
+            // TOOD 男性を選択したときの処理
             genderType = 1
-            print("女性を選択", "genderType: ", genderType)
-        case 2:
-            // TODO 男性を選択したときの処理
-            genderType = 2
             print("男性を選択", "genderType: ", genderType)
+        case 2:
+            // TODO 女性を選択したときの処理
+            genderType = 2
+            print("女性を選択", "genderType: ", genderType)
         default:
             // デフォルトの処理
             genderType = 0
