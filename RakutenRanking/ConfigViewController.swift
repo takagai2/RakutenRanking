@@ -8,26 +8,29 @@
 
 import UIKit
 
-class ConfigViewController: UIViewController {
+class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    private var genderType: Int = 0
+    private var ageType: Int = 0
 
     @IBAction func chooseSex(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             // TODO 総合を選択したときの処理
-            print("総合を選択")
+            genderType = 0
+            print("総合を選択", "genderType: ", genderType)
         case 1:
             // TOOD 女性を選択したときの処理
-            print("女性を選択")
+            genderType = 1
+            print("女性を選択", "genderType: ", genderType)
         case 2:
             // TODO 男性を選択したときの処理
-            print("男性を選択")
+            genderType = 2
+            print("男性を選択", "genderType: ", genderType)
         default:
             // デフォルトの処理
-            print("デフォルトは総合")
+            genderType = 0
+            print("デフォルトは総合", "genderType: ", genderType)
         }
     }
     
@@ -35,24 +38,31 @@ class ConfigViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             // TODO 総合を押したときの処理
-            print("総合を選択")
+            ageType = 0
+            print("総合を選択", "ageType: ", ageType)
         case 1:
             // TODO 10代を選択したときの処理
-            print("10代を選択")
+            ageType = 10
+            print("10代を選択", "ageType: ", ageType)
         case 2:
             // TODO 20代を選択したときの処理
-            print("20代を選択")
+            ageType = 20
+            print("20代を選択", "ageType: ", ageType)
         case 3:
             // TODO 30代を選択したときの処理
-            print("30代を選択")
+            ageType = 30
+            print("30代を選択", "ageType: ", ageType)
         case 4:
             // TODO 40代を選択したときの処理
-            print("40代を選択")
+            ageType = 40
+            print("40代を選択", "ageType: ", ageType)
         case 5:
             // TODO 50代~を選択したときの処理
-            print("50代以上を選択")
+            ageType = 50
+            print("50代以上を選択", "ageType: ", ageType)
         default:
-            print("デフォルトは総合")
+            ageType = 0
+            print("デフォルトは総合", "ageType: ", ageType)
         }
     }
     
@@ -64,6 +74,19 @@ class ConfigViewController: UIViewController {
     @IBAction func favoResetBtn() {
         // TODO お気に入り全削除処理を実装
         print("お気に入りリセットボタン押された")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationController?.delegate = self
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if let controller = viewController as? ViewController {
+            controller.gender = genderType
+            controller.age = ageType
+        }
     }
     
 }
