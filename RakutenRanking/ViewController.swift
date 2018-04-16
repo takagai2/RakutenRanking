@@ -106,12 +106,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキングデータを取得し、配列に格納する
     func getRankingItem(gender: Int, age: Int) {
         // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
-        rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
-            guard let `self` = self else { return }
-            self.rankingItemList = array
-            self.mainRanking.reloadData()
-            print(gender, age)
-        })
+        switch gender + age {
+        case 0:
+            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("総合ランキングを取得")
+                self.mainRanking.reloadData()
+            })
+        case 1, 2:
+            let genderType: Gender = Gender(rawValue: gender - 1)!
+            rankingManager.getRankingByGender(gender: genderType, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("男女別総合ランキングを取得")
+                self.mainRanking.reloadData()
+            })
+        case 10, 20, 30, 40, 50:
+            let ageType: Age = Age(rawValue: age)!
+            rankingManager.getRankingByAge(age: ageType, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("年齢別総合ランキングを取得")
+                self.mainRanking.reloadData()
+            })
+        case 11, 12, 21, 22, 31, 32, 41, 42, 51, 52:
+            let genderType: Gender = Gender(rawValue: gender - 1)!
+            let ageType : Age = Age(rawValue: age)!
+            rankingManager.getRankingByGenderAge(gender: genderType, age: ageType, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("男女年齢別総合ランキングを取得")
+                self.mainRanking.reloadData()
+            })
+        default:
+            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("デフォルトで総合ランキングを取得")
+                self.mainRanking.reloadData()
+            })
+        }
     }
     
     // MARK: UITableViewDatasource
