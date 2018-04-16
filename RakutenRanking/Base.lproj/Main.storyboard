@@ -441,6 +441,7 @@
                                     <segment title="女性"/>
                                 </segments>
                                 <connections>
+                                    <action selector="chooseGender:" destination="ytB-cb-YjQ" eventType="valueChanged" id="wre-Ys-9tZ"/>
                                     <action selector="chooseSex:" destination="ytB-cb-YjQ" eventType="valueChanged" id="LPd-rQ-qk0"/>
                                 </connections>
                             </segmentedControl>

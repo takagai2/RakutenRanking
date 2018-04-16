@@ -16,7 +16,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var genderSegment: UISegmentedControl!
     @IBOutlet weak var ageSegment: UISegmentedControl!
 
-    @IBAction func chooseSex(_ sender: UISegmentedControl) {
+    @IBAction func chooseGender(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             // TODO 総合を選択したときの処理
