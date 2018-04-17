@@ -69,16 +69,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
-    var gender: Int = 0 {
-        didSet {
-            print("New value = \(gender)")
-        }
-    }
-    var age: Int = 0 {
-        didSet {
-            print("New value = \(age)")
-        }
-    }
+    var gender: Gender? = nil
+    var age: Age? = nil
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -99,59 +91,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-            print(gender, age)
-            getRankingItem(gender: gender, age: age)
+        getRankingItem(gender: gender, age: age)
     }
     
     // ランキングデータを取得し、配列に格納する
-    func getRankingItem(gender: Int, age: Int) {
+    func getRankingItem(gender: Gender?, age: Age?) {
+        print("getRankingItem", gender as Any, age as Any)
         // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
-        switch gender + age {
-        case 0:
-            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.rankingItemList = array
-                print("総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
-            })
-        case 1, 2:
-            let genderType: Gender = Gender(rawValue: gender - 1)!
-            rankingManager.getRankingByGender(gender: genderType, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.rankingItemList = array
-                print("男女別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
-            })
-        case 10, 20, 30, 40, 50:
-            let ageType: Age = Age(rawValue: age)!
-            rankingManager.getRankingByAge(age: ageType, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.rankingItemList = array
-                print("年齢別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
-            })
-        case 11, 12, 21, 22, 31, 32, 41, 42, 51, 52:
-            let genderType: Gender = Gender(rawValue: gender - 1)!
-            let ageType : Age = Age(rawValue: age)!
-            rankingManager.getRankingByGenderAge(gender: genderType, age: ageType, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.rankingItemList = array
-                print("男女年齢別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
-            })
-        default:
-            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.rankingItemList = array
-                print("デフォルトで総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
-            })
-        }
     }
     
     // MARK: UITableViewDatasource
