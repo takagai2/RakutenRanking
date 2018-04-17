@@ -437,11 +437,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="総合"/>
-                                    <segment title="女性"/>
                                     <segment title="男性"/>
+                                    <segment title="女性"/>
                                 </segments>
                                 <connections>
-                                    <action selector="chooseSex:" destination="ytB-cb-YjQ" eventType="valueChanged" id="LPd-rQ-qk0"/>
+                                    <action selector="chooseGender:" destination="ytB-cb-YjQ" eventType="valueChanged" id="Pdl-kK-RxP"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXP-nP-YC3">
@@ -471,6 +471,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fsf-z8-Ucb"/>
                     </view>
+                    <connections>
+                        <outlet property="ageSegment" destination="cXP-nP-YC3" id="myi-A5-GRR"/>
+                        <outlet property="genderSegment" destination="zQo-Xo-vir" id="Wdb-rW-jJg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e8V-aP-hB1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

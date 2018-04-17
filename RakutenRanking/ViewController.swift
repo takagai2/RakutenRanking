@@ -68,6 +68,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var rankingItemList: [Item] = []
     // segueで値を渡すための変数
     var item: Item!
+    // ランキング種別を選択するための値
+    var gender: Gender? = nil
+    var age: Age? = nil
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -83,18 +86,50 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        getRankingItem()
+        getRankingItem(gender: gender, age: age)
     }
     
     // ランキングデータを取得し、配列に格納する
-    func getRankingItem() {
-        // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
-        rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
-            guard let `self` = self else { return }
-            self.rankingItemList = array
-            self.mainRanking.reloadData()
-        })
+    private func getRankingItem(gender: Gender?, age: Age?) {
+        print("getRankingItem", gender as Any, age as Any)
+        // セグメントで選択された結果によって、呼び出す関数を変更する処理
+        if gender == nil && age == nil {
+            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                print("総合ランキングを取得")
+                self.displayRanking(array: array)
+            })
+        } else if age == nil {
+            rankingManager.getRankingByGender(gender: gender!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                print("男女別総合ランキングを取得")
+                self.displayRanking(array: array)
+            })
+        } else if gender == nil {
+            rankingManager.getRankingByAge(age: age!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                print("年齢別総合ランキングを取得")
+                self.displayRanking(array: array)
+            })
+        } else {
+            rankingManager.getRankingByGenderAge(gender: gender!, age: age!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                print("男女年齢別総合ランキングを取得")
+                self.displayRanking(array: array)
+            })
+        }
+        
+    }
+    
+     private func displayRanking(array: [Item]) {
+        self.rankingItemList = array
+        self.mainRanking.reloadData()
+        self.collectionView.reloadData()
     }
     
     // MARK: UITableViewDatasource
@@ -135,6 +170,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // アイテム詳細画面へ遷移時、値を渡す
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toConfig" {
+            let configViewController = segue.destination as! ConfigViewController
+            configViewController.genderType = self.gender
+            configViewController.ageType = self.age
+        }
+        
         if segue.identifier == "toDetail" {
             let itemDetailViewController = segue.destination as! ItemDetailViewController
             itemDetailViewController.sendItem = self.item
