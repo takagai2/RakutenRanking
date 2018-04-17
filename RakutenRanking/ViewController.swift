@@ -95,7 +95,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // ランキングデータを取得し、配列に格納する
-    func getRankingItem(gender: Gender?, age: Age?) {
+    private func getRankingItem(gender: Gender?, age: Age?) {
         print("getRankingItem", gender as Any, age as Any)
         // セグメントで選択された結果によって、呼び出す関数を変更する処理
         if gender == nil && age == nil {
@@ -126,7 +126,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func displayRanking(array: [Item]) {
+     private func displayRanking(array: [Item]) {
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()

@@ -51,7 +51,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    func getGenderBySelectNum(num: Int) -> Gender? {
+    private func getGenderBySelectNum(num: Int) -> Gender? {
         switch num {
         case 1:
             return Gender.male
@@ -62,7 +62,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    func getAgeBySelectNum(num: Int) -> Age? {
+    private func getAgeBySelectNum(num: Int) -> Age? {
         switch num {
         case 1:
             return Age.teens
