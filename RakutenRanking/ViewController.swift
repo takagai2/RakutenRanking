@@ -97,7 +97,41 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキングデータを取得し、配列に格納する
     func getRankingItem(gender: Gender?, age: Age?) {
         print("getRankingItem", gender as Any, age as Any)
-        // TODO: セグメントで選択された結果によって、呼び出す関数を変更する処理
+        // セグメントで選択された結果によって、呼び出す関数を変更する処理
+        if gender == nil && age == nil {
+            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("総合ランキングを取得")
+                self.mainRanking.reloadData()
+                self.collectionView.reloadData()
+            })
+        } else if age == nil {
+            rankingManager.getRankingByGender(gender: gender!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("男女別総合ランキングを取得")
+                self.mainRanking.reloadData()
+                self.collectionView.reloadData()
+            })
+        } else if gender == nil {
+            rankingManager.getRankingByAge(age: age!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("年齢別総合ランキングを取得")
+                self.mainRanking.reloadData()
+                self.collectionView.reloadData()
+            })
+        } else {
+            rankingManager.getRankingByGenderAge(gender: gender!, age: age!, {[weak self](array: [Item]) -> Void in
+                guard let `self` = self else { return }
+                self.rankingItemList = array
+                print("男女年齢別総合ランキングを取得")
+                self.mainRanking.reloadData()
+                self.collectionView.reloadData()
+            })
+        }
+        
     }
     
     // MARK: UITableViewDatasource
