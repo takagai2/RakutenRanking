@@ -91,47 +91,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        getRankingItem(gender: gender, age: age)
+        selectRankingType(gender: gender, age: age)
     }
     
     // ランキングデータを取得し、配列に格納する
-    func getRankingItem(gender: Gender?, age: Age?) {
+    func selectRankingType(gender: Gender?, age: Age?) {
         print("getRankingItem", gender as Any, age as Any)
         // セグメントで選択された結果によって、呼び出す関数を変更する処理
         if gender == nil && age == nil {
             rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
                 guard let `self` = self else { return }
-                self.rankingItemList = array
                 print("総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
+                self.displayRanking(array: array)
             })
         } else if age == nil {
             rankingManager.getRankingByGender(gender: gender!, {[weak self](array: [Item]) -> Void in
                 guard let `self` = self else { return }
-                self.rankingItemList = array
                 print("男女別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
+                self.displayRanking(array: array)
             })
         } else if gender == nil {
             rankingManager.getRankingByAge(age: age!, {[weak self](array: [Item]) -> Void in
                 guard let `self` = self else { return }
-                self.rankingItemList = array
                 print("年齢別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
+                self.displayRanking(array: array)
             })
         } else {
             rankingManager.getRankingByGenderAge(gender: gender!, age: age!, {[weak self](array: [Item]) -> Void in
                 guard let `self` = self else { return }
-                self.rankingItemList = array
                 print("男女年齢別総合ランキングを取得")
-                self.mainRanking.reloadData()
-                self.collectionView.reloadData()
+                self.displayRanking(array: array)
             })
         }
         
+    }
+    
+    func displayRanking(array: [Item]) {
+        self.rankingItemList = array
+        self.mainRanking.reloadData()
+        self.collectionView.reloadData()
     }
     
     // MARK: UITableViewDatasource
