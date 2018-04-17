@@ -91,11 +91,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        selectRankingType(gender: gender, age: age)
+        getRankingItem(gender: gender, age: age)
     }
     
     // ランキングデータを取得し、配列に格納する
-    func selectRankingType(gender: Gender?, age: Age?) {
+    func getRankingItem(gender: Gender?, age: Age?) {
         print("getRankingItem", gender as Any, age as Any)
         // セグメントで選択された結果によって、呼び出す関数を変更する処理
         if gender == nil && age == nil {
