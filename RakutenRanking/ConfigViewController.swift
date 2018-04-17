@@ -17,56 +17,11 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var ageSegment: UISegmentedControl!
 
     @IBAction func chooseGender(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            // TODO 総合を選択したときの処理
-            genderType = nil
-            print("総合を選択", "genderType: ", genderType as Any)
-        case 1:
-            // TOOD 男性を選択したときの処理
-            genderType = getGenderBySelectNum(num: 1)
-            print("男性を選択", "genderType: ", genderType!)
-        case 2:
-            // TODO 女性を選択したときの処理
-            genderType = getGenderBySelectNum(num: 2)
-            print("女性を選択", "genderType: ", genderType!)
-        default:
-            // デフォルトの処理
-            genderType = nil
-            print("デフォルトは総合", "genderType: ", genderType as Any)
-        }
+        genderType = getGenderBySelectNum(num: sender.selectedSegmentIndex)
     }
     
     @IBAction func chooseAge(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            // TODO 総合を押したときの処理a
-            ageType = nil
-            print("総合を選択", "ageType: ", ageType as Any)
-        case 1:
-            // TODO 10代を選択したときの処理
-            ageType = getAgeBySelectNum(num: 1)
-            print("10代を選択", "ageType: ", ageType!)
-        case 2:
-            // TODO 20代を選択したときの処理
-            ageType = getAgeBySelectNum(num: 2)
-            print("20代を選択", "ageType: ", ageType!)
-        case 3:
-            // TODO 30代を選択したときの処理
-            ageType = getAgeBySelectNum(num: 3)
-            print("30代を選択", "ageType: ", ageType!)
-        case 4:
-            // TODO 40代を選択したときの処理
-            ageType = getAgeBySelectNum(num: 4)
-            print("40代を選択", "ageType: ", ageType!)
-        case 5:
-            // TODO 50代~を選択したときの処理
-            ageType = getAgeBySelectNum(num: 5)
-            print("50代以上を選択", "ageType: ", ageType!)
-        default:
-            ageType = nil
-            print("デフォルトは総合", "ageType: ", ageType as Any)
-        }
+        ageType = getAgeBySelectNum(num: sender.selectedSegmentIndex)
     }
     
     @IBAction func cacheClearBtn() {
