@@ -11,23 +11,11 @@ import RealmSwift
 
 class DataObject: Object {
     
-    var overallRanking = List<DataItem>()
-    var maleRanking = List<DataItem>()
-    var femaleRanking = List<DataItem>()
-    var teensRanking = List<DataItem>()
-    var twentiesRanking = List<DataItem>()
-    var thirtiesRanking = List<DataItem>()
-    var fortiesRanking = List<DataItem>()
-    var fiftiesOverRanking = List<DataItem>()
-    var maleTeensRanking = List<DataItem>()
-    var maleTwentiesRanking = List<DataItem>()
-    var maleThirtiesRanking = List<DataItem>()
-    var maleFortiesRanking = List<DataItem>()
-    var maleFiftiesRanking = List<DataItem>()
-    var femaleTeensRanking = List<DataItem>()
-    var femaleTwentiesRanking = List<DataItem>()
-    var femaleThirtiesRanking = List<DataItem>()
-    var femaleFortiesRanking = List<DataItem>()
-    var femaleFiftiesRanking = List<DataItem>()
+    @objc dynamic var rankingType: String = ""
+    @objc dynamic var rank: String = ""
+    @objc dynamic var name: String = ""
+    @objc dynamic var price: String = ""
+    @objc dynamic var sSizeImageUrl: String = ""
+    @objc dynamic var mSIzeImageUrl: String = ""
     
 }
