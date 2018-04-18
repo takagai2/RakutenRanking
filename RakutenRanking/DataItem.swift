@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-class DataItem {
+class DataItem: Object {
     
     @objc dynamic var name: String!
     @objc dynamic var price: String!

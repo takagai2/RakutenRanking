@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
-class DataObject {
+class DataObject: Object {
     
     var overallRanking = List<DataItem>()
     var maleRanking = List<DataItem>()
