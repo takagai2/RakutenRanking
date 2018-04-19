@@ -17,11 +17,11 @@ class DataGateway: DataGatewayProtocol {
         // TODO: [Item]を変換して保存する処理
     }
     
-    func getItems(gender: Gender? = nil, age: Age? = nil) -> [Item] {
+    func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
         // TODO: realmに保存されているオブジェクトを取得
         // TODO: 取得したオブジェクトを[Item]に変換して返す
         let array = [Item]()
-        return array
+        callback(array)
     }
     
 }

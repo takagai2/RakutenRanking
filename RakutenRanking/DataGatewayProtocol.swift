@@ -12,6 +12,6 @@ protocol DataGatewayProtocol {
     
     func saveItems(array: [Item])
     
-    func getItems(gender: Gender?, age: Age?) -> [Item]
+    func getItems(gender: Gender?, age: Age?, _ callback: @escaping ([Item]) -> Void)
     
 }
