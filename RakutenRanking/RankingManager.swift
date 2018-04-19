@@ -30,23 +30,23 @@ class RankingManager {
     
     // 総合ランキング
     func getOverallRanking(_ callback: @escaping ([Item]) -> Void) {
-        var data = [Item]()
         // Realmから呼び出す処理
-        self.dataGateway.getItems(gender: nil, age: nil, {(array: [Item]) -> Void in
-            data = array
+        self.dataGateway.getItems(gender: nil, age: nil, {[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            // Realmに保存されていなければapi取得
+            if items.count == 0 {
+                self.rankingGateway.getOverallRankingRes({[weak self](array: [Item]) -> Void in
+                    guard let `self` = self else { return }
+                    // arrayをRealmに保存する処理
+                    self.dataGateway.saveItems(array: array)
+                    // XXXViewControllerにItemを渡す処理
+                    callback(array)
+                })
+            } else {
+                callback(data)
+            }
         })
-        // TODO: 下記の処理をgetItemsのコールバック処理の中へ移動
-        // Realmに保存されていなければapi取得
-        if data.count == 0 {
-            rankingGateway.getOverallRankingRes({(array: [Item]) -> Void in
-                // arrayをRealmに保存する処理
-                self.dataGateway.saveItems(array: array)
-                // XXXViewControllerにItemを渡す処理
-                callback(array)
-            })
-        } else {
-            callback(data)
-        }
+        
     }
     
     // 男女別ランキング
