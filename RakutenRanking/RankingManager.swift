@@ -30,13 +30,11 @@ class RankingManager {
     
     // 総合ランキング
     func getOverallRanking(_ callback: @escaping ([Item]) -> Void) {
-        var data = [Item]()
         // Realmから呼び出す処理
-        self.dataGateway.getItems(gender: nil, age: nil, {[weak self](array: [Item]) -> Void in
+        self.dataGateway.getItems(gender: nil, age: nil, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
-            data = array
             // Realmに保存されていなければapi取得
-            if data.count == 0 {
+            if items.count == 0 {
                 self.rankingGateway.getOverallRankingRes({[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
