@@ -26,15 +26,23 @@ enum Age: Int {
 class RankingManager {
     
     private let rankingGateway: RankingGatewayProtocol = RankingGateway()
-
+    private let dataGateway: DataGatewayProtocol = DataGateway()
+    
     // 総合ランキング
     func getOverallRanking(_ callback: @escaping ([Item]) -> Void) {
-        rankingGateway.getOverallRankingRes({(array: [Item]) -> Void in
-            // TODO: Realmに保存する処理
-            // XXXViewControllerにItemを渡す処理
-            callback(array)
-        })
-        
+        // Realmから呼び出す処理
+        let data = self.dataGateway.callObject(gender: nil, age: nil)
+        // Realmに保存されていなければapi取得
+        if data.count == 0 {
+            rankingGateway.getOverallRankingRes({(array: [Item]) -> Void in
+                // arrayをRealmに保存する処理
+                self.dataGateway.saveObject(array: array)
+                // XXXViewControllerにItemを渡す処理
+                callback(array)
+            })
+        } else {
+            callback(data)
+        }
     }
     
     // 男女別ランキング
