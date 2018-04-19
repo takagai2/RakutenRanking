@@ -10,6 +10,7 @@
 		0683333FD30193348C390594 /* Pods_RakutenRankingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */; };
 		595702FB20779126002BAC97 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595702FA20779126002BAC97 /* ItemDetailViewController.swift */; };
 		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
+		598E08EA2088655400E5938D /* DataGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598E08E92088655400E5938D /* DataGatewayProtocol.swift */; };
 		599560FC207E07D900F05AEA /* AccessKey.sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599560FB207E07D900F05AEA /* AccessKey.sample.swift */; };
 		599560FE207E10A600F05AEA /* AccessKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599560FD207E10A600F05AEA /* AccessKey.swift */; };
 		59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */; };
@@ -50,6 +51,7 @@
 		5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.debug.xcconfig"; sourceTree = "<group>"; };
 		595702FA20779126002BAC97 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		598E08E92088655400E5938D /* DataGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatewayProtocol.swift; sourceTree = "<group>"; };
 		599560FB207E07D900F05AEA /* AccessKey.sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessKey.sample.swift; sourceTree = "<group>"; };
 		599560FD207E10A600F05AEA /* AccessKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessKey.swift; sourceTree = "<group>"; };
 		59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGatewayProtocol.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				599560FD207E10A600F05AEA /* AccessKey.swift */,
 				59BCB5812086D44700C56651 /* DataObject.swift */,
 				59C5D7922088602600A28DCD /* DataGateway.swift */,
+				598E08E92088655400E5938D /* DataGatewayProtocol.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 			files = (
 				59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */,
 				59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */,
+				598E08EA2088655400E5938D /* DataGatewayProtocol.swift in Sources */,
 				59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */,
 				59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */,
 				59BCB5822086D44700C56651 /* DataObject.swift in Sources */,
