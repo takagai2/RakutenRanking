@@ -43,12 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        let realm = try! Realm()
-        try! realm.write() {
-            // TODO: お気に入り機能実装時はお気に入り指定したアイテムを残す
-            realm.deleteAll()
-            print("データ削除")
-        }
     }
 
 
