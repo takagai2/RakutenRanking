@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import RealmSwift
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
