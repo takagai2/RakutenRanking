@@ -14,7 +14,6 @@ class DataGateway: DataGatewayProtocol {
     let realm = try! Realm()
     
     func saveItems(array: [Item]) {
-        print(array[0])
         // [Item]を変換して保存する処理
         for (index, item) in array.enumerated() {
             let dataObject = DataObject()
@@ -33,12 +32,13 @@ class DataGateway: DataGatewayProtocol {
                     realm.add(dataObject, update: true)
                 }
             }
-            print(dataObject)
         }
     }
     
     func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
-        // TODO: realmに保存されているオブジェクトを取得
+        // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
+        let rankingData = realm.objects(DataObject.self).filter("genderType = \(String(describing: gender)) AND ageType = \(String(describing: age))")
+        print(rankingData)
         // TODO: 取得したオブジェクトを[Item]に変換して返す
         let array = [Item]()
         callback(array)
