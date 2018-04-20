@@ -35,6 +35,7 @@ class RankingManager {
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.count == 0 {
+                print("保存されていないのでapi取得")
                 self.rankingGateway.getOverallRankingRes({[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
@@ -43,38 +44,76 @@ class RankingManager {
                     callback(array)
                 })
             } else {
+                print("保存されていたのでrealmから取得")
                 callback(items)
             }
         })
-        
     }
     
     // 男女別ランキング
     func getRankingByGender(gender: Gender, _ callback: @escaping ([Item]) -> Void) {
-        rankingGateway.getRankingByGenderRes(gender: gender, {(array: [Item]) -> Void in
-            // TODO: Realmに保存する処理
-            // XXXViewControllerにItemを渡す処理
-            callback(array)
+        // Realmから呼び出す処理
+        self.dataGateway.getItems(gender: gender, age: nil, {[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            // Realmに保存されていなければapi取得
+            if items.count == 0 {
+                print("保存されていないのでapi取得")
+                self.rankingGateway.getRankingByGenderRes(gender: gender, {[weak self](array: [Item]) -> Void in
+                    guard let `self` = self else { return }
+                    // arrayをRealmに保存する処理
+                    self.dataGateway.saveItems(array: array)
+                    // XXXViewControllerにItemを渡す処理
+                    callback(array)
+                })
+            } else {
+                print("保存されていたのでrealmから取得")
+                callback(items)
+            }
         })
     }
     
     // 年齢別ランキング
     func getRankingByAge(age: Age, _ callback: @escaping ([Item]) -> Void) {
-        rankingGateway.getRankingByAgeRes(age: age, {(array: [Item]) -> Void in
-            // TODO: Realmに保存する処理
-            // XXXViewControllerにItemを渡す処理
-            callback(array)
+        // Realmから呼び出す処理
+        self.dataGateway.getItems(gender: nil, age: age, {[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            // Realmに保存されていなければapi取得
+            if items.count == 0 {
+                print("保存されていないのでapi取得")
+                self.rankingGateway.getRankingByAgeRes(age: age, {[weak self](array: [Item]) -> Void in
+                    guard let `self` = self else { return }
+                    // arrayをRealmに保存する処理
+                    self.dataGateway.saveItems(array: array)
+                    // XXXViewControllerにItemを渡す処理
+                    callback(array)
+                })
+            } else {
+                print("保存されていたのでrealmから取得")
+                callback(items)
+            }
         })
     }
     
     // 男女年齢別ランキング
     func getRankingByGenderAge(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
-        rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {(array: [Item]) -> Void in
-            // TODO: Realmに保存する処理
-            // XXXViewControllerにItemを渡す処理
-            callback(array)
+        // Realmから呼び出す処理
+        self.dataGateway.getItems(gender: gender, age: age, {[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            // Realmに保存されていなければapi取得
+            if items.count == 0 {
+                print("保存されていないのでapi取得")
+                self.rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
+                    guard let `self` = self else { return }
+                    // arrayをRealmに保存する処理
+                    self.dataGateway.saveItems(array: array)
+                    // XXXViewControllerにItemを渡す処理
+                    callback(array)
+                })
+            } else {
+                print("保存されていたのでrealmから取得")
+                callback(items)
+            }
         })
-        
     }
     
 }
