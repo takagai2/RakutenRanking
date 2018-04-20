@@ -14,7 +14,17 @@ class DataGateway: DataGatewayProtocol {
     let realm = try! Realm()
     
     func saveItems(array: [Item]) {
-        // TODO: [Item]を変換して保存する処理
+        print(array[0])
+        // [Item]を変換して保存する処理
+        for (index, item) in array.enumerated() {
+            let dataObject = DataObject()
+            dataObject.rank = index + 1
+            dataObject.name = item.name
+            dataObject.price = item.price
+            dataObject.sSizeImageUrl =  item.sSizeImageUrl
+            dataObject.mSizeImageUrl = item.mSizeImageUrl
+            print(dataObject)
+        }
     }
     
     func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
