@@ -43,7 +43,7 @@ class RankingManager {
                     callback(array)
                 })
             } else {
-                callback(data)
+                callback(items)
             }
         })
         
