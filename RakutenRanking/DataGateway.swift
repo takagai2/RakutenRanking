@@ -38,10 +38,18 @@ class DataGateway: DataGatewayProtocol {
     func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
         // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
         let rankingData = realm.objects(DataObject.self).filter("genderType = \(String(describing: gender)) AND ageType = \(String(describing: age))")
-        print(rankingData)
-        // TODO: 取得したオブジェクトを[Item]に変換して返す
-        let array = [Item]()
-        callback(array)
+        var itemArray = [Item]()
+        // 取得したオブジェクトを[Item]に変換して返す
+        rankingData.forEach { obj in
+            let item = Item()
+            item.name = obj.name
+            item.price = obj.price
+            item.sSizeImageUrl = obj.sSizeImageUrl
+            item.mSizeImageUrl = obj.mSizeImageUrl
+            itemArray.append(item)
+        }
+        print(itemArray)
+        callback(itemArray)
     }
     
 }
