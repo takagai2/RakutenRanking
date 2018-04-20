@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
-        // TODO: 画像の非同期取得
+        // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
@@ -208,7 +208,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             cell.itemPrice.text = "\(price)円"
         }
         if let image: String = item.mSizeImageUrl {
-            // TODO: 画像の非同期取得
+            // 画像の非同期取得
             cell.itemImage.setImageWith(URL(string: image)!)
         }
         return cell
@@ -252,7 +252,7 @@ extension ViewController: UIScrollViewDelegate {
         
         self.view.addSubview(scrollView)
         
-        // TODO: ページごとのlabelの生成
+        // ページごとのlabelの生成
         for i in 0..<page {
             let item = rankingItemList[i]
             // 順位のlabel生成
@@ -298,7 +298,6 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.currentPage = 0
         // pageControlのスケールを小さくする
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        // TODO: pageControlのタップに夜ページ移動を実装
         
         self.view.addSubview(pageControl)
     }

@@ -37,7 +37,8 @@ class DataGateway: DataGatewayProtocol {
     
     func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
         // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
-        let rankingData = realm.objects(DataObject.self).filter("genderType = \(String(describing: gender)) AND ageType = \(String(describing: age))")
+        let rankingData = realm.objects(DataObject.self).filter("genderType = %@ AND ageType = %@",
+                                                                gender?.rawValue ?? 0, age?.rawValue ?? 10)
         var itemArray = [Item]()
         // 取得したオブジェクトを[Item]に変換して返す
         rankingData.forEach { obj in
@@ -48,7 +49,6 @@ class DataGateway: DataGatewayProtocol {
             item.mSizeImageUrl = obj.mSizeImageUrl
             itemArray.append(item)
         }
-        print(itemArray)
         callback(itemArray)
     }
     
