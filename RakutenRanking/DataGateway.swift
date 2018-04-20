@@ -23,6 +23,16 @@ class DataGateway: DataGatewayProtocol {
             dataObject.price = item.price
             dataObject.sSizeImageUrl =  item.sSizeImageUrl
             dataObject.mSizeImageUrl = item.mSizeImageUrl
+            
+            if realm.isInWriteTransaction {
+                if dataObject.id == 0 { dataObject.id = dataObject.createNewId() }
+                realm.add(dataObject, update: true)
+            } else {
+                try! realm.write {
+                    if dataObject.id == 0 { dataObject.id = dataObject.createNewId() }
+                    realm.add(dataObject, update: true)
+                }
+            }
             print(dataObject)
         }
     }

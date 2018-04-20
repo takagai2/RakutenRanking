@@ -23,4 +23,10 @@ class DataObject: Object {
     override static func primaryKey() -> String? {
         return "id"
     }
+    
+    // 新しいidを取得
+    func createNewId() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(type(of: self).self).sorted(byKeyPath: "id", ascending: false).first?.id ?? 0) + 1
+    }
 }
