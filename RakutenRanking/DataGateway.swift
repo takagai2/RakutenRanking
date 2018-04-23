@@ -25,14 +25,9 @@ class DataGateway: DataGatewayProtocol {
             dataObject.sSizeImageUrl =  item.sSizeImageUrl
             dataObject.mSizeImageUrl = item.mSizeImageUrl
             
-            if realm.isInWriteTransaction {
+            try! realm.write {
                 if dataObject.id == 0 { dataObject.id = dataObject.createNewId() }
-                realm.add(dataObject, update: true)
-            } else {
-                try! realm.write {
-                    if dataObject.id == 0 { dataObject.id = dataObject.createNewId() }
                     realm.add(dataObject, update: true)
-                }
             }
         }
     }
@@ -50,8 +45,10 @@ class DataGateway: DataGatewayProtocol {
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
             itemArray.append(item)
+            print(obj.id)
+            print(obj.rank)
+            print(obj.sSizeImageUrl)
         }
-        print(itemArray) 
         callback(itemArray)
     }
     
