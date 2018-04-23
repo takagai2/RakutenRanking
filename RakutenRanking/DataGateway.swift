@@ -49,4 +49,11 @@ class DataGateway: DataGatewayProtocol {
         callback(itemArray)
     }
     
+    func deleteDataObject() {
+        // キャッシュクリア
+        try! realm.write{
+            realm.deleteAll()
+        }
+    }
+    
 }
