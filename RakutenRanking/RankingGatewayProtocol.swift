@@ -10,12 +10,6 @@ import Foundation
 
 protocol RankingGatewayProtocol {
     
-    func getOverallRankingRes(gender: Gender, age: Age,_ callback: @escaping ([Item]) -> Void)
+    func getRankingRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
 
-    func getRankingByGenderRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
-
-    func getRankingByAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
-    
-    func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
-    
 }

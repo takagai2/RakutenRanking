@@ -41,31 +41,7 @@ class RankingGateway: RankingGatewayProtocol {
         return url
     }
     
-    func getOverallRankingRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
-        // 通信処理を行って対象のランキングのレスポンスを取得
-        let url = self.createUrl(gender: gender, age: age)
-        self.getResponse(url: url, {(array: [Item]) -> Void in
-            callback(array)
-        })
-    }
-    
-    func getRankingByGenderRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
-        // 通信処理を行って対象の男女別ランキングのレスポンスを取得
-        let url = self.createUrl(gender: gender, age: age)
-        self.getResponse(url: url, {(array: [Item]) -> Void in
-            callback(array)
-        })
-    }
-    
-    func getRankingByAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
-        // 通信処理を行って対象の年齢別ランキングのレスポンスを取得
-        let url = self.createUrl(gender: gender, age: age)
-        self.getResponse(url: url, {(array: [Item]) -> Void in
-            callback(array)
-        })
-    }
-    
-    func getRankingByGenderAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
+    func getRankingRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
         let url = self.createUrl(gender: gender, age: age)
         self.getResponse(url: url, {(array: [Item]) -> Void in

@@ -97,29 +97,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // ランキングデータを取得し、配列に格納する
     private func getRankingItem(gender: Gender, age: Age) {
-        // セグメントで選択された結果によって、呼び出す関数を変更する処理
-        if gender == Gender.notKnown && age == Age.notKnown {
-            rankingManager.getRankingByGenderAge(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.displayRanking(array: array)
-            })
-        } else if age == Age.notKnown {
-            rankingManager.getRankingByGenderAge(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.displayRanking(array: array)
-            })
-        } else if gender == Gender.notKnown {
-            rankingManager.getRankingByGenderAge(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.displayRanking(array: array)
-            })
-        } else {
-            rankingManager.getRankingByGenderAge(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                self.displayRanking(array: array)
-            })
-        }
-        
+        rankingManager.getRanking(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.displayRanking(array: array)
+        })
     }
     
      private func displayRanking(array: [Item]) {
