@@ -30,13 +30,13 @@ class RankingGateway: RankingGatewayProtocol {
                     })
     }
     
-    func createUrl(gender: Gender! = nil, age: Age! = nil) -> String {
+    func createUrl(gender: Gender, age: Age) -> String {
         var genderUrl = ""
         var ageUrl = ""
-        if gender != nil {
-            genderUrl = "&sex=\(gender.rawValue)"
+        if gender != Gender.notKnown {
+            genderUrl = "&sex=\(gender.rawValue - 1)"
         }
-        if age != nil {
+        if age != Age.notKnown {
             ageUrl = "&age=\(age.rawValue)"
         }
         
@@ -44,25 +44,25 @@ class RankingGateway: RankingGatewayProtocol {
         return url
     }
     
-    func getOverallRankingRes(_ callback: @escaping ([Item]) -> Void) {
+    func getOverallRankingRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象のランキングのレスポンスを取得
-        let url = self.createUrl()
+        let url = self.createUrl(gender: gender, age: age)
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
     }
     
-    func getRankingByGenderRes(gender: Gender, _ callback: @escaping ([Item]) -> Void) {
+    func getRankingByGenderRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象の男女別ランキングのレスポンスを取得
-        let url = self.createUrl(gender: gender)
+        let url = self.createUrl(gender: gender, age: age)
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })
     }
     
-    func getRankingByAgeRes(age: Age, _ callback: @escaping ([Item]) -> Void) {
+    func getRankingByAgeRes(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 通信処理を行って対象の年齢別ランキングのレスポンスを取得
-        let url = self.createUrl(age: age)
+        let url = self.createUrl(gender: gender, age: age)
         self.getResponse(url: url, {(array: [Item]) -> Void in
             callback(array)
         })

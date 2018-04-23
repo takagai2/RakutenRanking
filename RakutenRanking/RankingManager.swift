@@ -10,12 +10,14 @@ import Foundation
 
 enum Gender: Int {
     
-    case male = 0
-    case female = 1
+    case notKnown = 0
+    case male = 1
+    case female = 2
 }
 
 enum Age: Int {
     
+    case notKnown = 0
     case teens = 10
     case twenties = 20
     case thirties = 30
@@ -29,17 +31,17 @@ class RankingManager {
     private let dataGateway: DataGatewayProtocol = DataGateway()
     
     // 総合ランキング
-    func getOverallRanking(_ callback: @escaping ([Item]) -> Void) {
+    func getOverallRanking(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // Realmから呼び出す処理
-        self.dataGateway.getItems(gender: nil, age: nil, {[weak self](items: [Item]) -> Void in
+        self.dataGateway.getItems(gender: gender, age: age, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
                 print("保存されていないのでapi取得")
-                self.rankingGateway.getOverallRankingRes({[weak self](array: [Item]) -> Void in
+                self.rankingGateway.getOverallRankingRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
-                    self.dataGateway.saveItems(array: array)
+                    self.dataGateway.saveItems(gender: gender, age: age, array: array)
                     // XXXViewControllerにItemを渡す処理
                     callback(array)
                 })
@@ -51,17 +53,17 @@ class RankingManager {
     }
     
     // 男女別ランキング
-    func getRankingByGender(gender: Gender, _ callback: @escaping ([Item]) -> Void) {
+    func getRankingByGender(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // Realmから呼び出す処理
-        self.dataGateway.getItems(gender: gender, age: nil, {[weak self](items: [Item]) -> Void in
+        self.dataGateway.getItems(gender: gender, age: age, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
                 print("保存されていないのでapi取得")
-                self.rankingGateway.getRankingByGenderRes(gender: gender, {[weak self](array: [Item]) -> Void in
+                self.rankingGateway.getRankingByGenderRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
-                    self.dataGateway.saveItems(array: array)
+                    self.dataGateway.saveItems(gender: gender, age: age, array: array)
                     // XXXViewControllerにItemを渡す処理
                     callback(array)
                 })
@@ -73,17 +75,17 @@ class RankingManager {
     }
     
     // 年齢別ランキング
-    func getRankingByAge(age: Age, _ callback: @escaping ([Item]) -> Void) {
+    func getRankingByAge(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // Realmから呼び出す処理
-        self.dataGateway.getItems(gender: nil, age: age, {[weak self](items: [Item]) -> Void in
+        self.dataGateway.getItems(gender: gender, age: age, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
                 print("保存されていないのでapi取得")
-                self.rankingGateway.getRankingByAgeRes(age: age, {[weak self](array: [Item]) -> Void in
+                self.rankingGateway.getRankingByAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
-                    self.dataGateway.saveItems(array: array)
+                    self.dataGateway.saveItems(gender: gender, age: age, array: array)
                     // XXXViewControllerにItemを渡す処理
                     callback(array)
                 })
@@ -105,7 +107,7 @@ class RankingManager {
                 self.rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
-                    self.dataGateway.saveItems(array: array)
+                    self.dataGateway.saveItems(gender: gender, age: age, array: array)
                     // XXXViewControllerにItemを渡す処理
                     callback(array)
                 })

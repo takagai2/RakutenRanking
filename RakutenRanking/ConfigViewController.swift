@@ -10,8 +10,8 @@ import UIKit
 
 class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
-    var genderType: Gender? = nil
-    var ageType: Age? = nil
+    var genderType: Gender = Gender.notKnown
+    var ageType: Age = Age.notKnown
     
     @IBOutlet weak var genderSegment: UISegmentedControl!
     @IBOutlet weak var ageSegment: UISegmentedControl!
@@ -40,29 +40,29 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         navigationController?.delegate = self
         
         // 前回設定した条件によって選択状態にするセグメントのボタンを変更する
-        if genderType != nil && ageType != nil {
-            genderSegment.selectedSegmentIndex = genderType!.rawValue + 1
-            ageSegment.selectedSegmentIndex = ageType!.rawValue / 10
+        if genderType != Gender.notKnown && ageType != Age.notKnown {
+            genderSegment.selectedSegmentIndex = genderType.rawValue
+            ageSegment.selectedSegmentIndex = ageType.rawValue / 10
             print(genderSegment.selectedSegmentIndex, ageSegment.selectedSegmentIndex)
-        } else if ageType != nil {
-            ageSegment.selectedSegmentIndex = ageType!.rawValue / 10
-        } else if genderType != nil {
-            genderSegment.selectedSegmentIndex = genderType!.rawValue + 1
+        } else if ageType != Age.notKnown {
+            ageSegment.selectedSegmentIndex = ageType.rawValue / 10
+        } else if genderType != Gender.notKnown {
+            genderSegment.selectedSegmentIndex = genderType.rawValue
         }
     }
     
-    private func getGenderBySelectNum(num: Int) -> Gender? {
+    private func getGenderBySelectNum(num: Int) -> Gender {
         switch num {
         case 1:
             return Gender.male
         case 2:
             return Gender.female
         default:
-            return nil
+            return Gender.notKnown
         }
     }
     
-    private func getAgeBySelectNum(num: Int) -> Age? {
+    private func getAgeBySelectNum(num: Int) -> Age {
         switch num {
         case 1:
             return Age.teens
@@ -75,7 +75,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         case 5:
             return Age.fiftiesOver
         default:
-            return nil
+            return Age.notKnown
         }
     }
     

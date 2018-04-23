@@ -12,8 +12,8 @@ import RealmSwift
 class DataObject: Object {
     
     @objc dynamic var id = 0
-    let genderType = RealmOptional<Int>()
-    let ageType = RealmOptional<Int>()
+    @objc dynamic var genderType = 0
+    @objc dynamic var ageType = 0
     @objc dynamic var rank = 0
     @objc dynamic var name = ""
     @objc dynamic var price = ""

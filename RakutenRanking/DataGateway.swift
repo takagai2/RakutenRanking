@@ -13,11 +13,13 @@ class DataGateway: DataGatewayProtocol {
     
     let realm = try! Realm()
     
-    func saveItems(array: [Item]) {
+    func saveItems(gender: Gender, age: Age, array: [Item]) {
         // [Item]を変換して保存する処理
         for (index, item) in array.enumerated() {
             let dataObject = DataObject()
             dataObject.rank = index + 1
+            dataObject.genderType = gender.rawValue
+            dataObject.ageType = age.rawValue
             dataObject.name = item.name
             dataObject.price = item.price
             dataObject.sSizeImageUrl =  item.sSizeImageUrl
@@ -35,10 +37,10 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
-    func getItems(gender: Gender? = nil, age: Age? = nil, _ callback: @escaping ([Item]) -> Void) {
+    func getItems(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void) {
         // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
         let rankingData = realm.objects(DataObject.self).filter("genderType = %@ AND ageType = %@",
-                                                                gender?.rawValue ?? 0, age?.rawValue ?? 10)
+                                                                gender.rawValue, age.rawValue)
         var itemArray = [Item]()
         // 取得したオブジェクトを[Item]に変換して返す
         rankingData.forEach { obj in
@@ -49,6 +51,7 @@ class DataGateway: DataGatewayProtocol {
             item.mSizeImageUrl = obj.mSizeImageUrl
             itemArray.append(item)
         }
+        print(itemArray) 
         callback(itemArray)
     }
     
