@@ -40,13 +40,11 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         navigationController?.delegate = self
         
         // 前回設定した条件によって選択状態にするセグメントのボタンを変更する
-        if genderType != Gender.notKnown && ageType != Age.notKnown {
+        if genderType != Gender.notKnown {
             genderSegment.selectedSegmentIndex = genderType.rawValue
+        }
+        if ageType != Age.notKnown {
             ageSegment.selectedSegmentIndex = ageType.rawValue / 10
-        } else if ageType != Age.notKnown {
-            ageSegment.selectedSegmentIndex = ageType.rawValue / 10
-        } else if genderType != Gender.notKnown {
-            genderSegment.selectedSegmentIndex = genderType.rawValue
         }
     }
     
