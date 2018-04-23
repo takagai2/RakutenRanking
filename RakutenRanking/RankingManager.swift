@@ -34,7 +34,7 @@ class RankingManager {
         self.dataGateway.getItems(gender: nil, age: nil, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
-            if items.count == 0 {
+            if items.isEmpty {
                 print("保存されていないのでapi取得")
                 self.rankingGateway.getOverallRankingRes({[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
@@ -56,7 +56,7 @@ class RankingManager {
         self.dataGateway.getItems(gender: gender, age: nil, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
-            if items.count == 0 {
+            if items.isEmpty {
                 print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByGenderRes(gender: gender, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
@@ -78,7 +78,7 @@ class RankingManager {
         self.dataGateway.getItems(gender: nil, age: age, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
-            if items.count == 0 {
+            if items.isEmpty {
                 print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByAgeRes(age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
@@ -100,7 +100,7 @@ class RankingManager {
         self.dataGateway.getItems(gender: gender, age: age, {[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
-            if items.count == 0 {
+            if items.isEmpty {
                 print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
