@@ -13,6 +13,8 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     var genderType: Gender = Gender.notKnown
     var ageType: Age = Age.notKnown
     
+    let rankingManager = RankingManager()
+    
     @IBOutlet weak var genderSegment: UISegmentedControl!
     @IBOutlet weak var ageSegment: UISegmentedControl!
 
@@ -25,8 +27,8 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func cacheClearBtn() {
-        // TODO キャッシュクリア処理を実装
-        print("キャッシュクリアボタン押された")
+        // キャッシュクリア処理を実装
+        rankingManager.deleteData()
     }
     
     @IBAction func favoResetBtn() {
