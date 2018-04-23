@@ -37,7 +37,6 @@ class RankingManager {
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
-                print("保存されていないのでapi取得")
                 self.rankingGateway.getOverallRankingRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
@@ -46,7 +45,6 @@ class RankingManager {
                     callback(array)
                 })
             } else {
-                print("保存されていたのでrealmから取得")
                 callback(items)
             }
         })
@@ -59,7 +57,6 @@ class RankingManager {
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
-                print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByGenderRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
@@ -68,7 +65,6 @@ class RankingManager {
                     callback(array)
                 })
             } else {
-                print("保存されていたのでrealmから取得")
                 callback(items)
             }
         })
@@ -81,7 +77,6 @@ class RankingManager {
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
-                print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
@@ -90,7 +85,6 @@ class RankingManager {
                     callback(array)
                 })
             } else {
-                print("保存されていたのでrealmから取得")
                 callback(items)
             }
         })
@@ -103,7 +97,6 @@ class RankingManager {
             guard let `self` = self else { return }
             // Realmに保存されていなければapi取得
             if items.isEmpty {
-                print("保存されていないのでapi取得")
                 self.rankingGateway.getRankingByGenderAgeRes(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
                     guard let `self` = self else { return }
                     // arrayをRealmに保存する処理
@@ -112,7 +105,6 @@ class RankingManager {
                     callback(array)
                 })
             } else {
-                print("保存されていたのでrealmから取得")
                 callback(items)
             }
         })

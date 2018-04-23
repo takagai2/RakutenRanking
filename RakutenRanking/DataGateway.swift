@@ -45,9 +45,6 @@ class DataGateway: DataGatewayProtocol {
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
             itemArray.append(item)
-            print(obj.id)
-            print(obj.rank)
-            print(obj.sSizeImageUrl)
         }
         callback(itemArray)
     }

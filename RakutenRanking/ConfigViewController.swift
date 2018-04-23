@@ -43,7 +43,6 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         if genderType != Gender.notKnown && ageType != Age.notKnown {
             genderSegment.selectedSegmentIndex = genderType.rawValue
             ageSegment.selectedSegmentIndex = ageType.rawValue / 10
-            print(genderSegment.selectedSegmentIndex, ageSegment.selectedSegmentIndex)
         } else if ageType != Age.notKnown {
             ageSegment.selectedSegmentIndex = ageType.rawValue / 10
         } else if genderType != Gender.notKnown {

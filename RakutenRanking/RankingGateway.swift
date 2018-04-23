@@ -18,15 +18,12 @@ class RankingGateway: RankingGatewayProtocol {
         let manager = AFHTTPSessionManager()
         manager.get(url, parameters: nil,
                     success: {(operation, responseObject) -> Void in
-                        // response取得が成功した場合の処理
-                        print("success!")
-                        // seccess -> パース -> 空配列へ
+                        // response取得成功 -> パース -> 配列を作成
                         let array = self.jsonConverter.getItems(responseObject)
                         callback(array)
                     },
                     failure: {(operation, error) -> Void in
-                        // TODO: 失敗した場合の処理
-                        print("error! -> " + error.localizedDescription)
+                        // response取得失敗
                     })
     }
     
