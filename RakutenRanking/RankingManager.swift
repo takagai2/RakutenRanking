@@ -50,5 +50,9 @@ class RankingManager {
         })
     }
     
+    func deleteData() {
+        dataGateway.deleteDataObject()
+    }
+    
 }
 
