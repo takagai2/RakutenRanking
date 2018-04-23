@@ -12,8 +12,8 @@ import RealmSwift
 class DataObject: Object {
     
     @objc dynamic var id = 0
-    let genderType = RealmOptional<Int>()
-    let ageType = RealmOptional<Int>()
+    @objc dynamic var genderType = 0
+    @objc dynamic var ageType = 0
     @objc dynamic var rank = 0
     @objc dynamic var name = ""
     @objc dynamic var price = ""
@@ -22,5 +22,11 @@ class DataObject: Object {
     
     override static func primaryKey() -> String? {
         return "id"
+    }
+    
+    // 新しいidを取得
+    func createNewId() -> Int {
+        let realm = try! Realm()
+        return (realm.objects(type(of: self).self).sorted(byKeyPath: "id", ascending: false).first?.id ?? 0) + 1
     }
 }

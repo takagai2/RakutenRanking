@@ -70,8 +70,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
-    var gender: Gender? = nil
-    var age: Age? = nil
+    var gender: Gender = Gender.notKnown
+    var age: Age = Age.notKnown
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -96,35 +96,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // ランキングデータを取得し、配列に格納する
-    private func getRankingItem(gender: Gender?, age: Age?) {
-        print("getRankingItem", gender as Any, age as Any)
-        // セグメントで選択された結果によって、呼び出す関数を変更する処理
-        if gender == nil && age == nil {
-            rankingManager.getOverallRanking({[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                print("総合ランキングを取得")
-                self.displayRanking(array: array)
-            })
-        } else if age == nil {
-            rankingManager.getRankingByGender(gender: gender!, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                print("男女別総合ランキングを取得")
-                self.displayRanking(array: array)
-            })
-        } else if gender == nil {
-            rankingManager.getRankingByAge(age: age!, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                print("年齢別総合ランキングを取得")
-                self.displayRanking(array: array)
-            })
-        } else {
-            rankingManager.getRankingByGenderAge(gender: gender!, age: age!, {[weak self](array: [Item]) -> Void in
-                guard let `self` = self else { return }
-                print("男女年齢別総合ランキングを取得")
-                self.displayRanking(array: array)
-            })
-        }
-        
+    private func getRankingItem(gender: Gender, age: Age) {
+        rankingManager.getRanking(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.displayRanking(array: array)
+        })
     }
     
      private func displayRanking(array: [Item]) {
@@ -152,7 +128,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
-        // TODO: 画像の非同期取得
+        // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
     }
@@ -208,7 +184,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             cell.itemPrice.text = "\(price)円"
         }
         if let image: String = item.mSizeImageUrl {
-            // TODO: 画像の非同期取得
+            // 画像の非同期取得
             cell.itemImage.setImageWith(URL(string: image)!)
         }
         return cell
@@ -252,7 +228,7 @@ extension ViewController: UIScrollViewDelegate {
         
         self.view.addSubview(scrollView)
         
-        // TODO: ページごとのlabelの生成
+        // ページごとのlabelの生成
         for i in 0..<page {
             let item = rankingItemList[i]
             // 順位のlabel生成
@@ -298,7 +274,6 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.currentPage = 0
         // pageControlのスケールを小さくする
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-        // TODO: pageControlのタップに夜ページ移動を実装
         
         self.view.addSubview(pageControl)
     }
@@ -317,8 +292,6 @@ extension ViewController: UIScrollViewDelegate {
         if self.scrollView != nil {
             self.scrollView.removeFromSuperview()
             self.pageControl.removeFromSuperview()
-        } else {
-            print("pageViewはnil")
         }
     }
     

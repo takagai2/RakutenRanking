@@ -10,8 +10,8 @@ import Foundation
 
 protocol DataGatewayProtocol {
     
-    func saveItems(array: [Item])
+    func saveItems(gender: Gender, age: Age, array: [Item])
     
-    func getItems(gender: Gender?, age: Age?, _ callback: @escaping ([Item]) -> Void)
+    func getItems(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
     
 }
