@@ -18,4 +18,6 @@ protocol DataGatewayProtocol {
     
     func saveFavoriteItem(item: Item)
     
+    func getFavoriteItems(_ callback: @escaping ([Item]) -> Void)
+    
 }
