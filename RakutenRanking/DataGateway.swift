@@ -58,4 +58,12 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
+    func saveFavoriteItem() {
+        // TODO: 指定したItemを取得してお気に入りに保存
+        let favoriteObject = FavoriteObject()
+        try! realm.write {
+            realm.add(favoriteObject)
+        }
+    }
+    
 }

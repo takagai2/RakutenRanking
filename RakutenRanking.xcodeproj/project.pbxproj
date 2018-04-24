@@ -160,10 +160,10 @@
 				599560FB207E07D900F05AEA /* AccessKey.sample.swift */,
 				599560FD207E10A600F05AEA /* AccessKey.swift */,
 				59BCB5812086D44700C56651 /* DataObject.swift */,
+				5998E34F208EEBDA00DD87E8 /* RankingObject.swift */,
+				5969F2E1208EC18700468D03 /* FavoriteObject.swift */,
 				59C5D7922088602600A28DCD /* DataGateway.swift */,
 				598E08E92088655400E5938D /* DataGatewayProtocol.swift */,
-				5969F2E1208EC18700468D03 /* FavoriteObject.swift */,
-				5998E34F208EEBDA00DD87E8 /* RankingObject.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
