@@ -14,6 +14,7 @@
 		598E08EA2088655400E5938D /* DataGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598E08E92088655400E5938D /* DataGatewayProtocol.swift */; };
 		599560FC207E07D900F05AEA /* AccessKey.sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599560FB207E07D900F05AEA /* AccessKey.sample.swift */; };
 		599560FE207E10A600F05AEA /* AccessKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599560FD207E10A600F05AEA /* AccessKey.swift */; };
+		5998E350208EEBDA00DD87E8 /* RankingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5998E34F208EEBDA00DD87E8 /* RankingObject.swift */; };
 		59B937B2206B4C8C0076D56D /* RankingGatewayProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */; };
 		59B937B4206B4DDF0076D56D /* JsonConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B3206B4DDF0076D56D /* JsonConverter.swift */; };
 		59B937B6206B4E580076D56D /* RankingGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B937B5206B4E580076D56D /* RankingGateway.swift */; };
@@ -56,6 +57,7 @@
 		598E08E92088655400E5938D /* DataGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataGatewayProtocol.swift; sourceTree = "<group>"; };
 		599560FB207E07D900F05AEA /* AccessKey.sample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessKey.sample.swift; sourceTree = "<group>"; };
 		599560FD207E10A600F05AEA /* AccessKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessKey.swift; sourceTree = "<group>"; };
+		5998E34F208EEBDA00DD87E8 /* RankingObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingObject.swift; sourceTree = "<group>"; };
 		59B937B1206B4C8C0076D56D /* RankingGatewayProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGatewayProtocol.swift; sourceTree = "<group>"; };
 		59B937B3206B4DDF0076D56D /* JsonConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConverter.swift; sourceTree = "<group>"; };
 		59B937B5206B4E580076D56D /* RankingGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingGateway.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				59C5D7922088602600A28DCD /* DataGateway.swift */,
 				598E08E92088655400E5938D /* DataGatewayProtocol.swift */,
 				5969F2E1208EC18700468D03 /* FavoriteObject.swift */,
+				5998E34F208EEBDA00DD87E8 /* RankingObject.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				5969F2E2208EC18800468D03 /* FavoriteObject.swift in Sources */,
 				59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */,
 				59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */,
+				5998E350208EEBDA00DD87E8 /* RankingObject.swift in Sources */,
 				599560FE207E10A600F05AEA /* AccessKey.swift in Sources */,
 				59B937BC206C8E900076D56D /* Item.swift in Sources */,
 				59D6F97B20625FFC00FA3105 /* MainTableViewCell.swift in Sources */,
