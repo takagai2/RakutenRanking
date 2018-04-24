@@ -60,7 +60,7 @@ class DataGateway: DataGatewayProtocol {
     }
     
     func saveFavoriteItem(item: Item) {
-        // TODO: 指定したItemを取得してお気に入りに保存
+        // Itemをお気に入りに保存
         let favoriteObject = FavoriteObject()
         let date = Date()
         favoriteObject.name = item.name
@@ -74,7 +74,6 @@ class DataGateway: DataGatewayProtocol {
         try! realm.write {
             realm.add(favoriteObject)
         }
-        print(favoriteObject)
     }
     
 }
