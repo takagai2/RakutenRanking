@@ -18,9 +18,21 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
+        self.getFavoriteItem()
     }
     
+    private let rankingManager = RankingManager()
+    private var favoriteItem = [Item]()
+
     let favoriteItemList = ["お気に入り商品名１","お気に入り商品名２","お気に入り商品名３","お気に入り商品名４","お気に入り商品名５",]
+    
+    private func getFavoriteItem() {
+        rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.favoriteItem = items
+            print(self.favoriteItem)
+        })
+    }
     
     // MARK: UITableViewDataSource
     
