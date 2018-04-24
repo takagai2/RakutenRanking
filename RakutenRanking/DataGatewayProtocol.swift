@@ -16,6 +16,6 @@ protocol DataGatewayProtocol {
     
     func deleteDataObject()
     
-    func saveFavoriteItem()
+    func saveFavoriteItem(item: Item)
     
 }

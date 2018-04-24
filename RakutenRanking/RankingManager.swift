@@ -54,5 +54,9 @@ class RankingManager {
         dataGateway.deleteDataObject()
     }
     
+    func addFavoriteItem(item: Item) {
+        dataGateway.saveFavoriteItem(item: item)
+    }
+    
 }
 
