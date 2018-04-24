@@ -24,6 +24,7 @@ class DataGateway: DataGatewayProtocol {
             dataObject.price = item.price
             dataObject.sSizeImageUrl =  item.sSizeImageUrl
             dataObject.mSizeImageUrl = item.mSizeImageUrl
+            dataObject.itemCode = item.itemCode
             dataObject.id = dataObject.createNewId()
             
             try! realm.write {
@@ -44,6 +45,7 @@ class DataGateway: DataGatewayProtocol {
             item.price = obj.price
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
+            item.itemCode = obj.itemCode
             itemArray.append(item)
         }
         callback(itemArray)

@@ -14,5 +14,5 @@ class  Item {
     var price: String!
     var sSizeImageUrl: String!
     var mSizeImageUrl: String!
-    
+    var itemCode: String!
 }

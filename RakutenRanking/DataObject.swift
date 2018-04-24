@@ -19,6 +19,7 @@ class DataObject: Object {
     @objc dynamic var price = ""
     @objc dynamic var sSizeImageUrl = ""
     @objc dynamic var mSizeImageUrl = ""
+    @objc dynamic var itemCode = ""
     
     override static func primaryKey() -> String? {
         return "id"
