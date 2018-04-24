@@ -17,7 +17,7 @@ class ItemDetailViewController: UIViewController {
     
     @IBAction func favoriteButton(_ sender: Any) {
         // お気に入り登録機能実装
-        self.addToFavoriteList(item: sendItem)
+        self.addToFavoriteItemList(item: sendItem)
     }
     
     var sendItem: Item!
@@ -30,7 +30,7 @@ class ItemDetailViewController: UIViewController {
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
     }
     
-    func addToFavoriteList(item: Item) {
+    private func addToFavoriteItemList(item: Item) {
         let rankingManager = RankingManager()
         rankingManager.addFavoriteItem(item: item)
     }
