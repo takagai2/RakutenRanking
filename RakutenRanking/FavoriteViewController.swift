@@ -17,6 +17,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
+        self.navigationItem.title = "お気に入りリスト"
     }
     
     let favoriteItemList = ["お気に入り商品名１","お気に入り商品名２","お気に入り商品名３","お気に入り商品名４","お気に入り商品名５",]
