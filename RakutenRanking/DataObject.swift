@@ -12,13 +12,11 @@ import RealmSwift
 class DataObject: Object {
     
     @objc dynamic var id = 0
-    @objc dynamic var genderType = 0
-    @objc dynamic var ageType = 0
-    @objc dynamic var rank = 0
     @objc dynamic var name = ""
     @objc dynamic var price = ""
     @objc dynamic var sSizeImageUrl = ""
     @objc dynamic var mSizeImageUrl = ""
+    @objc dynamic var itemCode = ""
     
     override static func primaryKey() -> String? {
         return "id"
