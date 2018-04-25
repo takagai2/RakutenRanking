@@ -92,4 +92,10 @@ class DataGateway: DataGatewayProtocol {
         }
         callback(itemArray)
     }
+    
+    func deleteFavoriteObject() {
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
 }
