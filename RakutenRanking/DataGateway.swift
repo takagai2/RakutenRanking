@@ -8,6 +8,7 @@
 
 import Foundation
 import RealmSwift
+import SwiftDate
 
 class DataGateway: DataGatewayProtocol {
     
@@ -55,6 +56,23 @@ class DataGateway: DataGatewayProtocol {
         // キャッシュクリア
         try! realm.write{
             realm.deleteAll()
+        }
+    }
+    
+    func saveFavoriteItem(item: Item) {
+        // Itemをお気に入りに保存
+        let favoriteObject = FavoriteObject()
+        let date = Date()
+        favoriteObject.name = item.name
+        favoriteObject.price = item.price
+        favoriteObject.sSizeImageUrl = item.sSizeImageUrl
+        favoriteObject.mSizeImageUrl = item.mSizeImageUrl
+        favoriteObject.itemCode = item.itemCode
+        favoriteObject.id = favoriteObject.createNewId()
+        favoriteObject.date = date.string(custom: "YYYY/MM/dd")
+        
+        try! realm.write {
+            realm.add(favoriteObject)
         }
     }
     
