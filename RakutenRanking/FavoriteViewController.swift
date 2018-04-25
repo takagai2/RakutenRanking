@@ -14,7 +14,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var favoriteList: UITableView!
     
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
-        
     }
     
     override func viewDidLoad() {
@@ -28,6 +27,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
+    private var array = [Item]()
     var item: Item!
     
     private func getFavoriteItem() {
@@ -52,7 +52,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        item = self.favoriteItem[indexPath.row]
+        array = self.favoriteItem
+        item = self.array[indexPath.row]
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
         }
@@ -74,6 +75,23 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     // タップしたcellの値を取得
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         item = self.favoriteItem[indexPath.row]
+    }
+    
+    // segmentedControlの選択によってfavoriteItemを並べ替える
+    func sortItem(index: Int) {
+        switch index {
+        case 0:
+            array = favoriteItem
+            favoriteList.reloadData()
+        case 1:
+            array = favoriteItem.reversed()
+            favoriteList.reloadData()
+        case 2:
+            array.sort(by: {$0.reviewCount < $1.reviewCount})
+            favoriteList.reloadData()
+        default:
+            array = favoriteItem
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

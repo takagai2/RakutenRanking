@@ -128,9 +128,9 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="D3j-kf-1W0">
                                 <rect key="frame" x="40" y="70" width="295" height="29"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                    <segment title=""/>
+                                    <segment title="古い順"/>
+                                    <segment title="新しい順"/>
+                                    <segment title="レビュー数順"/>
                                 </segments>
                                 <connections>
                                     <action selector="sortFavoriteList:" destination="OpI-JF-obs" eventType="valueChanged" id="awV-H5-dh1"/>
