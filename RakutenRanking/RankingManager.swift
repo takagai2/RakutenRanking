@@ -64,5 +64,9 @@ class RankingManager {
         })
     }
     
+    func deleteFavorite() {
+        dataGateway.deleteDataObject()
+    }
+    
 }
 

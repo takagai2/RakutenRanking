@@ -32,8 +32,8 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func favoResetBtn() {
-        // TODO お気に入り全削除処理を実装
-        print("お気に入りリセットボタン押された")
+        // お気に入り全削除処理を実装
+        rankingManager.deleteFavorite()
     }
     
     override func viewDidLoad() {
