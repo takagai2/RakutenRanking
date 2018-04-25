@@ -13,6 +13,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var favoriteList: UITableView!
     
+    @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
