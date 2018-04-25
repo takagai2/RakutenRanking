@@ -87,6 +87,7 @@ class DataGateway: DataGatewayProtocol {
             item.price = obj.price
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
+            item.itemCode = obj.itemCode
             itemArray.append(item)
         }
         callback(itemArray)
