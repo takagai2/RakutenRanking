@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -23,8 +24,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
-
-    let favoriteItemList = ["お気に入り商品名１","お気に入り商品名２","お気に入り商品名３","お気に入り商品名４","お気に入り商品名５",]
     
     private func getFavoriteItem() {
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
@@ -43,14 +42,22 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favoriteItemList.count
+        return self.favoriteItem.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        
-        cell.itemName.text = self.favoriteItemList[indexPath.row]
+        let item = self.favoriteItem[indexPath.row]
+        if let name: String = item.name {
+            cell.itemName.text = "\(name)"
+        }
+        if let price: String = item.price {
+            cell.itemPrice.text = "\(price)円"
+        }
+        if let image: String = item.sSizeImageUrl {
+            cell.itemImage.setImageWith(URL(string: image)!)
+        }
         return cell
     }
     
