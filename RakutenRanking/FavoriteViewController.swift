@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AFNetworking
 
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,9 +18,20 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
+        self.navigationItem.title = "お気に入りリスト"
+        self.getFavoriteItem()
     }
     
-    let favoriteItemList = ["お気に入り商品名１","お気に入り商品名２","お気に入り商品名３","お気に入り商品名４","お気に入り商品名５",]
+    private let rankingManager = RankingManager()
+    private var favoriteItem = [Item]()
+    var item: Item!
+    
+    private func getFavoriteItem() {
+        rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.favoriteItem = items
+        })
+    }
     
     // MARK: UITableViewDataSource
     
@@ -30,20 +42,41 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favoriteItemList.count
+        return self.favoriteItem.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        
-        cell.itemName.text = self.favoriteItemList[indexPath.row]
+        item = self.favoriteItem[indexPath.row]
+        if let name: String = item.name {
+            cell.itemName.text = "\(name)"
+        }
+        if let price: String = item.price {
+            cell.itemPrice.text = "\(price)円"
+        }
+        if let image: String = item.sSizeImageUrl {
+            cell.itemImage.setImageWith(URL(string: image)!)
+        }
         return cell
     }
     
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO タップ時のアクションを記述
+        // 商品詳細画面へ遷移
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    // タップしたcellの値を取得
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        item = self.favoriteItem[indexPath.row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            let itemDetailViewController = segue.destination as! ItemDetailViewController
+            itemDetailViewController.sendItem = self.item
+        }
     }
     
     override func didReceiveMemoryWarning() {

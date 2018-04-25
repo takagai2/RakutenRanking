@@ -76,4 +76,20 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
+    func getFavoriteItems(_ callback: @escaping ([Item]) -> Void) {
+        // お気に入りに保存しているitemを全件取得
+        let favoriteItems = realm.objects(FavoriteObject.self)
+        var itemArray = [Item]()
+        
+        favoriteItems.forEach { obj in
+            let item = Item()
+            item.name = obj.name
+            item.price = obj.price
+            item.sSizeImageUrl = obj.sSizeImageUrl
+            item.mSizeImageUrl = obj.mSizeImageUrl
+            item.itemCode = obj.itemCode
+            itemArray.append(item)
+        }
+        callback(itemArray)
+    }
 }
