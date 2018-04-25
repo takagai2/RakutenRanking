@@ -24,6 +24,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
+    var item: Item!
     
     private func getFavoriteItem() {
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
@@ -48,7 +49,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        let item = self.favoriteItem[indexPath.row]
+        item = self.favoriteItem[indexPath.row]
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
         }
@@ -63,7 +64,20 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO タップ時のアクションを記述
+        // 商品詳細画面へ遷移
+        self.performSegue(withIdentifier: "toDetail", sender: nil)
+    }
+    
+    // タップしたcellの値を取得
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        item = self.favoriteItem[indexPath.row]
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetail" {
+            let itemDetailViewController = segue.destination as! ItemDetailViewController
+            itemDetailViewController.sendItem = self.item
+        }
     }
     
     override func didReceiveMemoryWarning() {
