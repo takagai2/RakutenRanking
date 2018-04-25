@@ -30,7 +30,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             self.favoriteItem = items
-            print(self.favoriteItem)
         })
     }
     
