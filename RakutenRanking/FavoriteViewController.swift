@@ -61,6 +61,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         if let price: String = item.price {
             cell.itemPrice.text = "\(price)円"
         }
+        if let reviewCount: Int = item.reviewCount {
+            cell.itemReviewCount.text = "\(reviewCount)件のレビュー"
+        }
         if let image: String = item.sSizeImageUrl {
             cell.itemImage.setImageWith(URL(string: image)!)
         }
