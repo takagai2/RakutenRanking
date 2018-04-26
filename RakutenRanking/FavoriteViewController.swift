@@ -14,6 +14,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var favoriteList: UITableView!
     
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
+        sortItem(index: sender.selectedSegmentIndex)
     }
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
         self.getFavoriteItem()
+        array = favoriteItem
     }
     
     private let rankingManager = RankingManager()
@@ -46,13 +48,12 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favoriteItem.count
+        return self.array.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        array = self.favoriteItem
         item = self.array[indexPath.row]
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
