@@ -13,6 +13,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var favoriteList: UITableView!
     
+    @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
+        sortItem(index: sender.selectedSegmentIndex)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,10 +24,12 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
         self.getFavoriteItem()
+        array = favoriteItem
     }
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
+    private var array = [Item]()
     var item: Item!
     
     private func getFavoriteItem() {
@@ -42,18 +48,21 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.favoriteItem.count
+        return self.array.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        item = self.favoriteItem[indexPath.row]
+        item = self.array[indexPath.row]
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
             cell.itemPrice.text = "\(price)円"
+        }
+        if let reviewCount: Int = item.reviewCount {
+            cell.itemReviewCount.text = "\(reviewCount)件のレビュー"
         }
         if let image: String = item.sSizeImageUrl {
             cell.itemImage.setImageWith(URL(string: image)!)
@@ -70,6 +79,23 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     // タップしたcellの値を取得
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         item = self.favoriteItem[indexPath.row]
+    }
+    
+    // segmentedControlの選択によってfavoriteItemを並べ替える
+    func sortItem(index: Int) {
+        switch index {
+        case 0:
+            array = favoriteItem
+            favoriteList.reloadData()
+        case 1:
+            array = favoriteItem.reversed()
+            favoriteList.reloadData()
+        case 2:
+            array.sort(by: {$0.reviewCount > $1.reviewCount})
+            favoriteList.reloadData()
+        default:
+            array = favoriteItem
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

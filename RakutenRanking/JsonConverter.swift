@@ -25,6 +25,7 @@ class JsonConverter {
             item.sSizeImageUrl = object["Item"]["smallImageUrls"][0]["imageUrl"].string!
             item.mSizeImageUrl = object["Item"]["mediumImageUrls"][0]["imageUrl"].string!
             item.itemCode = object["Item"]["itemCode"].string!
+            item.reviewCount = object["Item"]["reviewCount"].int!
             // itemArrayに追加
             itemArray.append(item)
         }
