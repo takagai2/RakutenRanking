@@ -126,7 +126,7 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="D3j-kf-1W0">
-                                <rect key="frame" x="40" y="70" width="295" height="29"/>
+                                <rect key="frame" x="45.5" y="70" width="284" height="29"/>
                                 <segments>
                                     <segment title="古い順"/>
                                     <segment title="新しい順"/>
@@ -142,8 +142,6 @@
                             <constraint firstItem="sKa-qB-9TA" firstAttribute="top" secondItem="obD-Fm-iej" secondAttribute="top" constant="40" id="DK2-AV-zM2"/>
                             <constraint firstItem="sKa-qB-9TA" firstAttribute="bottom" secondItem="obD-Fm-iej" secondAttribute="bottom" id="Dud-t1-AfO"/>
                             <constraint firstItem="D3j-kf-1W0" firstAttribute="top" secondItem="obD-Fm-iej" secondAttribute="top" constant="6" id="Nz6-iw-soT"/>
-                            <constraint firstItem="obD-Fm-iej" firstAttribute="trailing" secondItem="D3j-kf-1W0" secondAttribute="trailing" constant="40" id="V4A-hs-FRn"/>
-                            <constraint firstItem="D3j-kf-1W0" firstAttribute="leading" secondItem="obD-Fm-iej" secondAttribute="leading" constant="40" id="mb3-Ce-8Kh"/>
                             <constraint firstItem="D3j-kf-1W0" firstAttribute="centerX" secondItem="Quc-cv-6Ha" secondAttribute="centerX" id="oNc-XK-FPk"/>
                             <constraint firstItem="sKa-qB-9TA" firstAttribute="leading" secondItem="obD-Fm-iej" secondAttribute="leading" id="q0F-m3-Di7"/>
                             <constraint firstItem="sKa-qB-9TA" firstAttribute="trailing" secondItem="obD-Fm-iej" secondAttribute="trailing" id="vHM-c9-4vz"/>
