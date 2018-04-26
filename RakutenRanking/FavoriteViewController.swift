@@ -91,7 +91,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             array = favoriteItem.reversed()
             favoriteList.reloadData()
         case 2:
-            array.sort(by: {$0.reviewCount < $1.reviewCount})
+            array.sort(by: {$0.reviewCount > $1.reviewCount})
             favoriteList.reloadData()
         default:
             array = favoriteItem
