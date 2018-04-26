@@ -26,7 +26,7 @@ class DataGateway: DataGatewayProtocol {
             rankingObject.sSizeImageUrl =  item.sSizeImageUrl
             rankingObject.mSizeImageUrl = item.mSizeImageUrl
             rankingObject.itemCode = item.itemCode
-            rankingObject.reviewCount = Int(item.reviewCount)
+            rankingObject.reviewCount = item.reviewCount
             rankingObject.id = rankingObject.createNewId()
             try! realm.write {
                     realm.add(rankingObject, update: true)
