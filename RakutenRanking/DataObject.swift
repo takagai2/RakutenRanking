@@ -17,6 +17,7 @@ class DataObject: Object {
     @objc dynamic var sSizeImageUrl = ""
     @objc dynamic var mSizeImageUrl = ""
     @objc dynamic var itemCode = ""
+    @objc dynamic var reviewCount = 0
     
     override static func primaryKey() -> String? {
         return "id"

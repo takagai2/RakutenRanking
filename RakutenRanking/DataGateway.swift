@@ -26,8 +26,8 @@ class DataGateway: DataGatewayProtocol {
             rankingObject.sSizeImageUrl =  item.sSizeImageUrl
             rankingObject.mSizeImageUrl = item.mSizeImageUrl
             rankingObject.itemCode = item.itemCode
+            rankingObject.reviewCount = Int(item.reviewCount)
             rankingObject.id = rankingObject.createNewId()
-            
             try! realm.write {
                     realm.add(rankingObject, update: true)
             }
@@ -47,6 +47,7 @@ class DataGateway: DataGatewayProtocol {
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
             item.itemCode = obj.itemCode
+            item.reviewCount = obj.reviewCount
             itemArray.append(item)
         }
         callback(itemArray)
@@ -68,9 +69,9 @@ class DataGateway: DataGatewayProtocol {
         favoriteObject.sSizeImageUrl = item.sSizeImageUrl
         favoriteObject.mSizeImageUrl = item.mSizeImageUrl
         favoriteObject.itemCode = item.itemCode
+        favoriteObject.reviewCount = Int(item.reviewCount)
         favoriteObject.id = favoriteObject.createNewId()
         favoriteObject.date = date.string(custom: "YYYY/MM/dd")
-        
         try! realm.write {
             realm.add(favoriteObject)
         }
@@ -88,6 +89,7 @@ class DataGateway: DataGatewayProtocol {
             item.sSizeImageUrl = obj.sSizeImageUrl
             item.mSizeImageUrl = obj.mSizeImageUrl
             item.itemCode = obj.itemCode
+            item.reviewCount = Int(obj.reviewCount)
             itemArray.append(item)
         }
         callback(itemArray)
