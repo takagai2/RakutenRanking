@@ -496,6 +496,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL0-FT-Kax">
                                 <rect key="frame" x="50" y="332" width="200" height="30"/>
                                 <state key="normal" title="起動時に表示する種別を変更"/>
+                                <connections>
+                                    <action selector="saveSettings:" destination="ytB-cb-YjQ" eventType="touchUpInside" id="AeI-GV-5pR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -102,6 +102,12 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
+    func saveRankingType(genderType: Gender, ageType: Age) {
+        // Key値を指定して保存
+        userDefaults.set(genderType.rawValue, forKey: "genderType")
+        userDefaults.set(ageType.rawValue, forKey: "ageType")
+    }
+    
     func getRankingType() -> (genderType: Gender, ageType: Age) {
         // Key値を指定して値を取得
         let genderType: Gender = Gender(rawValue: userDefaults.integer(forKey: "genderType"))!
