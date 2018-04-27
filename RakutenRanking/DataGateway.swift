@@ -13,6 +13,7 @@ import SwiftDate
 class DataGateway: DataGatewayProtocol {
     
     let realm = try! Realm()
+    let userDefaults = UserDefaults.standard
     
     func saveItems(gender: Gender, age: Age, array: [Item]) {
         // [Item]を変換して保存する処理
@@ -99,5 +100,12 @@ class DataGateway: DataGatewayProtocol {
         try! realm.write {
             realm.deleteAll()
         }
+    }
+    
+    func getRankingType() -> (genderType: Gender, ageType: Age) {
+        // Key値を指定して値を取得
+        let genderType: Gender = Gender(rawValue: userDefaults.integer(forKey: "genderType"))!
+        let ageType: Age = Age(rawValue: userDefaults.integer(forKey: "ageType"))!
+        return(genderType, ageType)
     }
 }

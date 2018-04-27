@@ -68,5 +68,11 @@ class RankingManager {
         dataGateway.deleteDataObject()
     }
     
+    func getRankingTypeAtStartup() -> (gender: Gender, age: Age) {
+        let type = dataGateway.getRankingType()
+        let gender = type.genderType
+        let age = type.ageType
+        return(gender, age)
+    }
 }
 

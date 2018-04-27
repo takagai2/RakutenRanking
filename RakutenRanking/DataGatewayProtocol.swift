@@ -22,4 +22,5 @@ protocol DataGatewayProtocol {
     
     func deleteFavoriteObject()
     
+    func getRankingType() -> (genderType: Gender, ageType: Age)
 }
