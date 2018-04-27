@@ -418,52 +418,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・起動時のランキング種別を選択" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-aX-uRD">
-                                <rect key="frame" x="16" y="87" width="260" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・ランキング種別を設定する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZE-aX-uRD">
+                                <rect key="frame" x="16" y="109" width="226" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・性別で絞り込む" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzD-6d-w2p">
-                                <rect key="frame" x="33" y="131" width="139" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・性別で絞り込む" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzD-6d-w2p">
+                                <rect key="frame" x="33" y="147" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・年代で絞り込む" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bei-eP-Qe7">
-                                <rect key="frame" x="33" y="223" width="139" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・年代で絞り込む" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bei-eP-Qe7">
+                                <rect key="frame" x="33" y="221" width="139" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・キャッシュを全て削除する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-wC-PtD">
-                                <rect key="frame" x="16" y="323" width="226" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・キャッシュを全て削除する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgo-wC-PtD">
+                                <rect key="frame" x="16" y="397" width="226" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・お気に入りを全て削除する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGT-4n-SDG">
-                                <rect key="frame" x="16" y="428" width="226" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・お気に入りを全て削除する" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGT-4n-SDG">
+                                <rect key="frame" x="16" y="476" width="226" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx3-Ji-HSX">
-                                <rect key="frame" x="31" y="363" width="169" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx3-Ji-HSX">
+                                <rect key="frame" x="33" y="426" width="169" height="30"/>
                                 <state key="normal" title="キャッシュクリアボタン"/>
                                 <connections>
                                     <action selector="cacheClearBtn" destination="ytB-cb-YjQ" eventType="touchUpInside" id="Dk1-XX-pOJ"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zQo-Xo-vir">
-                                <rect key="frame" x="33" y="160" width="167" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zQo-Xo-vir">
+                                <rect key="frame" x="33" y="176" width="164" height="29"/>
                                 <segments>
                                     <segment title="総合"/>
                                     <segment title="男性"/>
@@ -473,9 +466,8 @@
                                     <action selector="chooseGender:" destination="ytB-cb-YjQ" eventType="valueChanged" id="Pdl-kK-RxP"/>
                                 </connections>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXP-nP-YC3">
-                                <rect key="frame" x="33" y="252" width="326" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cXP-nP-YC3">
+                                <rect key="frame" x="33" y="250" width="326" height="29"/>
                                 <segments>
                                     <segment title="総合"/>
                                     <segment title="10代"/>
@@ -488,16 +480,63 @@
                                     <action selector="chooseAge:" destination="ytB-cb-YjQ" eventType="valueChanged" id="V40-vu-vm4"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyw-dZ-RgS">
-                                <rect key="frame" x="31" y="471" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yyw-dZ-RgS">
+                                <rect key="frame" x="33" y="505" width="184" height="30"/>
                                 <state key="normal" title="お気に入りリセットボタン"/>
                                 <connections>
                                     <action selector="favoResetBtn" destination="ytB-cb-YjQ" eventType="touchUpInside" id="pcw-42-uWu"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・アプリ起動時に上記の設定を反映させる" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeC-t2-A8A">
+                                <rect key="frame" x="33" y="303" width="330" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL0-FT-Kax">
+                                <rect key="frame" x="50" y="332" width="200" height="30"/>
+                                <state key="normal" title="起動時に表示する種別を変更"/>
+                                <connections>
+                                    <action selector="saveSettings:" destination="ytB-cb-YjQ" eventType="touchUpInside" id="AeI-GV-5pR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="dL0-FT-Kax" secondAttribute="trailing" constant="125" id="0a6-Wz-O0q"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="bei-eP-Qe7" secondAttribute="trailing" constant="203" id="14v-WU-jNH"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="lgo-wC-PtD" secondAttribute="trailing" constant="133" id="3Wa-0L-yQI"/>
+                            <constraint firstItem="dL0-FT-Kax" firstAttribute="top" secondItem="JeC-t2-A8A" secondAttribute="bottom" constant="8" id="5Vu-FZ-X7V"/>
+                            <constraint firstItem="cXP-nP-YC3" firstAttribute="top" secondItem="bei-eP-Qe7" secondAttribute="bottom" constant="8" id="5o4-yA-6he"/>
+                            <constraint firstItem="fx3-Ji-HSX" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="AVZ-hj-7nE"/>
+                            <constraint firstItem="zQo-Xo-vir" firstAttribute="top" secondItem="YzD-6d-w2p" secondAttribute="bottom" constant="8" id="AWy-M0-1Gp"/>
+                            <constraint firstItem="EGT-4n-SDG" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="16" id="AtO-U0-nHu"/>
+                            <constraint firstItem="Yyw-dZ-RgS" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="BA4-P9-Qag"/>
+                            <constraint firstItem="cXP-nP-YC3" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="DqT-6m-lOc"/>
+                            <constraint firstItem="zQo-Xo-vir" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="Eo0-VG-9rM"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="JeC-t2-A8A" secondAttribute="trailing" constant="12" id="Erc-Ea-yps"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="Yyw-dZ-RgS" secondAttribute="trailing" constant="158" id="Hu0-N4-aaM"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="vZE-aX-uRD" secondAttribute="trailing" constant="133" id="IpO-nK-eXW"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="YzD-6d-w2p" secondAttribute="trailing" constant="203" id="OSP-sX-mrm"/>
+                            <constraint firstItem="lgo-wC-PtD" firstAttribute="top" secondItem="dL0-FT-Kax" secondAttribute="bottom" constant="35" id="TPo-as-daS"/>
+                            <constraint firstItem="vZE-aX-uRD" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="16" id="VOA-BJ-B4y"/>
+                            <constraint firstItem="vZE-aX-uRD" firstAttribute="top" secondItem="fsf-z8-Ucb" secondAttribute="top" constant="45" id="VfM-lA-Pjs"/>
+                            <constraint firstItem="EGT-4n-SDG" firstAttribute="top" secondItem="fx3-Ji-HSX" secondAttribute="bottom" constant="20" id="WEd-ot-6cm"/>
+                            <constraint firstItem="fx3-Ji-HSX" firstAttribute="top" secondItem="lgo-wC-PtD" secondAttribute="bottom" constant="8" id="XF6-Vb-b49"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="EGT-4n-SDG" secondAttribute="trailing" constant="133" id="Yn5-hH-0Qq"/>
+                            <constraint firstItem="bei-eP-Qe7" firstAttribute="top" secondItem="zQo-Xo-vir" secondAttribute="bottom" constant="17" id="Zkp-OF-OTs"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="zQo-Xo-vir" secondAttribute="trailing" constant="178" id="gNx-lg-1yn"/>
+                            <constraint firstItem="Yyw-dZ-RgS" firstAttribute="top" secondItem="EGT-4n-SDG" secondAttribute="bottom" constant="8" id="haJ-fa-oP3"/>
+                            <constraint firstItem="YzD-6d-w2p" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="oaT-FN-grh"/>
+                            <constraint firstItem="dL0-FT-Kax" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="50" id="qc2-uI-TPD"/>
+                            <constraint firstItem="JeC-t2-A8A" firstAttribute="top" secondItem="cXP-nP-YC3" secondAttribute="bottom" constant="25" id="qee-Cc-K1A"/>
+                            <constraint firstItem="YzD-6d-w2p" firstAttribute="top" secondItem="vZE-aX-uRD" secondAttribute="bottom" constant="17" id="sKL-Cg-dum"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="fx3-Ji-HSX" secondAttribute="trailing" constant="173" id="sVE-j6-OQy"/>
+                            <constraint firstItem="JeC-t2-A8A" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="w4m-FI-cx4"/>
+                            <constraint firstItem="fsf-z8-Ucb" firstAttribute="trailing" secondItem="cXP-nP-YC3" secondAttribute="trailing" constant="16" id="wDE-fR-qJS"/>
+                            <constraint firstItem="lgo-wC-PtD" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="16" id="xTc-Fk-Ge9"/>
+                            <constraint firstItem="bei-eP-Qe7" firstAttribute="leading" secondItem="fsf-z8-Ucb" secondAttribute="leading" constant="33" id="yyi-yv-sZ5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fsf-z8-Ucb"/>
                     </view>
                     <connections>

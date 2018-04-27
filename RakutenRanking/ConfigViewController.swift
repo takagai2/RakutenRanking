@@ -26,6 +26,11 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         ageType = getAgeBySelectNum(num: sender.selectedSegmentIndex)
     }
     
+    @IBAction func saveSettings(_ sender: Any) {
+        // 選択した条件をアプリ起動時のランキングに反映させる
+        rankingManager.saveRankingTypeAtStartup(gender: self.genderType, age: self.ageType)
+    }
+    
     @IBAction func cacheClearBtn() {
         // キャッシュクリア処理を実装
         rankingManager.deleteData()

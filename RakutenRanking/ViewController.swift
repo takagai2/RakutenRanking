@@ -87,6 +87,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         // ランキングタイトルを表示
         self.navigationItem.title = "Ranking"
+        
+        // 設定されたランキング種別を取得
+        let type = rankingManager.getRankingTypeAtStartup()
+        self.gender = type.gender
+        self.age = type.age
     }
     
     override func viewDidAppear(_ animated: Bool) {
