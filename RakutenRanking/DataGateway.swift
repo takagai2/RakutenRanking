@@ -61,20 +61,28 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
-    func saveFavoriteItem(item: Item) {
-        // Itemをお気に入りに保存
-        let favoriteObject = FavoriteObject()
-        let date = Date()
-        favoriteObject.name = item.name
-        favoriteObject.price = item.price
-        favoriteObject.sSizeImageUrl = item.sSizeImageUrl
-        favoriteObject.mSizeImageUrl = item.mSizeImageUrl
-        favoriteObject.itemCode = item.itemCode
-        favoriteObject.reviewCount = Int(item.reviewCount)
-        favoriteObject.id = favoriteObject.createNewId()
-        favoriteObject.date = date.string(custom: "YYYY/MM/dd")
-        try! realm.write {
-            realm.add(favoriteObject)
+    func saveOrDeleteFavoriteItem(item: Item) {
+        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
+        if obj.count == 0 {
+            // データに同じItemがなければお気に入りに保存
+            let favoriteObject = FavoriteObject()
+            let date = Date()
+            favoriteObject.name = item.name
+            favoriteObject.price = item.price
+            favoriteObject.sSizeImageUrl = item.sSizeImageUrl
+            favoriteObject.mSizeImageUrl = item.mSizeImageUrl
+            favoriteObject.itemCode = item.itemCode
+            favoriteObject.reviewCount = Int(item.reviewCount)
+            favoriteObject.id = favoriteObject.createNewId()
+            favoriteObject.date = date.string(custom: "YYYY/MM/dd")
+            try! realm.write {
+                realm.add(favoriteObject)
+            }
+        } else {
+            // 保存されているitemであれば削除
+            try! realm.write() {
+                realm.delete(obj)
+            }
         }
     }
     

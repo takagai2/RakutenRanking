@@ -16,7 +16,7 @@ protocol DataGatewayProtocol {
     
     func deleteDataObject()
     
-    func saveFavoriteItem(item: Item)
+    func saveOrDeleteFavoriteItem(item: Item)
     
     func getFavoriteItems(_ callback: @escaping ([Item]) -> Void)
     
