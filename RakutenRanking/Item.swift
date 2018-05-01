@@ -16,4 +16,5 @@ class  Item {
     var mSizeImageUrl: String!
     var itemCode: String!
     var reviewCount: Int!
+    var date: Date!
 }

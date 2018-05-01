@@ -66,7 +66,6 @@ class DataGateway: DataGatewayProtocol {
         if obj.count == 0 {
             // データに同じItemがなければお気に入りに保存
             let favoriteObject = FavoriteObject()
-            let date = Date()
             favoriteObject.name = item.name
             favoriteObject.price = item.price
             favoriteObject.sSizeImageUrl = item.sSizeImageUrl
@@ -74,7 +73,7 @@ class DataGateway: DataGatewayProtocol {
             favoriteObject.itemCode = item.itemCode
             favoriteObject.reviewCount = Int(item.reviewCount)
             favoriteObject.id = favoriteObject.createNewId()
-            favoriteObject.date = date.string(custom: "YYYY/MM/dd")
+            favoriteObject.date = Date()
             try! realm.write {
                 realm.add(favoriteObject)
             }
@@ -99,6 +98,7 @@ class DataGateway: DataGatewayProtocol {
             item.mSizeImageUrl = obj.mSizeImageUrl
             item.itemCode = obj.itemCode
             item.reviewCount = Int(obj.reviewCount)
+            item.date = obj.date
             itemArray.append(item)
         }
         callback(itemArray)

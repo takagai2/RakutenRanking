@@ -85,10 +85,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     func sortItem(index: Int) {
         switch index {
         case 0:
-            array = favoriteItem
+            array.sort(by: {$0.date < $1.date})
             favoriteList.reloadData()
         case 1:
-            array = favoriteItem.reversed()
+            array.sort(by: {$0.date > $1.date})
             favoriteList.reloadData()
         case 2:
             array.sort(by: {$0.reviewCount > $1.reviewCount})
