@@ -63,7 +63,7 @@ class DataGateway: DataGatewayProtocol {
     
     func saveOrDeleteFavoriteItem(item: Item) {
         let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
-        if obj.count == 0 {
+        if obj.isEmpty {
             // データに同じItemがなければお気に入りに保存
             let favoriteObject = FavoriteObject()
             favoriteObject.name = item.name
