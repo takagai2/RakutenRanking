@@ -11,6 +11,6 @@ import RealmSwift
 
 class FavoriteObject: DataObject {
     
-    @objc dynamic var date = ""
+    @objc dynamic var date = Date()
     
 }

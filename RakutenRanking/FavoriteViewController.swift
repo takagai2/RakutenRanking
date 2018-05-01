@@ -24,12 +24,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
         self.getFavoriteItem()
-        array = favoriteItem
     }
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
-    private var array = [Item]()
     var item: Item!
     
     private func getFavoriteItem() {
@@ -48,13 +46,13 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.array.count
+        return self.favoriteItem.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"FavoriteListCell", for: indexPath) as! FavoriteTableViewCell
-        item = self.array[indexPath.row]
+        item = self.favoriteItem[indexPath.row]
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
         }
@@ -81,20 +79,30 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         item = self.favoriteItem[indexPath.row]
     }
     
+    // セルをスワイプしてお気に入りのアイテムを削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        item = favoriteItem[indexPath.row]
+        if editingStyle == .delete {
+            favoriteItem.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            rankingManager.saveOrDeleteFavoriteObject(item: item)
+        }
+    }
+    
     // segmentedControlの選択によってfavoriteItemを並べ替える
-    func sortItem(index: Int) {
+     private func sortItem(index: Int) {
         switch index {
         case 0:
-            array = favoriteItem
+            favoriteItem.sort(by: {$0.date < $1.date})
             favoriteList.reloadData()
         case 1:
-            array = favoriteItem.reversed()
+            favoriteItem.sort(by: {$0.date > $1.date})
             favoriteList.reloadData()
         case 2:
-            array.sort(by: {$0.reviewCount > $1.reviewCount})
+            favoriteItem.sort(by: {$0.reviewCount > $1.reviewCount})
             favoriteList.reloadData()
         default:
-            array = favoriteItem
+            favoriteItem.sort(by: {$0.date < $1.date})
         }
     }
     

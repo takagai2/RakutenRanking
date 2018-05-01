@@ -16,11 +16,11 @@ protocol DataGatewayProtocol {
     
     func deleteDataObject()
     
-    func saveFavoriteItem(item: Item)
+    func saveOrDeleteFavoriteItem(item: Item)
     
     func getFavoriteItems(_ callback: @escaping ([Item]) -> Void)
     
-    func deleteFavoriteObject()
+    func deleteAllFavoriteObject()
     
     func saveRankingType(genderType: Gender, ageType: Age)
     

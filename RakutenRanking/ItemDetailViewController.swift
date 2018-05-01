@@ -17,7 +17,7 @@ class ItemDetailViewController: UIViewController {
     
     @IBAction func favoriteButton(_ sender: Any) {
         // お気に入り登録機能実装
-        self.addToFavoriteItemList(item: sendItem)
+        self.saveOrDeleteFavoriteItem(item: sendItem)
     }
     
     var sendItem: Item!
@@ -30,9 +30,9 @@ class ItemDetailViewController: UIViewController {
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
     }
     
-    private func addToFavoriteItemList(item: Item) {
+    private func saveOrDeleteFavoriteItem(item: Item) {
         let rankingManager = RankingManager()
-        rankingManager.addFavoriteItem(item: item)
+        rankingManager.saveOrDeleteFavoriteObject(item: item)
     }
 
     override func didReceiveMemoryWarning() {
