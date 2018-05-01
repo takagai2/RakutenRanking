@@ -63,25 +63,35 @@ class DataGateway: DataGatewayProtocol {
     
     func saveOrDeleteFavoriteItem(item: Item) {
         let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
-        if obj.isEmpty {
+        if isSavedItem(obj: obj) {
             // データに同じItemがなければお気に入りに保存
-            let favoriteObject = FavoriteObject()
-            favoriteObject.name = item.name
-            favoriteObject.price = item.price
-            favoriteObject.sSizeImageUrl = item.sSizeImageUrl
-            favoriteObject.mSizeImageUrl = item.mSizeImageUrl
-            favoriteObject.itemCode = item.itemCode
-            favoriteObject.reviewCount = Int(item.reviewCount)
-            favoriteObject.id = favoriteObject.createNewId()
-            favoriteObject.date = Date()
-            try! realm.write {
-                realm.add(favoriteObject)
-            }
+            saveFavoriteItem(item: item)
         } else {
             // 保存されているitemであれば削除
-            try! realm.write() {
-                realm.delete(obj)
-            }
+            deleteFavoriteObejct(obj: obj)
+        }
+    }
+    
+    private func isSavedItem(obj: Results<FavoriteObject>) -> Bool {
+        if obj.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func saveFavoriteItem(item: Item) {
+        let favoriteObject = FavoriteObject()
+        favoriteObject.name = item.name
+        favoriteObject.price = item.price
+        favoriteObject.sSizeImageUrl = item.sSizeImageUrl
+        favoriteObject.mSizeImageUrl = item.mSizeImageUrl
+        favoriteObject.itemCode = item.itemCode
+        favoriteObject.reviewCount = Int(item.reviewCount)
+        favoriteObject.id = favoriteObject.createNewId()
+        favoriteObject.date = Date()
+        try! realm.write {
+            realm.add(favoriteObject)
         }
     }
     
@@ -102,6 +112,12 @@ class DataGateway: DataGatewayProtocol {
             itemArray.append(item)
         }
         callback(itemArray)
+    }
+    
+    private func deleteFavoriteObejct(obj: Results<FavoriteObject>) {
+        try! realm.write {
+            realm.delete(obj)
+        }
     }
     
     func deleteAllFavoriteObject() {
