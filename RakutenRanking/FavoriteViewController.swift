@@ -90,7 +90,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // segmentedControlの選択によってfavoriteItemを並べ替える
-    func sortItem(index: Int) {
+     private func sortItem(index: Int) {
         switch index {
         case 0:
             favoriteItem.sort(by: {$0.date < $1.date})
