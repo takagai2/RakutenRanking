@@ -79,6 +79,16 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         item = self.favoriteItem[indexPath.row]
     }
     
+    // セルをスワイプしてお気に入りのアイテムを削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        item = favoriteItem[indexPath.row]
+        if editingStyle == .delete {
+            favoriteItem.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            rankingManager.saveOrDeleteFavoriteObject(item: item)
+        }
+    }
+    
     // segmentedControlの選択によってfavoriteItemを並べ替える
     func sortItem(index: Int) {
         switch index {
@@ -100,16 +110,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         if segue.identifier == "toDetail" {
             let itemDetailViewController = segue.destination as! ItemDetailViewController
             itemDetailViewController.sendItem = self.item
-        }
-    }
-    
-    // セルをスワイプしてお気に入りのアイテムを削除
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        item = favoriteItem[indexPath.row]
-        if editingStyle == .delete {
-            favoriteItem.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            rankingManager.saveOrDeleteFavoriteObject(item: item)
         }
     }
     
