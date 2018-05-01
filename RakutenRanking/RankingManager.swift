@@ -64,8 +64,8 @@ class RankingManager {
         })
     }
     
-    func deleteFavorite() {
-        dataGateway.deleteFavoriteObject()
+    func deleteAllFavoriteItem() {
+        dataGateway.deleteAllFavoriteObject()
     }
     
     func saveRankingTypeAtStartup(gender: Gender, age: Age) {

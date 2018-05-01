@@ -20,7 +20,7 @@ protocol DataGatewayProtocol {
     
     func getFavoriteItems(_ callback: @escaping ([Item]) -> Void)
     
-    func deleteFavoriteObject()
+    func deleteAllFavoriteObject()
     
     func saveRankingType(genderType: Gender, ageType: Age)
     

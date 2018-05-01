@@ -38,7 +38,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func favoResetBtn() {
         // お気に入り全削除処理を実装
-        rankingManager.deleteFavorite()
+        rankingManager.deleteAllFavoriteItem()
     }
     
     override func viewDidLoad() {
