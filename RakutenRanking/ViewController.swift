@@ -31,19 +31,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func changeToList(_ sender: Any){
         self.mainRanking.isHidden = false
         self.collectionView.removeFromSuperview()
-        self.removePageView()
+        self.hidePageView()
     }
     
     @IBAction func changeToGrid(_ sender: Any){
         self.mainRanking.isHidden = true
         view.addSubview(collectionView)
-        self.removePageView()
+        self.hidePageView()
     }
     
     @IBAction func changeToPage(_ sender: Any){
         self.mainRanking.isHidden = true
         self.collectionView.removeFromSuperview()
-        self.setPageView()
+        self.showPageView()
     }
     
     private let collectionView: UICollectionView = {
@@ -216,7 +216,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
 
 extension ViewController: UIScrollViewDelegate {
     
-    func setPageView() {
+    private func setPageView() {
         // ページ数
         let page = rankingItemList.count
         // ページのサイズ
@@ -293,10 +293,19 @@ extension ViewController: UIScrollViewDelegate {
         }
     }
     
-    func removePageView() {
+    private func showPageView() {
         if self.scrollView != nil {
-            self.scrollView.removeFromSuperview()
-            self.pageControl.removeFromSuperview()
+            scrollView.isHidden = false
+            pageControl.isHidden = false
+        } else {
+            self.setPageView()
+        }
+    }
+    
+    private func hidePageView() {
+        if self.scrollView != nil {
+            self.scrollView.isHidden = true
+            self.pageControl.isHidden = true
         }
     }
     
