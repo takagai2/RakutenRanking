@@ -105,6 +105,16 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    // セルをスワイプしてお気に入りのアイテムを削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        item = array[indexPath.row]
+        if editingStyle == .delete {
+            array.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            rankingManager.addFavoriteItem(item: item)
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
