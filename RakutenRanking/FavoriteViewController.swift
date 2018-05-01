@@ -111,7 +111,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         if editingStyle == .delete {
             array.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            rankingManager.addFavoriteItem(item: item)
+            rankingManager.saveOrDeleteFavoriteObject(item: item)
         }
     }
     
