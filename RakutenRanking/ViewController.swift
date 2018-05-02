@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
-    var rankingItemList: [Item] = []
+    static var rankingItemList: [Item] = []
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
      private func displayRanking(array: [Item]) {
-        self.rankingItemList = array
+        ViewController.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
     }
@@ -123,13 +123,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingItemList.count
+        return ViewController.rankingItemList.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
-        item = self.rankingItemList[indexPath.row]
+        cell.indexPath = indexPath
+        item = ViewController.rankingItemList[indexPath.row]
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
@@ -147,7 +148,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // アイテム詳細画面へ渡す値をcellから取得
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        item = self.rankingItemList[indexPath.row]
+        item = ViewController.rankingItemList[indexPath.row]
     }
     
     // アイテム詳細画面へ遷移時、値を渡す
@@ -174,12 +175,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // cellの個数設定
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rankingItemList.count
+        return ViewController.rankingItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        item = self.rankingItemList[indexPath.row]
+        item = ViewController.rankingItemList[indexPath.row]
         cell.itemRank.text = " \(indexPath.row + 1)位"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
@@ -209,7 +210,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // アイテム詳細画面へ渡す値をcellから取得
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        item = self.rankingItemList[indexPath.row]
+        item = ViewController.rankingItemList[indexPath.row]
     }
 
 }
@@ -218,7 +219,7 @@ extension ViewController: UIScrollViewDelegate {
     
     private func setPageView() {
         // ページ数
-        let page = rankingItemList.count
+        let page = ViewController.rankingItemList.count
         // ページのサイズ
         let width = screenSize.width
         let height = screenSize.height
@@ -235,7 +236,7 @@ extension ViewController: UIScrollViewDelegate {
         
         // ページごとのlabelの生成
         for i in 0..<page {
-            let item = rankingItemList[i]
+            let item = ViewController.rankingItemList[i]
             // 順位のlabel生成
             let itemRank = UILabel()
             itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)

@@ -16,7 +16,16 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var itemPrice: UILabel!
     
     @IBAction func favoriteButton(_ sender: Any) {
-        print("add to favorite button")
+        self.onTapFavoriteButton()
+    }
+    
+    var indexPath = IndexPath()
+    let rankingManager = RankingManager()
+    
+    private func onTapFavoriteButton() {
+        let item = ViewController.rankingItemList[indexPath.row]
+        rankingManager.saveOrDeleteFavoriteObject(item: item)
+        print(ViewController.rankingItemList[indexPath.row])
     }
 
     override func awakeFromNib() {
