@@ -40,7 +40,7 @@ platform :ios, '9.0'
 
 ### アクセスキーについて
 以下のコマンドで `accessKey.swift.sample` の内容をコピーする。  
-```$ cp accessKey.swift.sample accessKey.swift```
+```$ cp AccessKey.swift.sample AccessKey.swift```
 
-`accessKey.swift` 内の `applicationId` を新たに取得したキーに書き加える。  
+`AccessKey.swift` 内の `applicationId` を新たに取得したキーに書き加える。  
 楽天アプリID取得は[こちら](https://webservice.rakuten.co.jp/app/create)
