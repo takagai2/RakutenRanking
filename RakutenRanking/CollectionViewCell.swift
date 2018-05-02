@@ -43,14 +43,25 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
     
+    // お気に入り登録ボタンを生成
+    let favoriteButton: UIButton = {
+        let button = UIButton()
+        button.frame = CGRect(x: 70, y: 160, width: 50, height: 25)
+        button.setTitleColor(UIColor.blue, for: .normal)
+        button.setTitle("Favo", for: UIControlState.normal)
+        button.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+        return button
+    }()
+    
     private func setup() {
         layer.borderColor = UIColor.darkGray.cgColor
-        layer.borderWidth = 1.0
+        layer.borderWidth = 0.5
         
         contentView.addSubview(itemName)
         contentView.addSubview(itemPrice)
         contentView.addSubview(itemRank)
         contentView.addSubview(itemImage)
+        contentView.addSubview(favoriteButton)
     }
     
     override init(frame: CGRect) {

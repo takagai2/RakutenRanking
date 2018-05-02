@@ -199,7 +199,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // 画面の横サイズの三分の一の大きさのcellサイズを指定
-        return CGSize(width: screenSize.width / 3.0, height: screenSize.height / 4.0)
+        return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 2.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
