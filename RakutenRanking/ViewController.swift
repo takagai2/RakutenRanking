@@ -31,19 +31,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func changeToList(_ sender: Any){
         self.mainRanking.isHidden = false
         self.collectionView.removeFromSuperview()
-        self.hidePageView()
+        self.removePageView()
     }
     
     @IBAction func changeToGrid(_ sender: Any){
         self.mainRanking.isHidden = true
         view.addSubview(collectionView)
-        self.hidePageView()
+        self.removePageView()
     }
     
     @IBAction func changeToPage(_ sender: Any){
         self.mainRanking.isHidden = true
         self.collectionView.removeFromSuperview()
-        self.showPageView()
+        self.setPageView()
     }
     
     private let collectionView: UICollectionView = {
@@ -293,19 +293,10 @@ extension ViewController: UIScrollViewDelegate {
         }
     }
     
-    private func showPageView() {
+    private func removePageView() {
         if self.scrollView != nil {
-            scrollView.isHidden = false
-            pageControl.isHidden = false
-        } else {
-            self.setPageView()
-        }
-    }
-    
-    private func hidePageView() {
-        if self.scrollView != nil {
-            self.scrollView.isHidden = true
-            self.pageControl.isHidden = true
+            self.scrollView.removeFromSuperview()
+            self.pageControl.removeFromSuperview()
         }
     }
     
