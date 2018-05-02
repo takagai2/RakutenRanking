@@ -297,16 +297,13 @@ extension ViewController: UIScrollViewDelegate {
         if self.scrollView != nil {
             self.scrollView.removeFromSuperview()
             self.pageControl.removeFromSuperview()
+            self.scrollView = nil
         }
     }
     
     private func showPageView() {
         if self.scrollView == nil {
             self.setPageView()
-        } else {
-            if self.scrollView.isDescendant(of: view) == false {
-                self.setPageView()
-            }
         }
     }
     
