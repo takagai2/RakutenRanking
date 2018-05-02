@@ -43,7 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func changeToPage(_ sender: Any){
         self.mainRanking.isHidden = true
         self.collectionView.removeFromSuperview()
-        self.setPageView()
+        self.showPageView()
     }
     
     private let collectionView: UICollectionView = {
@@ -297,6 +297,16 @@ extension ViewController: UIScrollViewDelegate {
         if self.scrollView != nil {
             self.scrollView.removeFromSuperview()
             self.pageControl.removeFromSuperview()
+        }
+    }
+    
+    private func showPageView() {
+        if self.scrollView == nil {
+            self.setPageView()
+        } else {
+            if self.scrollView.isDescendant(of: view) == false {
+                self.setPageView()
+            }
         }
     }
     
