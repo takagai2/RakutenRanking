@@ -14,6 +14,10 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemPrice: UILabel!
+    
+    @IBAction func favoriteButton(_ sender: Any) {
+        print("add to favorite button")
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
