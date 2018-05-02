@@ -1,22 +1,46 @@
 ## 環境構築手順
----
-#### プロジェクトのクローン
-```$ git clone git@github.com:takagai2/RakutenRanking.git```
-
-#### 開発環境
+### 開発環境
 - Xcode 9.2  
 - Swift 4
 
-#### ライブラリのインストール
+### プロジェクトのクローン
+```$ git clone git@github.com:takagai2/RakutenRanking.git```
+
+### ライブラリのインストール
 - CocoaPods 1.5.0  
   - AFNetworking 3.0  
-  - Realm 2.0  
-  - RealmSwift 2.0  
+  - Realm 3.5.0  
+  - RealmSwift 3.5.0  
+  - SwiftyJSON 4.1.0
   - SwiftDate 4.5.0  
+#### 1. ターミナルを開きCocoaPodsをインストール
+```$ sudo gem install cocoapods```
+#### 2. セットアップ
+```$ pod setup```
+#### 3. プロジェクトへ移動し、podfileを作成
+```$ pod init```
+#### 4. podfileの編集
+- 対象のプラットフォームを指定
+```
+platform :ios, '9.0'
+```  
+- 以下の例のように `pod 'ライブラリ名', '~> 指定のバージョン'` という書式で、インストールするライブラリとそのバージョンを続けて記述  
+- バージョンを指定しない場合はその時点での最新版を取得
+```
+  # Pods for RakutenRanking
+  pod 'AFNetworking', '~> 3.0'
+  pod 'SwiftyJSON'
+   ：
+```
+#### 5. インストール
+一度 Xcode を閉じて以下のコマンドを実行。  
+```$ pod install```  
 
-#### アクセスキーについて
+インストール後はプロジェクトファイル内に `.xcworkspace` ファイルが作られるので、こちらから開発を行う。
 
-```$ cp accessKey.swift.sample accessKey.swift```
+### アクセスキーについて
+以下のコマンドで `accessKey.swift.sample` の内容をコピーする。  
+```$ cp AccessKey.swift.sample AccessKey.swift```
 
-- accessKey.swift に、新たに取得したキーを書き加える
-- 楽天アプリID取得は[こちら](https://webservice.rakuten.co.jp/app/create)
+`AccessKey.swift` 内の `applicationId` を新たに取得したキーに書き加える。  
+楽天アプリID取得は[こちら](https://webservice.rakuten.co.jp/app/create)
