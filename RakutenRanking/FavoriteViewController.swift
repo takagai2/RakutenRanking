@@ -23,6 +23,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.getFavoriteItem()
     }
     
@@ -34,6 +39,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             self.favoriteItem = items
+            self.favoriteList.reloadData()
         })
     }
     
