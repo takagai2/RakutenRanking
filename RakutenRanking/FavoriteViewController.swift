@@ -16,6 +16,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
         sortItem(index: sender.selectedSegmentIndex)
     }
+
+    private let rankingManager = RankingManager()
+    private var favoriteItem = [Item]()
+    private var item: Item!
+    private var sortPattern: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +37,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         print(sortPattern)
         sortItem(index: sortPattern)
     }
-    
-    private let rankingManager = RankingManager()
-    private var favoriteItem = [Item]()
-    var item: Item!
-    private var sortPattern: Int = 0
     
     private func getFavoriteItem() {
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
