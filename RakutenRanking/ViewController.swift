@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
-    static var rankingItemList: [Item] = []
+    private var rankingItemList: [Item] = []
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
      private func displayRanking(array: [Item]) {
-        ViewController.rankingItemList = array
+        self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
     }
@@ -123,17 +123,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ViewController.rankingItemList.count
+        return self.rankingItemList.count
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
 //        cell.indexPath = indexPath
-        item = ViewController.rankingItemList[indexPath.row]
+        item = self.rankingItemList[indexPath.row]
         cell.onTapFavoriteListener = {[weak self]() -> Void in
             guard let `self` = self else { return }
-            let item = ViewController.rankingItemList[indexPath.row]
+            let item = self.rankingItemList[indexPath.row]
             self.rankingManager.saveOrDeleteFavoriteObject(item: item)
 //            print(index)
         }
@@ -154,7 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // アイテム詳細画面へ渡す値をcellから取得
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        item = ViewController.rankingItemList[indexPath.row]
+        item = self.rankingItemList[indexPath.row]
     }
     
     // アイテム詳細画面へ遷移時、値を渡す
@@ -181,12 +181,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // cellの個数設定
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ViewController.rankingItemList.count
+        return self.rankingItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        item = ViewController.rankingItemList[indexPath.row]
+        item = self.rankingItemList[indexPath.row]
         cell.itemRank.text = " \(indexPath.row + 1)位"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
@@ -206,7 +206,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let btn = sender as! UIButton
         let cell = btn.superview?.superview as! CollectionViewCell
         let row = collectionView.indexPath(for: cell)?.row
-        rankingManager.saveOrDeleteFavoriteObject(item: ViewController.rankingItemList[row!])
+        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[row!])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -223,7 +223,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // アイテム詳細画面へ渡す値をcellから取得
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        item = ViewController.rankingItemList[indexPath.row]
+        item = self.rankingItemList[indexPath.row]
     }
 
 }
@@ -232,7 +232,7 @@ extension ViewController: UIScrollViewDelegate {
     
     private func setPageView() {
         // ページ数
-        let page = ViewController.rankingItemList.count
+        let page = self.rankingItemList.count
         // ページのサイズ
         let width = screenSize.width
         let height = screenSize.height
@@ -249,7 +249,7 @@ extension ViewController: UIScrollViewDelegate {
         
         // ページごとのlabelの生成
         for i in 0..<page {
-            let item = ViewController.rankingItemList[i]
+            let item = self.rankingItemList[i]
             // 順位のlabel生成
             let itemRank = UILabel()
             itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
@@ -308,7 +308,7 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
-        rankingManager.saveOrDeleteFavoriteObject(item: ViewController.rankingItemList[pageControl.currentPage])
+        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
