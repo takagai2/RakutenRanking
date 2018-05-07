@@ -301,12 +301,19 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.currentPage = 0
         // pageControlのスケールを小さくする
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        // pageControlがタップされた時のアクションを追加
+        pageControl.isUserInteractionEnabled = true
+        pageControl.addTarget(self, action: #selector(movePageByTapping(_:)), for: .touchUpInside)
         
         self.view.addSubview(pageControl)
     }
     
     @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
         rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
+    }
+    
+    @objc func movePageByTapping(_ sender: UIPageControl) {
+        scrollView.contentOffset.x = scrollView.frame.maxX * CGFloat(sender.currentPage)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
