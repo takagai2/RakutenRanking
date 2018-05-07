@@ -29,11 +29,14 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         
         self.getFavoriteItem()
+        print(sortPattern)
+        sortItem(index: sortPattern)
     }
     
     private let rankingManager = RankingManager()
     private var favoriteItem = [Item]()
     var item: Item!
+    private var sortPattern: Int = 0
     
     private func getFavoriteItem() {
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
@@ -101,12 +104,15 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             favoriteItem.sort(by: {$0.date < $1.date})
             favoriteList.reloadData()
+            sortPattern = 0
         case 1:
             favoriteItem.sort(by: {$0.date > $1.date})
             favoriteList.reloadData()
+            sortPattern = 1
         case 2:
             favoriteItem.sort(by: {$0.reviewCount > $1.reviewCount})
             favoriteList.reloadData()
+            sortPattern = 2
         default:
             favoriteItem.sort(by: {$0.date < $1.date})
         }
