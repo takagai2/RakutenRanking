@@ -129,8 +129,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
-        cell.indexPath = indexPath
+//        cell.indexPath = indexPath
         item = ViewController.rankingItemList[indexPath.row]
+        cell.onTapFavoriteListener = {[weak self]() -> Void in
+            guard let `self` = self else { return }
+            let item = ViewController.rankingItemList[indexPath.row]
+            self.rankingManager.saveOrDeleteFavoriteObject(item: item)
+//            print(index)
+        }
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"

@@ -19,12 +19,10 @@ class MainTableViewCell: UITableViewCell {
         self.onTapFavoriteButton()
     }
     
-    var indexPath = IndexPath()
-    let rankingManager = RankingManager()
+    var onTapFavoriteListener: (() -> Void)? = nil
     
     private func onTapFavoriteButton() {
-        let item = ViewController.rankingItemList[indexPath.row]
-        rankingManager.saveOrDeleteFavoriteObject(item: item)
+        onTapFavoriteListener?()
     }
 
     override func awakeFromNib() {
