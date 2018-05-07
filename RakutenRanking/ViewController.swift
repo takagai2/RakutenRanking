@@ -196,6 +196,12 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return cell
     }
     
+    @objc func saveToOrDeleteFromFavoritesOnGridView(_ sender: Any) {
+        let btn = sender as! UIButton
+        let cell = btn.superview?.superview as! CollectionViewCell
+        let row = collectionView.indexPath(for: cell)?.row
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // 画面の横サイズの三分の一の大きさのcellサイズを指定

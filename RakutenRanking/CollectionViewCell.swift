@@ -50,6 +50,7 @@ class CollectionViewCell: UICollectionViewCell {
         button.setTitleColor(UIColor.blue, for: .normal)
         button.setTitle("Favo", for: UIControlState.normal)
         button.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+        button.addTarget(self, action: #selector(ViewController.saveToOrDeleteFromFavoritesOnGridView(_:)), for: .touchUpInside)
         return button
     }()
     
