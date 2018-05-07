@@ -269,10 +269,19 @@ extension ViewController: UIScrollViewDelegate {
             if let image: String = item.mSizeImageUrl {
                 itemImage.setImageWith(URL(string: image)!)
             }
+            // お気に入り登録ボタン生成
+            let favoriteButton: UIButton = UIButton()
+            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.4, width: 270, height: 40)
+            favoriteButton.contentHorizontalAlignment = .right
+            favoriteButton.setTitleColor(UIColor.blue, for: .normal)
+            favoriteButton.setTitle("Favo", for: UIControlState.normal)
+            favoriteButton.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+            
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
             scrollView.addSubview(itemRank)
             scrollView.addSubview(itemImage)
+            scrollView.addSubview(favoriteButton)
         }
         
         // UIPageContolのインスタンス作成
