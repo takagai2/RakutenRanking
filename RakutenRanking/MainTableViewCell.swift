@@ -14,6 +14,16 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var itemName: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemPrice: UILabel!
+    
+    @IBAction func favoriteButton(_ sender: Any) {
+        self.onTapFavoriteButton()
+    }
+    
+    var onTapFavoriteListener: (() -> Void)? = nil
+    
+    private func onTapFavoriteButton() {
+        onTapFavoriteListener?()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

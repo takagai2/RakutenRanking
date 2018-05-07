@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var scrollView: UIScrollView!
     
     // ランキングデータを格納する配列
-    var rankingItemList: [Item] = []
+    private var rankingItemList: [Item] = []
     // segueで値を渡すための変数
     var item: Item!
     // ランキング種別を選択するための値
@@ -130,6 +130,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
         item = self.rankingItemList[indexPath.row]
+        cell.onTapFavoriteListener = {[weak self]() -> Void in
+            guard let `self` = self else { return }
+            let item = self.rankingItemList[indexPath.row]
+            self.rankingManager.saveOrDeleteFavoriteObject(item: item)
+        }
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
@@ -174,7 +179,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     // cellの個数設定
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rankingItemList.count
+        return self.rankingItemList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -195,10 +200,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         return cell
     }
     
+    @objc func saveToOrDeleteFromFavoritesOnGridView(_ sender: Any) {
+        let btn = sender as! UIButton
+        let cell = btn.superview?.superview as! CollectionViewCell
+        let row = collectionView.indexPath(for: cell)?.row
+        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[row!])
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         // 画面の横サイズの三分の一の大きさのcellサイズを指定
-        return CGSize(width: screenSize.width / 3.0, height: screenSize.height / 4.0)
+        return CGSize(width: screenSize.width / 3.0, height: screenSize.width / 2.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -218,7 +230,7 @@ extension ViewController: UIScrollViewDelegate {
     
     private func setPageView() {
         // ページ数
-        let page = rankingItemList.count
+        let page = self.rankingItemList.count
         // ページのサイズ
         let width = screenSize.width
         let height = screenSize.height
@@ -235,7 +247,7 @@ extension ViewController: UIScrollViewDelegate {
         
         // ページごとのlabelの生成
         for i in 0..<page {
-            let item = rankingItemList[i]
+            let item = self.rankingItemList[i]
             // 順位のlabel生成
             let itemRank = UILabel()
             itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
@@ -261,10 +273,20 @@ extension ViewController: UIScrollViewDelegate {
             if let image: String = item.mSizeImageUrl {
                 itemImage.setImageWith(URL(string: image)!)
             }
+            // お気に入り登録ボタン生成
+            let favoriteButton: UIButton = UIButton()
+            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.4, width: 270, height: 40)
+            favoriteButton.contentHorizontalAlignment = .right
+            favoriteButton.setTitleColor(UIColor.blue, for: .normal)
+            favoriteButton.setTitle("Favo", for: UIControlState.normal)
+            favoriteButton.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+            favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
+            
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
             scrollView.addSubview(itemRank)
             scrollView.addSubview(itemImage)
+            scrollView.addSubview(favoriteButton)
         }
         
         // UIPageContolのインスタンス作成
@@ -281,6 +303,10 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         
         self.view.addSubview(pageControl)
+    }
+    
+    @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
+        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

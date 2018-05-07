@@ -16,6 +16,11 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
         sortItem(index: sender.selectedSegmentIndex)
     }
+
+    private let rankingManager = RankingManager()
+    private var favoriteItem = [Item]()
+    private var item: Item!
+    private var sortPattern: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,17 +28,21 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
         self.navigationItem.title = "お気に入りリスト"
-        self.getFavoriteItem()
     }
     
-    private let rankingManager = RankingManager()
-    private var favoriteItem = [Item]()
-    var item: Item!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.getFavoriteItem()
+        print(sortPattern)
+        sortItem(index: sortPattern)
+    }
     
     private func getFavoriteItem() {
         rankingManager.getFavoriteItem({[weak self](items: [Item]) -> Void in
             guard let `self` = self else { return }
             self.favoriteItem = items
+            self.favoriteList.reloadData()
         })
     }
     
@@ -95,12 +104,15 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         case 0:
             favoriteItem.sort(by: {$0.date < $1.date})
             favoriteList.reloadData()
+            sortPattern = 0
         case 1:
             favoriteItem.sort(by: {$0.date > $1.date})
             favoriteList.reloadData()
+            sortPattern = 1
         case 2:
             favoriteItem.sort(by: {$0.reviewCount > $1.reviewCount})
             favoriteList.reloadData()
+            sortPattern = 2
         default:
             favoriteItem.sort(by: {$0.date < $1.date})
         }
