@@ -276,6 +276,7 @@ extension ViewController: UIScrollViewDelegate {
             favoriteButton.setTitleColor(UIColor.blue, for: .normal)
             favoriteButton.setTitle("Favo", for: UIControlState.normal)
             favoriteButton.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+            favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
             
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
@@ -298,6 +299,10 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         
         self.view.addSubview(pageControl)
+    }
+    
+    @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
+        rankingManager.saveOrDeleteFavoriteObject(item: ViewController.rankingItemList[pageControl.currentPage])
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
