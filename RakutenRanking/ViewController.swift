@@ -200,6 +200,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let btn = sender as! UIButton
         let cell = btn.superview?.superview as! CollectionViewCell
         let row = collectionView.indexPath(for: cell)?.row
+        rankingManager.saveOrDeleteFavoriteObject(item: ViewController.rankingItemList[row!])
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
