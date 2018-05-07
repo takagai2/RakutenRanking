@@ -25,7 +25,6 @@ class MainTableViewCell: UITableViewCell {
     private func onTapFavoriteButton() {
         let item = ViewController.rankingItemList[indexPath.row]
         rankingManager.saveOrDeleteFavoriteObject(item: item)
-        print(ViewController.rankingItemList[indexPath.row])
     }
 
     override func awakeFromNib() {
