@@ -143,9 +143,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         rankingManager.getRanking(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
             guard let `self` = self else { return }
             self.displayRanking(array: array)
-            if sender != nil {
-                sender!.endRefreshing()
-            }
+            sender?.endRefreshing()
         })
     }
     
