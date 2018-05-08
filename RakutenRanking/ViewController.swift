@@ -103,19 +103,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var genderType = ""
         var ageType = ""
         // 性別が指定されている場合
-        if gender == .male {
+        switch gender {
+        case .male:
             genderType = "男性"
-        }
-        if gender == .female {
+        case .female:
             genderType = "女性"
+        default:
+            break
         }
         // 年代が指定されている場合
-        if age == .fiftiesOver {
+        switch age {
+        case .teens:
+            ageType = "10代"
+        case .twenties:
+            ageType = "20代"
+        case .thities:
+            ageType = "30代"
+        case .forties:
+            ageType = "40代"
+        case .fiftiesOver:
             ageType = "50代以上"
-        } else if age != .notKnown {
-            ageType = "\(age.rawValue)代"
+        default:
+            break
         }
-        
         return ageType + genderType
     }
     
