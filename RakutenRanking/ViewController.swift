@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func changeToGrid(_ sender: Any){
         self.mainRanking.isHidden = true
-        view.addSubview(collectionView)
+        self.showGridView()
         self.removePageView()
     }
     
@@ -89,6 +89,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
         self.age = type.age
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
+        mainRanking.refreshControl = refreshControl
+        }
+    
+    @objc func refreshRanking(_ sender: UIRefreshControl) {
+        rankingManager.deleteData(gender: gender, age: age)
+        self.getRankingItem(gender: gender, age: age)
+        sender.endRefreshing()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -135,10 +145,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             guard let `self` = self else { return }
             self.displayRanking(array: array)
         })
-    }
-    
-    private func refreshRanking(gender: Gender, age: Age) {
-        rankingManager.deleteData(gender: gender, age: age)
     }
     
      private func displayRanking(array: [Item]) {
@@ -255,6 +261,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     // アイテム詳細画面へ渡す値をcellから取得
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         item = self.rankingItemList[indexPath.row]
+    }
+    
+    private func showGridView() {
+        view.addSubview(collectionView)
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
 
 }
