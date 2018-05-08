@@ -100,8 +100,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
-        var genderType = ""
-        var ageType = ""
+        let genderType: String
+        let ageType: String
         // 性別が指定されている場合
         switch gender {
         case .male:
@@ -109,7 +109,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .female:
             genderType = "女性"
         default:
-            break
+            genderType = ""
         }
         // 年代が指定されている場合
         switch age {
@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         case .fiftiesOver:
             ageType = "50代以上"
         default:
-            break
+            ageType = ""
         }
         return ageType + genderType
     }
