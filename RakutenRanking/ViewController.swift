@@ -137,6 +137,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
+    private func refreshRanking(gender: Gender, age: Age) {
+        rankingManager.deleteData(gender: gender, age: age)
+    }
+    
      private func displayRanking(array: [Item]) {
         self.rankingItemList = array
         self.mainRanking.reloadData()

@@ -33,7 +33,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func cacheClearBtn() {
         // キャッシュクリア処理を実装
-        rankingManager.deleteData()
+        rankingManager.deleteAllData()
     }
     
     @IBAction func favoResetBtn() {

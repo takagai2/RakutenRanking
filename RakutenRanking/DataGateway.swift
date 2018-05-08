@@ -54,7 +54,16 @@ class DataGateway: DataGatewayProtocol {
         callback(itemArray)
     }
     
-    func deleteDataObject() {
+    func deleteDataObject(gender: Gender, age: Age) {
+        // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
+        let rankingData = realm.objects(RankingObject.self).filter("genderType = %@ AND ageType = %@", gender.rawValue, age.rawValue)
+        // 取得したオブジェクトをrealmから削除
+        try! realm.write {
+            realm.delete(rankingData)
+        }
+    }
+    
+    func deleteAllDataObject() {
         // キャッシュクリア
         try! realm.write{
             realm.deleteAll()
