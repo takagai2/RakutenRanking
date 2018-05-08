@@ -34,7 +34,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewWillAppear(animated)
         
         self.getFavoriteItem()
-        print(sortPattern)
         sortItem(index: sortPattern)
     }
     
