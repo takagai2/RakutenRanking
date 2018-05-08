@@ -97,8 +97,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
-        self.getRankingItem(gender: gender, age: age)
-        sender.endRefreshing()
+        self.getRankingItem(gender: gender, age: age, sender)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,10 +139,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // ランキングデータを取得し、配列に格納する
-    private func getRankingItem(gender: Gender, age: Age) {
+    private func getRankingItem(gender: Gender, age: Age, _ sender: UIRefreshControl? = nil) {
         rankingManager.getRanking(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
             guard let `self` = self else { return }
             self.displayRanking(array: array)
+            if sender != nil {
+                sender!.endRefreshing()
+            }
         })
     }
     
