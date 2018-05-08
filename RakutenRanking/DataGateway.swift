@@ -64,9 +64,10 @@ class DataGateway: DataGatewayProtocol {
     }
     
     func deleteAllDataObject() {
+        let obj: Results<DataObject> = realm.objects(DataObject.self)
         // キャッシュクリア
         try! realm.write{
-            realm.deleteAll()
+            realm.delete(obj)
         }
     }
     
@@ -130,8 +131,9 @@ class DataGateway: DataGatewayProtocol {
     }
     
     func deleteAllFavoriteObject() {
+        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self)
         try! realm.write {
-            realm.deleteAll()
+            realm.delete(obj)
         }
     }
     
