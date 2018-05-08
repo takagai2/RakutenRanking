@@ -23,7 +23,7 @@ class RankingGateway: RankingGatewayProtocol {
                         callback(array)
                     },
                     failure: {(operation, error) -> Void in
-                        // response取得失敗
+                        // TODO: response取得失敗時の処理
                     })
     }
     
