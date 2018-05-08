@@ -93,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
         mainRanking.refreshControl = refreshControl
-        }
+    }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
@@ -149,7 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
-     private func displayRanking(array: [Item]) {
+    private func displayRanking(array: [Item]) {
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
