@@ -14,7 +14,9 @@ protocol DataGatewayProtocol {
     
     func getItems(gender: Gender, age: Age, _ callback: @escaping ([Item]) -> Void)
     
-    func deleteDataObject()
+    func deleteDataObject(gender: Gender, age: Age)
+    
+    func deleteAllDataObject()
     
     func saveOrDeleteFavoriteItem(item: Item)
     

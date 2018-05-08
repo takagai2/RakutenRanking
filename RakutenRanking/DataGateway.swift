@@ -54,10 +54,20 @@ class DataGateway: DataGatewayProtocol {
         callback(itemArray)
     }
     
-    func deleteDataObject() {
+    func deleteDataObject(gender: Gender, age: Age) {
+        // 指定されたgender,ageに当てはまるオブジェクトをrealmから取得
+        let rankingData = realm.objects(RankingObject.self).filter("genderType = %@ AND ageType = %@", gender.rawValue, age.rawValue)
+        // 取得したオブジェクトをrealmから削除
+        try! realm.write {
+            realm.delete(rankingData)
+        }
+    }
+    
+    func deleteAllDataObject() {
+        let obj: Results<DataObject> = realm.objects(DataObject.self)
         // キャッシュクリア
         try! realm.write{
-            realm.deleteAll()
+            realm.delete(obj)
         }
     }
     
@@ -121,8 +131,9 @@ class DataGateway: DataGatewayProtocol {
     }
     
     func deleteAllFavoriteObject() {
+        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self)
         try! realm.write {
-            realm.deleteAll()
+            realm.delete(obj)
         }
     }
     

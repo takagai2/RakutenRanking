@@ -50,8 +50,12 @@ class RankingManager {
         })
     }
     
-    func deleteData() {
-        dataGateway.deleteDataObject()
+    func deleteData(gender: Gender, age: Age) {
+        dataGateway.deleteDataObject(gender: gender, age: age)
+    }
+    
+    func deleteAllData() {
+        dataGateway.deleteAllDataObject()
     }
     
     func saveOrDeleteFavoriteObject(item: Item) {

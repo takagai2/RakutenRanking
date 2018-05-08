@@ -36,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func changeToGrid(_ sender: Any){
         self.mainRanking.isHidden = true
-        view.addSubview(collectionView)
+        self.showGridView()
         self.removePageView()
     }
     
@@ -89,6 +89,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
         self.age = type.age
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
+        mainRanking.refreshControl = refreshControl
+    }
+    
+    @objc func refreshRanking(_ sender: UIRefreshControl) {
+        rankingManager.deleteData(gender: gender, age: age)
+        self.getRankingItem(gender: gender, age: age, sender)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,14 +139,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     // ランキングデータを取得し、配列に格納する
-    private func getRankingItem(gender: Gender, age: Age) {
+    private func getRankingItem(gender: Gender, age: Age, _ sender: UIRefreshControl? = nil) {
         rankingManager.getRanking(gender: gender, age: age, {[weak self](array: [Item]) -> Void in
             guard let `self` = self else { return }
             self.displayRanking(array: array)
+            sender?.endRefreshing()
         })
     }
     
-     private func displayRanking(array: [Item]) {
+    private func displayRanking(array: [Item]) {
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
@@ -251,6 +261,13 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     // アイテム詳細画面へ渡す値をcellから取得
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         item = self.rankingItemList[indexPath.row]
+    }
+    
+    private func showGridView() {
+        view.addSubview(collectionView)
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
     }
 
 }
