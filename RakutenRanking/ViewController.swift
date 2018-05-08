@@ -85,9 +85,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        // ランキングタイトルを表示
-        self.navigationItem.title = "Ranking"
-        
         // 設定されたランキング種別を取得
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
@@ -98,6 +95,38 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidAppear(animated)
         
         getRankingItem(gender: gender, age: age)
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+    }
+    
+    private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
+        let genderType: String
+        let ageType: String
+        // 性別による分類
+        switch gender {
+        case .male:
+            genderType = "男性"
+        case .female:
+            genderType = "女性"
+        default:
+            genderType = ""
+        }
+        // 年代による分類
+        switch age {
+        case .teens:
+            ageType = "10代"
+        case .twenties:
+            ageType = "20代"
+        case .thirties:
+            ageType = "30代"
+        case .forties:
+            ageType = "40代"
+        case .fiftiesOver:
+            ageType = "50代以上"
+        default:
+            ageType = ""
+        }
+        return ageType + genderType
     }
     
     // ランキングデータを取得し、配列に格納する
@@ -301,12 +330,19 @@ extension ViewController: UIScrollViewDelegate {
         pageControl.currentPage = 0
         // pageControlのスケールを小さくする
         pageControl.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        // pageControlがタップされた時のアクションを追加
+        pageControl.isUserInteractionEnabled = true
+        pageControl.addTarget(self, action: #selector(movePageByTapping(_:)), for: .touchUpInside)
         
         self.view.addSubview(pageControl)
     }
     
     @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
         rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
+    }
+    
+    @objc func movePageByTapping(_ sender: UIPageControl) {
+        scrollView.contentOffset.x = scrollView.frame.maxX * CGFloat(sender.currentPage)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
