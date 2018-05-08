@@ -85,9 +85,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         
-        // ランキングタイトルを表示
-        self.navigationItem.title = "Ranking"
-        
         // 設定されたランキング種別を取得
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
@@ -98,6 +95,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidAppear(animated)
         
         getRankingItem(gender: gender, age: age)
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+    }
+    
+    private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
+        var genderType = ""
+        var ageType = ""
+        // 性別が指定されている場合
+        if gender == .male {
+            genderType = "男性"
+        }
+        if gender == .female {
+            genderType = "女性"
+        }
+        // 年代が指定されている場合
+        if age == .fiftiesOver {
+            ageType = "50代以上"
+        } else if age != .notKnown {
+            ageType = "\(age.rawValue)代"
+        }
+        
+        return ageType + genderType
     }
     
     // ランキングデータを取得し、配列に格納する
