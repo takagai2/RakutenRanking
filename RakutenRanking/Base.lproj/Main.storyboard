@@ -170,17 +170,17 @@
             <objects>
                 <viewController storyboardIdentifier="Menu" id="SO0-kM-sWW" customClass="MenuViewController" customModule="RakutenRanking" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P66-85-dU5">
-                        <rect key="frame" x="0.0" y="0.0" width="640" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UbY-QK-UfQ">
-                                <rect key="frame" x="0.0" y="20" width="640" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viI-yU-ys7">
-                                        <rect key="frame" x="0.0" y="0.0" width="640" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="647"/>
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-2f-0Zz">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="610"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="647"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuRankingCell" id="lEX-MG-wkZ" customClass="MenuTableViewCell" customModule="RakutenRanking" customModuleProvider="target">
@@ -218,36 +218,14 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="・年代による絞り込み" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLT-5x-FFB">
-                                                <rect key="frame" x="385" y="106" width="174" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WFJ-O2-JvM">
-                                                <rect key="frame" x="353" y="143" width="258" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <segments>
-                                                    <segment title="総合"/>
-                                                    <segment title="10代"/>
-                                                    <segment title="20代"/>
-                                                    <segment title="30代"/>
-                                                    <segment title="40代"/>
-                                                    <segment title="50代~"/>
-                                                </segments>
-                                                <connections>
-                                                    <action selector="chooseAge:" destination="SO0-kM-sWW" eventType="valueChanged" id="qdN-6m-O6E"/>
-                                                </connections>
-                                            </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="CZg-2f-0Zz" secondAttribute="trailing" constant="320" id="2jA-rS-Ado"/>
+                                            <constraint firstAttribute="trailing" secondItem="CZg-2f-0Zz" secondAttribute="trailing" id="2jA-rS-Ado"/>
                                             <constraint firstItem="CZg-2f-0Zz" firstAttribute="leading" secondItem="viI-yU-ys7" secondAttribute="leading" id="4I1-u8-Crq"/>
-                                            <constraint firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" constant="37" id="czX-cV-gBw"/>
+                                            <constraint firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" id="czX-cV-gBw"/>
                                             <constraint firstItem="CZg-2f-0Zz" firstAttribute="top" secondItem="viI-yU-ys7" secondAttribute="top" id="djZ-tT-fOy"/>
-                                            <constraint firstAttribute="width" constant="640" id="plI-cf-u6u"/>
+                                            <constraint firstAttribute="width" constant="320" id="plI-cf-u6u"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -259,33 +237,25 @@
                                     <constraint firstItem="viI-yU-ys7" firstAttribute="top" secondItem="UbY-QK-UfQ" secondAttribute="top" id="wlC-OA-Pzy"/>
                                 </constraints>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="V67-uG-CQw">
-                                <rect key="frame" x="0.0" y="630" width="640" height="37"/>
-                                <color key="backgroundColor" red="0.57895482509999996" green="0.57895482509999996" blue="0.57895482509999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="V67-uG-CQw" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="BME-so-9nL"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="bottom" secondItem="Ur5-Us-vf0" secondAttribute="bottom" id="GZz-hV-zAB"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="top" secondItem="Ur5-Us-vf0" secondAttribute="top" id="KXj-FO-s9W"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="trailing" secondItem="Ur5-Us-vf0" secondAttribute="trailing" id="LNs-Jh-EXI"/>
-                            <constraint firstItem="Ur5-Us-vf0" firstAttribute="trailing" secondItem="V67-uG-CQw" secondAttribute="trailing" id="Oqy-uP-N9i"/>
-                            <constraint firstItem="Ur5-Us-vf0" firstAttribute="bottom" secondItem="V67-uG-CQw" secondAttribute="bottom" id="gb4-TA-qG2"/>
                             <constraint firstItem="UbY-QK-UfQ" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="rkX-X3-Z6h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ur5-Us-vf0"/>
                     </view>
-                    <size key="freeformSize" width="640" height="667"/>
+                    <size key="freeformSize" width="320" height="667"/>
                     <connections>
                         <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
-                        <outlet property="pageControl" destination="V67-uG-CQw" id="Qhh-iu-kgE"/>
                         <outlet property="scrollView" destination="UbY-QK-UfQ" id="RD9-fd-OOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-752" y="1154.5727136431785"/>
+            <point key="canvasLocation" x="-408" y="1155"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
