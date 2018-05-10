@@ -8,41 +8,12 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var menuRanking: UITableView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
-    
-    @IBAction func chooseAge(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            // TODO 総合を選択したときの処理
-            print("総合を選択")
-        case 1:
-            // TODO 10代を選択したときの処理
-            print("10代を選択")
-        case 2:
-            // TODO 20代を選択したときの処理
-            print("20代を選択")
-        case 3:
-            // TODO 30代を選択したときの処理
-            print("30代を選択")
-        case 4:
-            // TODO 40代を選択したときの処理
-            print("40代を選択")
-        case 5:
-            // TODO 50代~を選択したときの処理
-            print("50代以上を選択")
-        default:
-            print("デフォルトは総合")
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scrollView.delegate = self
         
         self.menuRanking.delegate = self
         self.menuRanking.dataSource = self
