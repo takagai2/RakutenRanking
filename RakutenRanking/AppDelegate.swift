@@ -21,6 +21,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
         Realm.Configuration.defaultConfiguration = config
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        let menuVC = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+        let navigationController = UINavigationController(rootViewController: mainVC)
+        let viewController = SlideViewController(mainViewController: navigationController, leftMenuViewController: menuVC)
+        
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

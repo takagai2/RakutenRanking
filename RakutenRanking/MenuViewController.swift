@@ -48,12 +48,6 @@ class MenuViewController: UIViewController, UIScrollViewDelegate, UITableViewDel
         self.menuRanking.dataSource = self
     }
     
-    // スクロール停止時に呼び出される
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        // ページコントロールに現在のページ番号を設定
-        pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
-    }
-    
     // セル表示用のテストデータ
     let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
     

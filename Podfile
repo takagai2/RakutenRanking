@@ -10,6 +10,7 @@ target 'RakutenRanking' do
   pod 'SwiftyJSON'
   pod 'SwiftDate', git: 'https://github.com/malcommac/SwiftDate.git', branch: 'feature/4.5.0'
   pod 'RealmSwift'
+  pod 'SlideMenuControllerSwift', :git => 'https://github.com/dekatotoro/SlideMenuControllerSwift', :branch => 'swift4'
 
   target 'RakutenRankingTests' do
     inherit! :search_paths

@@ -19,12 +19,14 @@ PODS:
   - Realm/Headers (3.3.2)
   - RealmSwift (3.3.2):
     - Realm (= 3.3.2)
+  - SlideMenuControllerSwift (3.0.2)
   - SwiftDate (4.5.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - RealmSwift
+  - SlideMenuControllerSwift (from `https://github.com/dekatotoro/SlideMenuControllerSwift`, branch `swift4`)
   - SwiftDate (from `https://github.com/malcommac/SwiftDate.git`, branch `feature/4.5.0`)
   - SwiftyJSON
 
@@ -36,11 +38,17 @@ SPEC REPOS:
     - SwiftyJSON
 
 EXTERNAL SOURCES:
+  SlideMenuControllerSwift:
+    :branch: swift4
+    :git: https://github.com/dekatotoro/SlideMenuControllerSwift
   SwiftDate:
     :branch: feature/4.5.0
     :git: https://github.com/malcommac/SwiftDate.git
 
 CHECKOUT OPTIONS:
+  SlideMenuControllerSwift:
+    :commit: 88ed3c28b17fdbb194dfa8b2c8e37c742c0b78a7
+    :git: https://github.com/dekatotoro/SlideMenuControllerSwift
   SwiftDate:
     :commit: a59cbfc1dcba65d0c80c162cb75a3d635178478a
     :git: https://github.com/malcommac/SwiftDate.git
@@ -49,9 +57,10 @@ SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
   RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
+  SlideMenuControllerSwift: 9e8d2bba8ea9201c6207acb76e95a2841453ec9c
   SwiftDate: 6562797d1a155dcfabcfd4ad36760394674ba876
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: b9f1e2e7bbd4ba2f239817950d26f721897815c1
+PODFILE CHECKSUM: ee60946fb861bfa6c9c2d34fa9021959a9fe68ab
 
 COCOAPODS: 1.5.0
