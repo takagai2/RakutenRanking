@@ -12,7 +12,8 @@
   - Realm 3.5.0  
   - RealmSwift 3.5.0  
   - SwiftyJSON 4.1.0
-  - SwiftDate 4.5.0  
+  - SwiftDate 4.5.0
+  - SlideMenuControllerSwift 3.0.2  
 #### 1. ターミナルを開きCocoaPodsをインストール
 ```$ sudo gem install cocoapods```
 #### 2. セットアップ
@@ -39,7 +40,7 @@ platform :ios, '9.0'
 インストール後はプロジェクトファイル内に `.xcworkspace` ファイルが作られるので、こちらから開発を行う。
 
 ### アクセスキーについて
-以下のコマンドで `accessKey.swift.sample` の内容をコピーする。  
+以下のコマンドで `AccessKey.swift.sample` の内容をコピーする。  
 ```$ cp AccessKey.swift.sample AccessKey.swift```
 
 `AccessKey.swift` 内の `applicationId` を新たに取得したキーに書き加える。  
