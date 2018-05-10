@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var mainRanking: UITableView!
     
     @IBAction func showMenuView(_ sender: Any){
-        self.performSegue(withIdentifier: "toMenu", sender: nil)
+        self.showMenu()
     }
     
     @IBAction func showConfigView(_ sender: Any){
@@ -151,6 +151,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
+    }
+    
+    private func showMenu() {
+        self.slideMenuController()?.openLeft()
     }
     
     // MARK: UITableViewDatasource

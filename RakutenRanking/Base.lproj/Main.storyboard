@@ -281,7 +281,6 @@
                         <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
                         <outlet property="pageControl" destination="V67-uG-CQw" id="Qhh-iu-kgE"/>
                         <outlet property="scrollView" destination="UbY-QK-UfQ" id="RD9-fd-OOz"/>
-                        <segue destination="5lQ-Fk-rcO" kind="show" identifier="toDetail" id="40y-Rc-Ga9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -409,7 +408,6 @@
                     <connections>
                         <outlet property="mainRanking" destination="t0X-rQ-m8Q" id="6P6-6A-klC"/>
                         <segue destination="ytB-cb-YjQ" kind="show" identifier="toConfig" id="dK6-Vg-wrj"/>
-                        <segue destination="SO0-kM-sWW" kind="show" identifier="toMenu" id="d7B-4m-biJ"/>
                         <segue destination="OpI-JF-obs" kind="show" identifier="toFavoriteList" id="j4B-Tc-Ejm"/>
                         <segue destination="5lQ-Fk-rcO" kind="show" identifier="toDetail" id="jvl-Fl-qlr"/>
                     </connections>
@@ -573,6 +571,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="40y-Rc-Ga9"/>
+        <segue reference="BtZ-ch-crA"/>
     </inferredMetricsTieBreakers>
 </document>
