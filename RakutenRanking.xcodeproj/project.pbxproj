@@ -29,6 +29,7 @@
 		59E6470220561A7700EFD54C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59E6470120561A7700EFD54C /* Assets.xcassets */; };
 		59E6470520561A7700EFD54C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E6470320561A7700EFD54C /* LaunchScreen.storyboard */; };
 		59E6471020561A7700EFD54C /* RakutenRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E6470F20561A7700EFD54C /* RakutenRankingTests.swift */; };
+		59F2E42320A3E21E00B309C1 /* SlideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F2E42220A3E21E00B309C1 /* SlideViewController.swift */; };
 		59F66C75206354AE00A86F41 /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C74206354AE00A86F41 /* ConfigViewController.swift */; };
 		59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7620636ABE00A86F41 /* MenuViewController.swift */; };
 		59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */; };
@@ -76,6 +77,7 @@
 		59E6470B20561A7700EFD54C /* RakutenRankingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RakutenRankingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59E6470F20561A7700EFD54C /* RakutenRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RakutenRankingTests.swift; sourceTree = "<group>"; };
 		59E6471120561A7700EFD54C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		59F2E42220A3E21E00B309C1 /* SlideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideViewController.swift; sourceTree = "<group>"; };
 		59F66C74206354AE00A86F41 /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		59F66C7620636ABE00A86F41 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */,
 				59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */,
 				595702FA20779126002BAC97 /* ItemDetailViewController.swift */,
+				59F2E42220A3E21E00B309C1 /* SlideViewController.swift */,
 				59E646FA20561A7700EFD54C /* AppDelegate.swift */,
 				59E646FE20561A7700EFD54C /* Main.storyboard */,
 				59E6470120561A7700EFD54C /* Assets.xcassets */,
@@ -373,6 +376,7 @@
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,
 				5969F2E2208EC18800468D03 /* FavoriteObject.swift in Sources */,
 				59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */,
+				59F2E42320A3E21E00B309C1 /* SlideViewController.swift in Sources */,
 				59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */,
 				5998E350208EEBDA00DD87E8 /* RankingObject.swift in Sources */,
 				599560FE207E10A600F05AEA /* AccessKey.swift in Sources */,
