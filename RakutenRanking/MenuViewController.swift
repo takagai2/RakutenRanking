@@ -81,8 +81,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // cellが選択された時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuList.deselectRow(at: indexPath, animated: true)
-        // TODO: ランキング種別の絞り込みを設定したら、表示するランキングを変更する
-        // TODO: 表示設定の切り替えをしたら、表示方法を変更する
+        // タップされたセルを取得して変数に設定を保持する
         switch indexPath.section {
         case 0:
             self.setGender(index: indexPath.row)
