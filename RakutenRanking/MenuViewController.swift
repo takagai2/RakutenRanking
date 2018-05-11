@@ -19,6 +19,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // セクションに使う配列
     private let sections = ["性別 で絞り込む", "年齢 で絞り込む", "表示方法 を選ぶ"]
     
+    // 選択されたランキング種別を保持する
+    private var gender: Gender = .notKnown
+    private var age: Age = .notKnown
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,13 +83,41 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         // TODO: 表示設定の切り替えをしたら、表示方法を変更する
         switch indexPath.section {
         case 0:
-            print("Value: \(genderType[indexPath.row])")
+            self.convertGender(index: indexPath.row)
         case 1:
-            print("Value: \(ageType[indexPath.row])")
+            self.convertAge(index: indexPath.row)
         case 2:
             print("Value: \(displayType[indexPath.row])")
         default:
             print("Value: nil")
+        }
+    }
+    
+    private func convertGender(index: Int) {
+        switch index {
+        case 0:
+            self.gender = .male
+        case 1:
+            self.gender = .female
+        default:
+            self.gender = .notKnown
+        }
+    }
+    
+    private func convertAge(index: Int) {
+        switch index {
+        case 0:
+            self.age = .teens
+        case 1:
+            self.age = .twenties
+        case 2:
+            self.age = .thirties
+        case 3:
+            self.age = .forties
+        case 4:
+            self.age = .fiftiesOver
+        default:
+            self.age = .notKnown
         }
     }
     
