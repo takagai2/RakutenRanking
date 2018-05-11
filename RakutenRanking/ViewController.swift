@@ -161,7 +161,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func leftDidClose() {
-        print("メニューしまった")
+        self.gender = MenuViewController.gender
+        self.age = MenuViewController.age
     }
     
     // MARK: UITableViewDatasource
