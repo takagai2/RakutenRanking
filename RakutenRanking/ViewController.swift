@@ -73,6 +73,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキング種別を選択するための値
     var gender: Gender = Gender.notKnown
     var age: Age = Age.notKnown
+    // 表示方法のタイプを数値で保持
+    private var displayPattern: Int = 0
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -161,10 +163,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func leftDidClose() {
-        if self.gender != MenuViewController.gender && self.age != MenuViewController.age {
+        if self.gender != MenuViewController.gender || self.age != MenuViewController.age {
             self.gender = MenuViewController.gender
             self.age = MenuViewController.age
             getRankingItem(gender: gender, age: age)
+        }
+        
+        if self.displayPattern != MenuViewController.displayPattern {
+            self.displayPattern = MenuViewController.displayPattern
+            setRankingPattern()
+        }
+    }
+    
+    private func setRankingPattern() {
+        switch displayPattern {
+        case 0:
+            self.mainRanking.isHidden = false
+            self.collectionView.removeFromSuperview()
+            self.removePageView()
+        case 1:
+            self.mainRanking.isHidden = true
+            self.showGridView()
+            self.removePageView()
+        case 2:
+            self.mainRanking.isHidden = true
+            self.collectionView.removeFromSuperview()
+            self.showPageView()
+        default:
+            self.mainRanking.isHidden = false
+            self.collectionView.removeFromSuperview()
+            self.removePageView()
         }
     }
     
