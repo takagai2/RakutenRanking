@@ -83,9 +83,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         // TODO: 表示設定の切り替えをしたら、表示方法を変更する
         switch indexPath.section {
         case 0:
-            self.convertGender(index: indexPath.row)
+            self.setGender(index: indexPath.row)
         case 1:
-            self.convertAge(index: indexPath.row)
+            self.setAge(index: indexPath.row)
         case 2:
             print("Value: \(displayType[indexPath.row])")
         default:
@@ -93,7 +93,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func convertGender(index: Int) {
+    private func setGender(index: Int) {
         switch index {
         case 0:
             MenuViewController.gender = .male
@@ -104,7 +104,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func convertAge(index: Int) {
+    private func setAge(index: Int) {
         switch index {
         case 0:
             MenuViewController.age = .teens

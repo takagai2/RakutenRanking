@@ -161,8 +161,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func leftDidClose() {
-        self.gender = MenuViewController.gender
-        self.age = MenuViewController.age
+        if self.gender != MenuViewController.gender && self.age != MenuViewController.age {
+            self.gender = MenuViewController.gender
+            self.age = MenuViewController.age
+            getRankingItem(gender: gender, age: age)
+        }
     }
     
     // MARK: UITableViewDatasource
