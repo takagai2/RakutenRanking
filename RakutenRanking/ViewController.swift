@@ -29,24 +29,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.performSegue(withIdentifier: "toFavoriteList", sender: nil)
     }
     
-    @IBAction func changeToList(_ sender: Any){
-        self.mainRanking.isHidden = false
-        self.collectionView.removeFromSuperview()
-        self.removePageView()
-    }
-    
-    @IBAction func changeToGrid(_ sender: Any){
-        self.mainRanking.isHidden = true
-        self.showGridView()
-        self.removePageView()
-    }
-    
-    @IBAction func changeToPage(_ sender: Any){
-        self.mainRanking.isHidden = true
-        self.collectionView.removeFromSuperview()
-        self.showPageView()
-    }
-    
     private let collectionView: UICollectionView = {
         //セルのレイアウト設計
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -178,22 +160,32 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private func setRankingPattern() {
         switch displayPattern {
         case 0:
-            self.mainRanking.isHidden = false
-            self.collectionView.removeFromSuperview()
-            self.removePageView()
+            displayListView()
         case 1:
-            self.mainRanking.isHidden = true
-            self.showGridView()
-            self.removePageView()
+            displayGridView()
         case 2:
-            self.mainRanking.isHidden = true
-            self.collectionView.removeFromSuperview()
-            self.showPageView()
+            displayPageView()
         default:
-            self.mainRanking.isHidden = false
-            self.collectionView.removeFromSuperview()
-            self.removePageView()
+            displayListView()
         }
+    }
+    
+    private func displayListView() {
+        self.mainRanking.isHidden = false
+        self.collectionView.removeFromSuperview()
+        self.removePageView()
+    }
+    
+    private func displayGridView() {
+        self.mainRanking.isHidden = true
+        self.showGridView()
+        self.removePageView()
+    }
+    
+    private func displayPageView() {
+        self.mainRanking.isHidden = true
+        self.collectionView.removeFromSuperview()
+        self.showPageView()
     }
     
     // MARK: UITableViewDatasource
