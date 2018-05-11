@@ -173,9 +173,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-2f-0Zz">
-                                <rect key="frame" x="0.0" y="10" width="320" height="647"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZg-2f-0Zz">
+                                <rect key="frame" x="0.0" y="64" width="320" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" id="lEX-MG-wkZ" customClass="MenuTableViewCell" customModule="RakutenRanking" customModuleProvider="target">
@@ -200,8 +199,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFb-w1-hI2">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="tintColor" red="0.70196563005447388" green="0.70195221900939941" blue="0.70196133852005005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <items>
+                                    <navigationItem title="menu" id="2aU-da-Tfe"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647136449813843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="CZg-2f-0Zz" firstAttribute="top" secondItem="yFb-w1-hI2" secondAttribute="bottom" id="3KN-nc-IYM"/>
+                            <constraint firstItem="CZg-2f-0Zz" firstAttribute="trailing" secondItem="Ur5-Us-vf0" secondAttribute="trailing" id="8gg-Oc-fND"/>
+                            <constraint firstItem="CZg-2f-0Zz" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="Am9-Qz-xOC"/>
+                            <constraint firstItem="yFb-w1-hI2" firstAttribute="leading" secondItem="Ur5-Us-vf0" secondAttribute="leading" id="OHd-R8-Zd0"/>
+                            <constraint firstItem="Ur5-Us-vf0" firstAttribute="bottom" secondItem="CZg-2f-0Zz" secondAttribute="bottom" id="Xy0-NS-63t"/>
+                            <constraint firstItem="yFb-w1-hI2" firstAttribute="top" secondItem="Ur5-Us-vf0" secondAttribute="top" id="f8g-Ii-6Kv"/>
+                            <constraint firstItem="yFb-w1-hI2" firstAttribute="trailing" secondItem="Ur5-Us-vf0" secondAttribute="trailing" id="mgz-n9-Qxe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ur5-Us-vf0"/>
                     </view>
                     <size key="freeformSize" width="320" height="667"/>
@@ -211,7 +226,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-408" y="1155"/>
+            <point key="canvasLocation" x="-408" y="1154.5727136431785"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
