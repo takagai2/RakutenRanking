@@ -206,7 +206,7 @@
                     </view>
                     <size key="freeformSize" width="320" height="667"/>
                     <connections>
-                        <outlet property="menuRanking" destination="CZg-2f-0Zz" id="Ef7-ud-2mK"/>
+                        <outlet property="menuList" destination="CZg-2f-0Zz" id="8RN-UG-dNC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I2f-sU-gbg" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,14 +10,7 @@ import UIKit
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var menuRanking: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.menuRanking.delegate = self
-        self.menuRanking.dataSource = self
-    }
+    @IBOutlet weak var menuList: UITableView!
     
     // テーブルのデータに使う配列
     private let genderType = ["男性", "女性"]
@@ -25,6 +18,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let displayType = ["リスト表示", "グリッド表示", "ページ表示"]
     // セクションに使う配列
     private let sections = ["性別 で絞り込む", "年齢 で絞り込む", "表示方法 を選ぶ"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.menuList.delegate = self
+        self.menuList.dataSource = self
+    }
     
     // MARK: UITableViewDataSource
     
@@ -38,21 +38,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return sections[section]
     }
     
-    // cellが選択された時に呼ばれる
-    private func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            print("Value: \(genderType[indexPath.row])")
-        case 1:
-            print("Value: \(ageType[indexPath.row])")
-        case 2:
-            print("Value: \(displayType[indexPath.row])")
-        default:
-            print("Value: nil")
-        }
-    }
-    
-    // セル数
+    // 各セクションのセル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -86,9 +72,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: UITableViewDelegate
     
+    // cellが選択された時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        menuList.deselectRow(at: indexPath, animated: true)
         // TODO: ランキング種別の絞り込みを設定したら、表示するランキングを変更する
         // TODO: 表示設定の切り替えをしたら、表示方法を変更する
+        switch indexPath.section {
+        case 0:
+            print("Value: \(genderType[indexPath.row])")
+        case 1:
+            print("Value: \(ageType[indexPath.row])")
+        case 2:
+            print("Value: \(displayType[indexPath.row])")
+        default:
+            print("Value: nil")
+        }
     }
     
     override func didReceiveMemoryWarning() {
