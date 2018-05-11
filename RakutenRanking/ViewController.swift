@@ -9,10 +9,11 @@
 import UIKit
 import AFNetworking
 import RealmSwift
+import SlideMenuControllerSwift
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
     
     @IBOutlet weak var mainRanking: UITableView!
     
@@ -93,6 +94,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
         mainRanking.refreshControl = refreshControl
+        
+        self.slideMenuController()?.delegate = self
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -155,6 +158,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func showMenu() {
         self.slideMenuController()?.openLeft()
+    }
+    
+    func leftDidClose() {
+        print("メニューしまった")
     }
     
     // MARK: UITableViewDatasource
