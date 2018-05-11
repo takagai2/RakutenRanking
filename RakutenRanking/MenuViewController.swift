@@ -22,6 +22,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // 選択されたランキング種別を保持する
     static var gender: Gender = .notKnown
     static var age: Age = .notKnown
+    // ランキング表示方法の変更を保持する
+    static var displayPattern: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,9 +89,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         case 1:
             self.setAge(index: indexPath.row)
         case 2:
-            print("Value: \(displayType[indexPath.row])")
+            MenuViewController.displayPattern = indexPath.row
         default:
-            print("Value: nil")
+            break
         }
     }
     
