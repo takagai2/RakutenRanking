@@ -64,13 +64,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         switch indexPath.section {
         case 0:
-            cell.rankingType.text = genderType[indexPath.row]
+            cell.menuList.text = genderType[indexPath.row]
         case 1:
-            cell.rankingType.text = ageType[indexPath.row]
+            cell.menuList.text = ageType[indexPath.row]
         case 2:
-            cell.rankingType.text = displayType[indexPath.row]
+            cell.menuList.text = displayType[indexPath.row]
         default:
-            cell.rankingType.text = ""
+            cell.menuList.text = ""
         }
         
         return cell

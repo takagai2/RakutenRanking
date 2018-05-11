@@ -194,7 +194,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="rankingType" destination="JW2-l2-vMc" id="f3q-9i-p1Z"/>
+                                            <outlet property="menuList" destination="JW2-l2-vMc" id="Ouo-42-P2v"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
