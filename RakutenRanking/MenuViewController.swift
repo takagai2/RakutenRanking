@@ -8,74 +8,167 @@
 
 import UIKit
 
-class MenuViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
+class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var menuRanking: UITableView!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var menuList: UITableView!
     
-    @IBAction func chooseAge(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            // TODO 総合を選択したときの処理
-            print("総合を選択")
-        case 1:
-            // TODO 10代を選択したときの処理
-            print("10代を選択")
-        case 2:
-            // TODO 20代を選択したときの処理
-            print("20代を選択")
-        case 3:
-            // TODO 30代を選択したときの処理
-            print("30代を選択")
-        case 4:
-            // TODO 40代を選択したときの処理
-            print("40代を選択")
-        case 5:
-            // TODO 50代~を選択したときの処理
-            print("50代以上を選択")
-        default:
-            print("デフォルトは総合")
-        }
-    }
+    // テーブルのデータに使う配列
+    private let genderType = ["男性", "女性"]
+    private let ageType = ["10代", "20代", "30代", "40代", "50代 以上"]
+    private let displayType = ["リスト表示", "グリッド表示", "ページ表示"]
+    // セクションに使う配列
+    private let sections = ["性別 で絞り込む", "年齢 で絞り込む", "表示方法 を選ぶ"]
+    
+    // 選択されたランキング種別を保持する
+    static var gender: Gender = .notKnown
+    static var age: Age = .notKnown
+    // ランキング表示方法の変更を保持する
+    static var displayPattern: Int = 0
+    // チェックマークの有無を保持する
+    var checkMarks = [false, false, false, false, false]
+    private var selectedCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
-        
-        self.menuRanking.delegate = self
-        self.menuRanking.dataSource = self
+        self.menuList.delegate = self
+        self.menuList.dataSource = self
     }
     
-    // セル表示用のテストデータ
-    let rankingList = ["1位の商品名", "2位の商品名", "3位の商品名", "4位の商品名", "5位の商品名", "6位の商品名", "7位の商品名", "8位の商品名", "9位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名", "10位の商品名"]
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // リスト表示の行に予めチェックを入れておく
+        checkedDisplayPattern()
+    }
     
     // MARK: UITableViewDataSource
     
     // セクション数
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.sections.count
     }
     
-    // セル数
+    // セクションのタイトル
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
+    // 各セクションのセル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.rankingList.count
+        switch section {
+        case 0:
+            return genderType.count
+        case 1:
+            return ageType.count
+        case 2:
+            return displayType.count
+        default:
+            return 0
+        }
     }
     
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuRankingCell", for: indexPath) as! MenuTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuTableViewCell
         
-        cell.rank.text = String(indexPath.row + 1)
-        cell.itemName.text = self.rankingList[indexPath.row]
+        switch indexPath.section {
+        case 0:
+            cell.menuList.text = genderType[indexPath.row]
+        case 1:
+            cell.menuList.text = ageType[indexPath.row]
+        case 2:
+            cell.menuList.text = displayType[indexPath.row]
+        default:
+            cell.menuList.text = ""
+        }
+        
         return cell
     }
     
     // MARK: UITableViewDelegate
     
+    // cellが選択された時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: 各商品の詳細ページに遷移させる
+        menuList.deselectRow(at: indexPath, animated: true)
+        selectedCell = tableView.cellForRow(at: indexPath)
+        
+        // タップされたセルにチェックマークをつけて変数に設定を保持する
+        changeRankingType(indexPath: indexPath)
+    }
+    
+    private func changeRankingType(indexPath: IndexPath) {
+        if selectedCell == menuList.cellForRow(at: indexPath) {
+            if selectedCell.accessoryType == .none {
+                selectedCell.accessoryType = .checkmark
+                // チェックマークをつけた動作をセクション毎に変更する
+                switch indexPath.section {
+                case 0:
+                    self.setGender(index: indexPath.row)
+                case 1:
+                    self.setAge(index: indexPath.row)
+                case 2:
+                    MenuViewController.displayPattern = indexPath.row
+                default:
+                    break
+                }
+                checkMarks = checkMarks.enumerated().flatMap { (elem: (Int, Bool)) -> Bool in
+                    if indexPath.row != elem.0 {
+                        let otherCellIndexPath = NSIndexPath(row: elem.0, section: indexPath.section)
+                        if let otherCell = menuList.cellForRow(at: otherCellIndexPath as IndexPath) {
+                            otherCell.accessoryType = .none
+                        }
+                    }
+                    return indexPath.row == elem.0
+                }
+            } else {
+                // チェックマークがついている行をタップした際の動作をセクション毎に変更する
+                switch indexPath.section {
+                case 0:
+                    selectedCell.accessoryType = .none
+                    MenuViewController.gender = .notKnown
+                case 1:
+                    selectedCell.accessoryType = .none
+                    MenuViewController.age = .notKnown
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    private func setGender(index: Int) {
+        switch index {
+        case 0:
+            MenuViewController.gender = .male
+        case 1:
+            MenuViewController.gender = .female
+        default:
+            MenuViewController.gender = .notKnown
+        }
+    }
+    
+    private func setAge(index: Int) {
+        switch index {
+        case 0:
+            MenuViewController.age = .teens
+        case 1:
+            MenuViewController.age = .twenties
+        case 2:
+            MenuViewController.age = .thirties
+        case 3:
+            MenuViewController.age = .forties
+        case 4:
+            MenuViewController.age = .fiftiesOver
+        default:
+            MenuViewController.age = .notKnown
+        }
+    }
+    
+    private func checkedDisplayPattern() {
+        let indexPath = NSIndexPath(row: MenuViewController.displayPattern, section: 2)
+        if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+            myCell.accessoryType = .checkmark
+        }
     }
     
     override func didReceiveMemoryWarning() {

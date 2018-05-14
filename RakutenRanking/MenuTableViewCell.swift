@@ -10,9 +10,7 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var rank: UILabel!
-    @IBOutlet weak var itemName: UILabel!
-    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var menuList: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

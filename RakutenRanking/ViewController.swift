@@ -9,10 +9,11 @@
 import UIKit
 import AFNetworking
 import RealmSwift
+import SlideMenuControllerSwift
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
     
     @IBOutlet weak var mainRanking: UITableView!
     
@@ -26,24 +27,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func showFavoriteView(_ sender: Any){
         self.performSegue(withIdentifier: "toFavoriteList", sender: nil)
-    }
-    
-    @IBAction func changeToList(_ sender: Any){
-        self.mainRanking.isHidden = false
-        self.collectionView.removeFromSuperview()
-        self.removePageView()
-    }
-    
-    @IBAction func changeToGrid(_ sender: Any){
-        self.mainRanking.isHidden = true
-        self.showGridView()
-        self.removePageView()
-    }
-    
-    @IBAction func changeToPage(_ sender: Any){
-        self.mainRanking.isHidden = true
-        self.collectionView.removeFromSuperview()
-        self.showPageView()
     }
     
     private let collectionView: UICollectionView = {
@@ -72,6 +55,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ランキング種別を選択するための値
     var gender: Gender = Gender.notKnown
     var age: Age = Age.notKnown
+    // 表示方法のタイプを数値で保持
+    private var displayPattern: Int = 0
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -93,19 +78,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
         mainRanking.refreshControl = refreshControl
+        
+        self.slideMenuController()?.delegate = self
+        
+        getRankingItem(gender: gender, age: age)
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
         self.getRankingItem(gender: gender, age: age, sender)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        getRankingItem(gender: gender, age: age)
-        // ランキングタイトルを表示
-        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
@@ -155,6 +138,52 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func showMenu() {
         self.slideMenuController()?.openLeft()
+    }
+    
+    func leftDidClose() {
+        if self.gender != MenuViewController.gender || self.age != MenuViewController.age {
+            self.gender = MenuViewController.gender
+            self.age = MenuViewController.age
+            getRankingItem(gender: gender, age: age)
+        }
+        
+        if self.displayPattern != MenuViewController.displayPattern {
+            self.displayPattern = MenuViewController.displayPattern
+            setRankingPattern()
+        }
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+    }
+    
+    private func setRankingPattern() {
+        switch displayPattern {
+        case 0:
+            displayListView()
+        case 1:
+            displayGridView()
+        case 2:
+            displayPageView()
+        default:
+            displayListView()
+        }
+    }
+    
+    private func displayListView() {
+        self.mainRanking.isHidden = false
+        self.collectionView.removeFromSuperview()
+        self.removePageView()
+    }
+    
+    private func displayGridView() {
+        self.mainRanking.isHidden = true
+        self.showGridView()
+        self.removePageView()
+    }
+    
+    private func displayPageView() {
+        self.mainRanking.isHidden = true
+        self.collectionView.removeFromSuperview()
+        self.showPageView()
     }
     
     // MARK: UITableViewDatasource
