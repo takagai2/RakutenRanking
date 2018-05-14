@@ -100,7 +100,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                     self.setGender(index: indexPath.row)
                 case 1:
                     self.setAge(index: indexPath.row)
-                case 3:
+                case 2:
                     MenuViewController.displayPattern = indexPath.row
                 default:
                     break
