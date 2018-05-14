@@ -80,19 +80,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         mainRanking.refreshControl = refreshControl
         
         self.slideMenuController()?.delegate = self
+        
+        getRankingItem(gender: gender, age: age)
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
         self.getRankingItem(gender: gender, age: age, sender)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        getRankingItem(gender: gender, age: age)
-        // ランキングタイトルを表示
-        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
@@ -155,6 +151,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.displayPattern = MenuViewController.displayPattern
             setRankingPattern()
         }
+        // ランキングタイトルを表示
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     private func setRankingPattern() {
