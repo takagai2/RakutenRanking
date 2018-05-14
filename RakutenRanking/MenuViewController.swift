@@ -165,7 +165,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     private func checkedDisplayPattern() {
-        let indexPath = NSIndexPath(row: 0, section: 2)
+        let indexPath = NSIndexPath(row: MenuViewController.displayPattern, section: 2)
         if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
             myCell.accessoryType = .checkmark
         }
