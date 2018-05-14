@@ -24,6 +24,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     static var age: Age = .notKnown
     // ランキング表示方法の変更を保持する
     static var displayPattern: Int = 0
+    // チェックマークの有無を保持する
+    var checkMarks = [false, false, false, false, false]
+    private var selectedCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,16 +84,49 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // cellが選択された時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         menuList.deselectRow(at: indexPath, animated: true)
-        // タップされたセルを取得して変数に設定を保持する
-        switch indexPath.section {
-        case 0:
-            self.setGender(index: indexPath.row)
-        case 1:
-            self.setAge(index: indexPath.row)
-        case 2:
-            MenuViewController.displayPattern = indexPath.row
-        default:
-            break
+        selectedCell = tableView.cellForRow(at: indexPath)
+        
+        // タップされたセルにチェックマークをつけて変数に設定を保持する
+        changeRankingType(indexPath: indexPath)
+    }
+    
+    private func changeRankingType(indexPath: IndexPath) {
+        if selectedCell == menuList.cellForRow(at: indexPath) {
+            if selectedCell.accessoryType == .none {
+                selectedCell.accessoryType = .checkmark
+                // チェックマークをつけた動作をセクション毎に変更する
+                switch indexPath.section {
+                case 0:
+                    self.setGender(index: indexPath.row)
+                case 1:
+                    self.setAge(index: indexPath.row)
+                case 3:
+                    MenuViewController.displayPattern = indexPath.row
+                default:
+                    break
+                }
+                checkMarks = checkMarks.enumerated().flatMap { (elem: (Int, Bool)) -> Bool in
+                    if indexPath.row != elem.0 {
+                        let otherCellIndexPath = NSIndexPath(row: elem.0, section: indexPath.section)
+                        if let otherCell = menuList.cellForRow(at: otherCellIndexPath as IndexPath) {
+                            otherCell.accessoryType = .none
+                        }
+                    }
+                    return indexPath.row == elem.0
+                }
+            } else {
+                // チェックマークがついている行をタップした際の動作をセクション毎に変更する
+                switch indexPath.section {
+                case 0:
+                    selectedCell.accessoryType = .none
+                    MenuViewController.gender = .notKnown
+                case 1:
+                    selectedCell.accessoryType = .none
+                    MenuViewController.age = .notKnown
+                default:
+                    break
+                }
+            }
         }
     }
     
