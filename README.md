@@ -8,7 +8,7 @@
 
 ### ライブラリのインストール
 - CocoaPods 1.5.0  
-  - AFNetworking 3.0  
+  - AFNetworking 3.2.1  
   - Realm 3.5.0  
   - RealmSwift 3.5.0  
   - SwiftyJSON 4.1.0
@@ -29,7 +29,7 @@ platform :ios, '9.0'
 - バージョンを指定しない場合はその時点での最新版を取得
 ```
   # Pods for RakutenRanking
-  pod 'AFNetworking', '~> 3.0'
+  pod 'AFNetworking', '3.2.1'
   pod 'SwiftyJSON'
    ：
 ```
