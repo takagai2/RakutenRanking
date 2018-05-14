@@ -35,6 +35,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.menuList.dataSource = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // リスト表示の行に予めチェックを入れておく
+        checkedDisplayPattern()
+    }
+    
     // MARK: UITableViewDataSource
     
     // セクション数
@@ -155,6 +161,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             MenuViewController.age = .fiftiesOver
         default:
             MenuViewController.age = .notKnown
+        }
+    }
+    
+    private func checkedDisplayPattern() {
+        let indexPath = NSIndexPath(row: 0, section: 2)
+        if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+            myCell.accessoryType = .checkmark
         }
     }
     
