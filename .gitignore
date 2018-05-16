@@ -36,6 +36,9 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
+*.app.dSYM.zip
+*.ipa
+*.xcworkspace/xcshareddata/
 
 ### Xcode Patch ###
 *.xcodeproj/*
