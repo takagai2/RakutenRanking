@@ -13,6 +13,7 @@ import SlideMenuControllerSwift
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
+@available(iOS 10.0, *)
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
     
     @IBOutlet weak var mainRanking: UITableView!
@@ -247,6 +248,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 }
 
+@available(iOS 10.0, *)
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // cellの個数設定
@@ -305,6 +307,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
 
 }
 
+@available(iOS 10.0, *)
 extension ViewController: UIScrollViewDelegate {
     
     private func setPageView() {

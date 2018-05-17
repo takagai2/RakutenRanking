@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 10.0, *)
 class CollectionViewCell: UICollectionViewCell {
     
     // 商品名のlabelを生成
