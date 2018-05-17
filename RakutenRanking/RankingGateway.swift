@@ -17,7 +17,6 @@ class RankingGateway: RankingGatewayProtocol {
     func getResponse(url: String, _ callback: @escaping ([Item]) -> Void) {
         let manager = AFHTTPSessionManager()
         manager.get(url, parameters: nil,
-                    progress: nil,
                     success: {(operation, responseObject) -> Void in
                         // response取得成功 -> パース -> 配列を作成
                         let array = self.jsonConverter.getItems(responseObject)

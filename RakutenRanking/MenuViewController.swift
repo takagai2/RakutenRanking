@@ -111,7 +111,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 default:
                     break
                 }
-                checkMarks = checkMarks.enumerated().compactMap { (elem: (Int, Bool)) -> Bool in
+                checkMarks = checkMarks.enumerated().flatMap { (elem: (Int, Bool)) -> Bool in
                     if indexPath.row != elem.0 {
                         let otherCellIndexPath = NSIndexPath(row: elem.0, section: indexPath.section)
                         if let otherCell = menuList.cellForRow(at: otherCellIndexPath as IndexPath) {
