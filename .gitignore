@@ -32,6 +32,10 @@ DerivedData/
 !default.perspectivev3
 xcuserdata/
 
+## Gemfile ##
+.bundle/
+vendor/bundle
+
 ## Other
 *.moved-aside
 *.xccheckout
