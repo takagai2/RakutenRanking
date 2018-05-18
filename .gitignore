@@ -31,6 +31,9 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+
+## Gemfile ##
+.bundle/
 vendor/bundle
 
 ## Other
