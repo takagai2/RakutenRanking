@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 
-@available(iOS 10.0, *)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
