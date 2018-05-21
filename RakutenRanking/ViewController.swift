@@ -13,7 +13,6 @@ import SlideMenuControllerSwift
 
 let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height)
 
-@available(iOS 10.0, *)
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SlideMenuControllerDelegate {
     
     @IBOutlet weak var mainRanking: UITableView!
@@ -42,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - 44 ), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         //セルの登録
-        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         return collectionView
     }()
     
@@ -78,7 +77,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
-        mainRanking.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            mainRanking.refreshControl = refreshControl
+        } else {
+            mainRanking.addSubview(refreshControl)
+        }
         
         self.slideMenuController()?.delegate = self
         
@@ -248,7 +251,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 }
 
-@available(iOS 10.0, *)
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // cellの個数設定
@@ -302,12 +304,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         view.addSubview(collectionView)
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
-        collectionView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            collectionView.refreshControl = refreshControl
+        } else {
+            collectionView.addSubview(refreshControl)
+        }
     }
 
 }
 
-@available(iOS 10.0, *)
 extension ViewController: UIScrollViewDelegate {
     
     private func setPageView() {

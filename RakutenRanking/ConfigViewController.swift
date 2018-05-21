@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 10.0, *)
 class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     var genderType: Gender = Gender.notKnown
