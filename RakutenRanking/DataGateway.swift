@@ -82,6 +82,15 @@ class DataGateway: DataGatewayProtocol {
         }
     }
     
+    func isFavorite(item: Item) -> Bool {
+        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
+        if isSavedItem(obj: obj) {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     private func isSavedItem(obj: Results<FavoriteObject>) -> Bool {
         if obj.isEmpty {
             return true

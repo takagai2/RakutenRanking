@@ -62,6 +62,10 @@ class RankingManager {
         dataGateway.saveOrDeleteFavoriteItem(item: item)
     }
     
+    func isFavorite(item: Item) -> Bool {
+        return dataGateway.isFavorite(item: item)
+    }
+    
     func getFavoriteItem(_ callback: @escaping ([Item]) -> Void) {
         dataGateway.getFavoriteItems({(items: [Item]) -> Void in
             callback(items)
