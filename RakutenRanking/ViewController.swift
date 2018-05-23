@@ -219,7 +219,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let item = self.rankingItemList[indexPath.row]
             // お気に入り登録する / お気に入りの解除
             self.rankingManager.saveOrDeleteFavoriteObject(item: item)
-            // TODO: お気に入り登録されているかどうかを判定して、ボタンに表示する画像を変更
+            // お気に入り登録されているかどうかを判定して、ボタンに表示する画像を変更
+            if self.rankingManager.isFavorite(item: item) {
+                cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+            } else {
+                cell.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+            }
         }
         // 起動時にセルを表示する際、お気に入りに登録されている商品はFavorite画像を表示
         if self.rankingManager.isFavorite(item: item) {
