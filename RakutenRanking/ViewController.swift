@@ -202,6 +202,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.showPageView()
     }
     
+    private func convertPrice(price: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        let convertedPrice = formatter.string(from: Int(price)! as NSNumber)!
+        return convertedPrice
+    }
+    
     // MARK: UITableViewDatasource
     
     // セクション数
@@ -238,7 +247,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 商品の情報に関するviewを設定
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
-        cell.itemPrice.text = "\(item.price!)円"
+        cell.itemPrice.text = "¥ \(self.convertPrice(price: item.price!))"
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
