@@ -57,6 +57,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var age: Age = Age.notKnown
     // 表示方法のタイプを数値で保持
     private var displayPattern: Int = 0
+    // お気に入りリストを保持
+    private var favoriteItemList: [Item] = []
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -88,6 +90,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getRankingItem(gender: gender, age: age)
         // ランキングタイトルを表示
         self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+        // お気に入りリストを取得
+        rankingManager.getFavoriteItem({[weak self](array: [Item]) -> Void in
+            guard let `self` = self else { return }
+            self.favoriteItemList = array
+        })
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -206,11 +213,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
         item = self.rankingItemList[indexPath.row]
+        // セルをタップした場合の処理
         cell.onTapFavoriteListener = {[weak self]() -> Void in
             guard let `self` = self else { return }
             let item = self.rankingItemList[indexPath.row]
+            // お気に入り登録する / お気に入りの解除
             self.rankingManager.saveOrDeleteFavoriteObject(item: item)
+            // TODO: お気に入り登録されているかどうかを判定して、ボタンに表示する画像を変更
         }
+        // 起動時にセルを表示する際、お気に入りに登録されている商品はFavorite画像を表示
+        if self.rankingManager.isFavorite(item: item) {
+            cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        }
+        // 商品の情報に関するviewを設定
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
         cell.itemPrice.text = "\(item.price!)円"
@@ -222,6 +237,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
         // アイテム詳細画面を表示する
         self.performSegue(withIdentifier: "toDetail", sender: nil)
     }
