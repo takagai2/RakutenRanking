@@ -14,6 +14,7 @@ class DataGateway: DataGatewayProtocol {
     
     let realm = try! Realm()
     let userDefaults = UserDefaults.standard
+    private var obj: Results<FavoriteObject>!
     
     func saveItems(gender: Gender, age: Age, array: [Item]) {
         // [Item]を変換して保存する処理
@@ -72,19 +73,18 @@ class DataGateway: DataGatewayProtocol {
     }
     
     func saveOrDeleteFavoriteItem(item: Item) {
-        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
-        if isSavedItem(obj: obj) {
-            // データに同じItemがなければお気に入りに保存
-            saveFavoriteItem(item: item)
+        if isFavorite(item: item) {
+            // 保存されていれば削除
+            deleteFavoriteObejct(obj: self.obj)
         } else {
-            // 保存されているitemであれば削除
-            deleteFavoriteObejct(obj: obj)
+            // 保存されていなければ保存
+            saveFavoriteItem(item: item)
         }
     }
     
     func isFavorite(item: Item) -> Bool {
-        let obj: Results<FavoriteObject> = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
-        return !isSavedItem(obj: obj)
+        self.obj = realm.objects(FavoriteObject.self).filter("itemCode = %@", item.itemCode)
+        return !isSavedItem(obj: self.obj)
     }
     
     private func isSavedItem(obj: Results<FavoriteObject>) -> Bool {
