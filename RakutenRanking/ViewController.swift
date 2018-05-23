@@ -97,6 +97,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainRanking.reloadData()
+    }
+    
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
         self.getRankingItem(gender: gender, age: age, sender)
