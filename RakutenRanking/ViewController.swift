@@ -394,7 +394,7 @@ extension ViewController: UIScrollViewDelegate {
             itemPrice.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.5, width: 300, height: 40)
             itemPrice.textAlignment = .center
             if let price: String = item.price {
-                itemPrice.text = "\(price)円"
+                itemPrice.text = "¥ \(self.convertPrice(price: price))"
             }
             // 商品画像を表示するimageView生成
             let itemImage: UIImageView = UIImageView()
