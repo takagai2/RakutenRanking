@@ -90,6 +90,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.mainRanking.reloadData()
+    }
+    
     @objc func refreshRanking(_ sender: UIRefreshControl) {
         rankingManager.deleteData(gender: gender, age: age)
         self.getRankingItem(gender: gender, age: age, sender)
@@ -190,6 +195,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.showPageView()
     }
     
+    private func convertPrice(price: String) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = NumberFormatter.Style.decimal
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        let convertedPrice = formatter.string(from: Int(price)! as NSNumber)!
+        return convertedPrice
+    }
+    
     // MARK: UITableViewDatasource
     
     // セクション数
@@ -206,14 +220,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainRankingCell", for: indexPath) as! MainTableViewCell
         item = self.rankingItemList[indexPath.row]
+        // セルをタップした場合の処理
         cell.onTapFavoriteListener = {[weak self]() -> Void in
             guard let `self` = self else { return }
             let item = self.rankingItemList[indexPath.row]
+            // お気に入り登録する / お気に入りの解除
             self.rankingManager.saveOrDeleteFavoriteObject(item: item)
+            // お気に入り登録されているかどうかを判定して、ボタンに表示する画像を変更
+            if self.rankingManager.isFavorite(item: item) {
+                cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+            } else {
+                cell.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+            }
         }
+        // 起動時にセルを表示する際、お気に入りに登録されている商品はFavorite画像を表示
+        if self.rankingManager.isFavorite(item: item) {
+            cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        }
+        // 商品の情報に関するviewを設定
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
-        cell.itemPrice.text = "\(item.price!)円"
+        cell.itemPrice.text = "¥ \(self.convertPrice(price: item.price!))"
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         return cell
@@ -222,6 +249,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+        
         // アイテム詳細画面を表示する
         self.performSegue(withIdentifier: "toDetail", sender: nil)
     }
