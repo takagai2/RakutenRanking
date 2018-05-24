@@ -292,7 +292,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         cell.itemRank.text = " \(indexPath.row + 1)位"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
-            cell.itemName.text = " \(name)"
+            cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
             cell.itemPrice.text = "\(price)円"

@@ -13,8 +13,10 @@ class CollectionViewCell: UICollectionViewCell {
     // 商品名のlabelを生成
     let itemName: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 65, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
-        label.textColor = UIColor.gray
+        label.frame = CGRect(x: 5, y: 65, width: screenSize.width / 3.0 - 10, height: screenSize.width / 3.0)
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 12, weight: .thin)
+        label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
