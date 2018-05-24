@@ -57,8 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var age: Age = Age.notKnown
     // 表示方法のタイプを数値で保持
     private var displayPattern: Int = 0
-    // お気に入りリストを保持
-    private var favoriteItemList: [Item] = []
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -90,11 +88,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getRankingItem(gender: gender, age: age)
         // ランキングタイトルを表示
         self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
-        // お気に入りリストを取得
-        rankingManager.getFavoriteItem({[weak self](array: [Item]) -> Void in
-            guard let `self` = self else { return }
-            self.favoriteItemList = array
-        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
