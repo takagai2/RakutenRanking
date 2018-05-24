@@ -49,10 +49,8 @@ class CollectionViewCell: UICollectionViewCell {
     // お気に入り登録ボタンを生成
     let favoriteButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 70, y: 160, width: 50, height: 25)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.setTitle("Favo", for: UIControlState.normal)
-        button.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+        button.frame = CGRect(x: 90, y: 155, width: 40, height: 40)
+        button.setImage(UIImage(named: "NotFavorite"), for: .normal)
         button.addTarget(self, action: #selector(ViewController.saveToOrDeleteFromFavoritesOnGridView(_:)), for: .touchUpInside)
         return button
     }()
@@ -75,6 +73,12 @@ class CollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // セル再利用時に初期化する
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
     }
     
 }
