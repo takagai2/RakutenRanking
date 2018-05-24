@@ -42,7 +42,8 @@ class CollectionViewCell: UICollectionViewCell {
     
     // 商品画像を生成
     let itemImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 12, y: 10, width: 100, height: 100))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        image.center = CGPoint(x: (screenSize.width / 3.0) / 2.0, y: (screenSize.height / 3.0) / 4.0)
         return image
     }()
     
