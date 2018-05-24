@@ -295,7 +295,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
-            cell.itemPrice.text = "\(price)円"
+            cell.itemPrice.text = "¥ \(self.convertPrice(price: price))"
         }
         if let image: String = item.mSizeImageUrl {
             // 画像の非同期取得

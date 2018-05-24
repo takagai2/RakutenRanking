@@ -24,8 +24,9 @@ class CollectionViewCell: UICollectionViewCell {
     // 値段のlabelを生成
     let itemPrice: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
-        label.textColor = UIColor.gray
+        label.frame = CGRect(x: 0, y: 95, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
+        label.textColor = UIColor.darkGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         label.textAlignment = .right
         return label
     }()
