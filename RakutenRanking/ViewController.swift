@@ -384,6 +384,8 @@ extension ViewController: UIScrollViewDelegate {
             let itemName: UILabel = UILabel()
             itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
             itemName.textAlignment = .center
+            itemName.numberOfLines = 2
+            itemName.font = UIFont.systemFont(ofSize: 16, weight: .thin)
             if let name: String = item.name {
                 itemName.text = "\(name)"
             }
