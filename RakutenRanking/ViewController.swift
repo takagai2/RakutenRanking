@@ -249,6 +249,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.itemPrice.text = "¥ \(self.convertPrice(price: item.price!))"
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
+        
+        switch indexPath.row + 1 {
+        case 1:
+            cell.rankImage.image = UIImage(named: "No.1")
+        case 2:
+            cell.rankImage.image = UIImage(named: "No.2")
+        case 3:
+            cell.rankImage.image = UIImage(named: "No.3")
+        default:
+            break
+        }
         return cell
     }
     
