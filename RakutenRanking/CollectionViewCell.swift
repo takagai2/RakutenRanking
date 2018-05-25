@@ -13,8 +13,10 @@ class CollectionViewCell: UICollectionViewCell {
     // 商品名のlabelを生成
     let itemName: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 65, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
-        label.textColor = UIColor.gray
+        label.frame = CGRect(x: 5, y: 65, width: screenSize.width / 3.0 - 10, height: screenSize.width / 3.0)
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 12, weight: .thin)
+        label.numberOfLines = 2
         label.textAlignment = .left
         return label
     }()
@@ -22,8 +24,9 @@ class CollectionViewCell: UICollectionViewCell {
     // 値段のlabelを生成
     let itemPrice: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
-        label.textColor = UIColor.gray
+        label.frame = CGRect(x: 0, y: 95, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
+        label.textColor = UIColor.darkGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .thin)
         label.textAlignment = .right
         return label
     }()
@@ -39,17 +42,16 @@ class CollectionViewCell: UICollectionViewCell {
     
     // 商品画像を生成
     let itemImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 12, y: 10, width: 100, height: 100))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        image.center = CGPoint(x: (screenSize.width / 3.0) / 2.0, y: (screenSize.height / 3.0) / 4.0)
         return image
     }()
     
     // お気に入り登録ボタンを生成
     let favoriteButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 70, y: 160, width: 50, height: 25)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.setTitle("Favo", for: UIControlState.normal)
-        button.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+        button.frame = CGRect(x: 90, y: 155, width: 40, height: 40)
+        button.setImage(UIImage(named: "NotFavorite"), for: .normal)
         button.addTarget(self, action: #selector(ViewController.saveToOrDeleteFromFavoritesOnGridView(_:)), for: .touchUpInside)
         return button
     }()
@@ -72,6 +74,12 @@ class CollectionViewCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // セル再利用時に初期化する
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
     }
     
 }

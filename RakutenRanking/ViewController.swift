@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let collectionView = UICollectionView( frame: CGRect(x: 0, y: 0, width: screenSize.width, height: screenSize.height - 44 ), collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         //セルの登録
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
+        collectionView.register(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         return collectionView
     }()
     
@@ -93,6 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mainRanking.reloadData()
+        self.collectionView.reloadData()
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -289,13 +290,17 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         item = self.rankingItemList[indexPath.row]
+        // セル生成時にお気に入り登録している商品はボタンの画像を変更
+        if self.rankingManager.isFavorite(item: item) {
+            cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        }
         cell.itemRank.text = " \(indexPath.row + 1)位"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
-            cell.itemName.text = " \(name)"
+            cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
-            cell.itemPrice.text = "\(price)円"
+            cell.itemPrice.text = "¥ \(self.convertPrice(price: price))"
         }
         if let image: String = item.mSizeImageUrl {
             // 画像の非同期取得
@@ -308,7 +313,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         let btn = sender as! UIButton
         let cell = btn.superview?.superview as! CollectionViewCell
         let row = collectionView.indexPath(for: cell)?.row
-        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[row!])
+        let item = self.rankingItemList[row!]
+        rankingManager.saveOrDeleteFavoriteObject(item: item)
+        // お気に入り登録されているかどうかを判定して、ボタンに表示する画像を変更
+        if self.rankingManager.isFavorite(item: item) {
+            cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        } else {
+            cell.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
