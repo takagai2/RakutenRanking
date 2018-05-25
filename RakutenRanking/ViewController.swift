@@ -419,8 +419,11 @@ extension ViewController: UIScrollViewDelegate {
         pageControl = UIPageControl()
         // pageControlの位置とサイズの設定
         pageControl.frame = CGRect(x: -50, y: height - 90, width: width + 100, height: 50)
-        // 背景色の設定
-        pageControl.backgroundColor = UIColor.darkGray
+        // インジケータの色
+        let rgba = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.8)
+        pageControl.pageIndicatorTintColor = rgba
+        // 現在ページのインジケータの色
+        pageControl.currentPageIndicatorTintColor = .gray
         // ページ数の設定
         pageControl.numberOfPages = page
         // 現在ページの設定
