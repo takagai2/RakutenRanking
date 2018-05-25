@@ -404,9 +404,7 @@ extension ViewController: UIScrollViewDelegate {
             }
             // お気に入り登録ボタン生成
             let favoriteButton: UIButton = UIButton()
-            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.4, width: 270, height: 40)
-            favoriteButton.contentHorizontalAlignment = .right
-            favoriteButton.backgroundColor = .gray
+            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 + 50, y: height/1.5 + 10, width: 70, height: 70)
             favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
             favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
             
