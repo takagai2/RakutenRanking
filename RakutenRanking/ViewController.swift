@@ -366,6 +366,7 @@ extension ViewController: UIScrollViewDelegate {
         scrollView = UIScrollView()
         scrollView.frame = CGRect(x: 0, y: 0, width: width, height: height - 44 )
         scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
         // scrollView全体のサイズ
         scrollView.contentSize = CGSize(width: CGFloat(page) * width, height: height - 44)
