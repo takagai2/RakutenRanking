@@ -94,6 +94,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
+        self.removePageView()
+        self.showPageView()
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -180,19 +182,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func displayListView() {
         self.mainRanking.isHidden = false
-        self.collectionView.removeFromSuperview()
+        self.collectionView.isHidden = true
         self.removePageView()
     }
     
     private func displayGridView() {
         self.mainRanking.isHidden = true
-        self.showGridView()
+        if self.collectionView.isDescendant(of: view) == false {
+            self.showGridView()
+        }
+        self.collectionView.isHidden = false
         self.removePageView()
     }
     
     private func displayPageView() {
         self.mainRanking.isHidden = true
-        self.collectionView.removeFromSuperview()
+        self.collectionView.isHidden = true
         self.showPageView()
     }
     
@@ -366,6 +371,7 @@ extension ViewController: UIScrollViewDelegate {
         scrollView = UIScrollView()
         scrollView.frame = CGRect(x: 0, y: 0, width: width, height: height - 44 )
         scrollView.isPagingEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
         scrollView.delegate = self
         // scrollView全体のサイズ
         scrollView.contentSize = CGSize(width: CGFloat(page) * width, height: height - 44)
@@ -384,6 +390,8 @@ extension ViewController: UIScrollViewDelegate {
             let itemName: UILabel = UILabel()
             itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
             itemName.textAlignment = .center
+            itemName.numberOfLines = 2
+            itemName.font = UIFont.systemFont(ofSize: 16, weight: .thin)
             if let name: String = item.name {
                 itemName.text = "\(name)"
             }
@@ -392,7 +400,7 @@ extension ViewController: UIScrollViewDelegate {
             itemPrice.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.5, width: 300, height: 40)
             itemPrice.textAlignment = .center
             if let price: String = item.price {
-                itemPrice.text = "\(price)円"
+                itemPrice.text = "¥ \(self.convertPrice(price: price))"
             }
             // 商品画像を表示するimageView生成
             let itemImage: UIImageView = UIImageView()
@@ -402,12 +410,13 @@ extension ViewController: UIScrollViewDelegate {
             }
             // お気に入り登録ボタン生成
             let favoriteButton: UIButton = UIButton()
-            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.4, width: 270, height: 40)
-            favoriteButton.contentHorizontalAlignment = .right
-            favoriteButton.setTitleColor(UIColor.blue, for: .normal)
-            favoriteButton.setTitle("Favo", for: UIControlState.normal)
-            favoriteButton.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+            favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 + 50, y: height/1.5 + 10, width: 70, height: 70)
             favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
+            favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+            if self.rankingManager.isFavorite(item: item) {
+                favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+            }
+            
             
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
@@ -420,8 +429,11 @@ extension ViewController: UIScrollViewDelegate {
         pageControl = UIPageControl()
         // pageControlの位置とサイズの設定
         pageControl.frame = CGRect(x: -50, y: height - 90, width: width + 100, height: 50)
-        // 背景色の設定
-        pageControl.backgroundColor = UIColor.darkGray
+        // インジケータの色
+        let rgba = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 0.8)
+        pageControl.pageIndicatorTintColor = rgba
+        // 現在ページのインジケータの色
+        pageControl.currentPageIndicatorTintColor = .gray
         // ページ数の設定
         pageControl.numberOfPages = page
         // 現在ページの設定
@@ -436,7 +448,14 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
-        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
+        let item = self.rankingItemList[pageControl.currentPage]
+        rankingManager.saveOrDeleteFavoriteObject(item: item)
+        
+        if self.rankingManager.isFavorite(item: item) {
+            sender.setImage(UIImage(named: "Favorite"), for: .normal)
+        } else {
+            sender.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        }
     }
     
     @objc func movePageByTapping(_ sender: UIPageControl) {
@@ -462,8 +481,10 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     private func showPageView() {
-        if self.scrollView == nil {
-            self.setPageView()
+        if mainRanking.isHidden == true && collectionView.isHidden == true {
+            if self.scrollView == nil {
+                self.setPageView()
+            }
         }
     }
     
