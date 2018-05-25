@@ -94,6 +94,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
+        self.removePageView()
+        self.showPageView()
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -180,19 +182,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     private func displayListView() {
         self.mainRanking.isHidden = false
-        self.collectionView.removeFromSuperview()
+        self.collectionView.isHidden = true
         self.removePageView()
     }
     
     private func displayGridView() {
         self.mainRanking.isHidden = true
-        self.showGridView()
+        if self.collectionView.isDescendant(of: view) == false {
+            self.showGridView()
+        }
+        self.collectionView.isHidden = false
         self.removePageView()
     }
     
     private func displayPageView() {
         self.mainRanking.isHidden = true
-        self.collectionView.removeFromSuperview()
+        self.collectionView.isHidden = true
         self.showPageView()
     }
     
@@ -406,8 +411,12 @@ extension ViewController: UIScrollViewDelegate {
             // お気に入り登録ボタン生成
             let favoriteButton: UIButton = UIButton()
             favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 + 50, y: height/1.5 + 10, width: 70, height: 70)
-            favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
             favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
+            favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+            if self.rankingManager.isFavorite(item: item) {
+                favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+            }
+            
             
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
@@ -472,8 +481,10 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     private func showPageView() {
-        if self.scrollView == nil {
-            self.setPageView()
+        if mainRanking.isHidden == true && collectionView.isHidden == true {
+            if self.scrollView == nil {
+                self.setPageView()
+            }
         }
     }
     
