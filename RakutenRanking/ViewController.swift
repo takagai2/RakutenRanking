@@ -406,9 +406,8 @@ extension ViewController: UIScrollViewDelegate {
             let favoriteButton: UIButton = UIButton()
             favoriteButton.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.4, width: 270, height: 40)
             favoriteButton.contentHorizontalAlignment = .right
-            favoriteButton.setTitleColor(UIColor.blue, for: .normal)
-            favoriteButton.setTitle("Favo", for: UIControlState.normal)
-            favoriteButton.titleLabel?.font =  UIFont.systemFont(ofSize: 16)
+            favoriteButton.backgroundColor = .gray
+            favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
             favoriteButton.addTarget(self, action: #selector(saveToOrDeleteFromFavoritesOnPageView(_:)), for: .touchUpInside)
             
             scrollView.addSubview(itemName)
@@ -438,7 +437,14 @@ extension ViewController: UIScrollViewDelegate {
     }
     
     @objc func saveToOrDeleteFromFavoritesOnPageView(_ sender: UIButton) {
-        rankingManager.saveOrDeleteFavoriteObject(item: self.rankingItemList[pageControl.currentPage])
+        let item = self.rankingItemList[pageControl.currentPage]
+        rankingManager.saveOrDeleteFavoriteObject(item: item)
+        
+        if self.rankingManager.isFavorite(item: item) {
+            sender.setImage(UIImage(named: "Favorite"), for: .normal)
+        } else {
+            sender.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        }
     }
     
     @objc func movePageByTapping(_ sender: UIPageControl) {
