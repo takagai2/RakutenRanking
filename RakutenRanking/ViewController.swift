@@ -402,11 +402,30 @@ extension ViewController: UIScrollViewDelegate {
         // ページごとのlabelの生成
         for i in 0..<page {
             let item = self.rankingItemList[i]
+            // １位から３位までのアイコン画像生成
+            let rankImage: UIImageView = UIImageView()
+            rankImage.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 10, width: 40, height: 40)
+            switch i + 1 {
+            case 1:
+                rankImage.image = UIImage(named: "No.1")
+            case 2:
+                rankImage.image = UIImage(named: "No.2")
+            case 3:
+                rankImage.image = UIImage(named: "No.3")
+            default:
+                break
+            }
             // 順位のlabel生成
             let itemRank = UILabel()
-            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
+            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 15, width: 40, height: 40)
             itemRank.textAlignment = .center
-            itemRank.text = "\(i + 1)位"
+            itemRank.font = UIFont(name: "Gill Sans", size: 22)
+            if rankImage.image == nil {
+                itemRank.backgroundColor = UIColor.lightGray.withAlphaComponent(0.50)
+                itemRank.layer.cornerRadius = 20
+                itemRank.clipsToBounds = true
+            }
+            itemRank.text = "\(i + 1)"
             // 商品名のlabel生成
             let itemName: UILabel = UILabel()
             itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
@@ -438,7 +457,7 @@ extension ViewController: UIScrollViewDelegate {
                 favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
             }
             
-            
+            scrollView.addSubview(rankImage)
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
             scrollView.addSubview(itemRank)
