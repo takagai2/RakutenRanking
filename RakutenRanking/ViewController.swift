@@ -210,6 +210,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return convertedPrice
     }
     
+    private func selectIcon(rank: Int) -> UIImage? {
+        switch rank {
+        case 1:
+            return UIImage(named: "No.1")!
+        case 2:
+            return UIImage(named: "No.2")!
+        case 3:
+            return UIImage(named: "No.3")!
+        default:
+            return nil
+        }
+    }
+    
     // MARK: UITableViewDatasource
     
     // セクション数
@@ -249,17 +262,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.itemPrice.text = "¥ \(self.convertPrice(price: item.price!))"
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
-        
-        switch indexPath.row + 1 {
-        case 1:
-            cell.rankImage.image = UIImage(named: "No.1")
-        case 2:
-            cell.rankImage.image = UIImage(named: "No.2")
-        case 3:
-            cell.rankImage.image = UIImage(named: "No.3")
-        default:
-            break
-        }
+        // アイコン画像を設定
+        cell.rankImage.image = self.selectIcon(rank: indexPath.row + 1)
         return cell
     }
     
@@ -322,16 +326,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             // 画像の非同期取得
             cell.itemImage.setImageWith(URL(string: image)!)
         }
-        switch indexPath.row + 1 {
-        case 1:
-            cell.rankImage.image = UIImage(named: "No.1")
-        case 2:
-            cell.rankImage.image = UIImage(named: "No.2")
-        case 3:
-            cell.rankImage.image = UIImage(named: "No.3")
-        default:
-            break
-        }
+        // アイコン画像の設定
+        cell.rankImage.image = self.selectIcon(rank: indexPath.row + 1)
         return cell
     }
     
@@ -405,16 +401,7 @@ extension ViewController: UIScrollViewDelegate {
             // １位から３位までのアイコン画像生成
             let rankImage: UIImageView = UIImageView()
             rankImage.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 10, width: 40, height: 40)
-            switch i + 1 {
-            case 1:
-                rankImage.image = UIImage(named: "No.1")
-            case 2:
-                rankImage.image = UIImage(named: "No.2")
-            case 3:
-                rankImage.image = UIImage(named: "No.3")
-            default:
-                break
-            }
+            rankImage.image = self.selectIcon(rank: i + 1)
             // 順位のlabel生成
             let itemRank = UILabel()
             itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 15, width: 40, height: 40)
