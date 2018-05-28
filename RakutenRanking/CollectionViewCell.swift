@@ -51,6 +51,12 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
     
+    // １位から３位までのアイコンを表示する画像を生成
+    let rankImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 5, y: 145, width: 30, height: 30))
+        return image
+    }()
+    
     // お気に入り登録ボタンを生成
     let favoriteButton: UIButton = {
         let button = UIButton()
@@ -65,6 +71,7 @@ class CollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 0.5
         
         contentView.addSubview(itemName)
+        contentView.addSubview(rankImage)
         contentView.addSubview(itemPrice)
         contentView.addSubview(itemImage)
         contentView.addSubview(favoriteButton)
@@ -84,6 +91,7 @@ class CollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        rankImage.image = nil
     }
     
 }

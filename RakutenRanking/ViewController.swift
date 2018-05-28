@@ -322,6 +322,16 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             // 画像の非同期取得
             cell.itemImage.setImageWith(URL(string: image)!)
         }
+        switch indexPath.row + 1 {
+        case 1:
+            cell.rankImage.image = UIImage(named: "No.1")
+        case 2:
+            cell.rankImage.image = UIImage(named: "No.2")
+        case 3:
+            cell.rankImage.image = UIImage(named: "No.3")
+        default:
+            break
+        }
         return cell
     }
     
