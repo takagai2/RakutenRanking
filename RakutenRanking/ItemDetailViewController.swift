@@ -15,6 +15,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var reviewCount: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBAction func favoriteButton(_ sender: Any) {
         // お気に入り登録機能実装
@@ -22,6 +23,7 @@ class ItemDetailViewController: UIViewController {
     }
     
     var sendItem: Item!
+    let rankingManager = RankingManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +32,18 @@ class ItemDetailViewController: UIViewController {
         self.price.text = "¥ " + ViewController.convertPrice(price: sendItem.price!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
         self.reviewCount.text = "レビュー: " + String(sendItem.reviewCount) + "件"
+        if rankingManager.isFavorite(item: sendItem) {
+            favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        }
     }
     
     private func saveOrDeleteFavoriteItem(item: Item) {
-        let rankingManager = RankingManager()
         rankingManager.saveOrDeleteFavoriteObject(item: item)
+        if self.rankingManager.isFavorite(item: item) {
+            favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

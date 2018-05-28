@@ -43,9 +43,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
-                                <rect key="frame" x="269" y="454" width="46" height="30"/>
-                                <state key="normal" title="Favo"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
+                                <rect key="frame" x="271" y="454" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="WRh-Gm-Uuk"/>
+                                </constraints>
+                                <state key="normal" title="Favo" image="NotFavorite"/>
                                 <connections>
                                     <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
                                 </connections>
@@ -74,7 +77,6 @@
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="BPn-x6-Qd8"/>
                             <constraint firstItem="LJt-w2-CRV" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="13.5" id="DUK-eD-SHQ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LJt-w2-CRV" secondAttribute="trailing" constant="20" symbolic="YES" id="FWA-p8-ukr"/>
-                            <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="269" id="GVe-JP-P5l"/>
                             <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="60" id="GfD-M0-pVF"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
@@ -82,6 +84,7 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="20" symbolic="YES" id="WwG-es-6Zs"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="ah6-b2-Gc8"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="271" id="g8d-nP-yBu"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
                             <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="106.5" id="oDn-hk-5SX"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="11.5" id="tkQ-hF-Car"/>
@@ -89,6 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="plx-pe-ZDM" id="StG-WH-bFH"/>
                         <outlet property="image" destination="C4H-Ep-fzA" id="GXt-ag-WK2"/>
                         <outlet property="name" destination="tCP-yF-YDO" id="2yc-Jf-fhM"/>
                         <outlet property="price" destination="is6-2k-Dvi" id="biB-L3-M4G"/>
