@@ -24,19 +24,23 @@ class CollectionViewCell: UICollectionViewCell {
     // 値段のlabelを生成
     let itemPrice: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 95, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 5, y: 100, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
         label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .thin)
-        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textAlignment = .left
         return label
     }()
     
     // 順位のlabelを生成
     let itemRank: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 85, width: screenSize.width / 3.0, height: screenSize.width / 3.0)
-        label.textColor = UIColor.gray
-        label.textAlignment = .left
+        label.frame = CGRect(x: 4, y: 4, width: 32, height: 32)
+        label.backgroundColor = UIColor.gray.withAlphaComponent(0.80)
+        label.font = UIFont(name: "Gill Sans", size: 20)
+        label.layer.cornerRadius = 15
+        label.clipsToBounds = true
+        label.textColor = UIColor.white
+        label.textAlignment = .center
         return label
     }()
     
@@ -47,10 +51,16 @@ class CollectionViewCell: UICollectionViewCell {
         return image
     }()
     
+    // １位から３位までのアイコンを表示する画像を生成
+    let rankImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 5, y: 145, width: 30, height: 30))
+        return image
+    }()
+    
     // お気に入り登録ボタンを生成
     let favoriteButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 90, y: 155, width: 40, height: 40)
+        button.frame = CGRect(x: 90, y: 145, width: 40, height: 40)
         button.setImage(UIImage(named: "NotFavorite"), for: .normal)
         button.addTarget(self, action: #selector(ViewController.saveToOrDeleteFromFavoritesOnGridView(_:)), for: .touchUpInside)
         return button
@@ -61,10 +71,11 @@ class CollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 0.5
         
         contentView.addSubview(itemName)
+        contentView.addSubview(rankImage)
         contentView.addSubview(itemPrice)
-        contentView.addSubview(itemRank)
         contentView.addSubview(itemImage)
         contentView.addSubview(favoriteButton)
+        contentView.addSubview(itemRank)
     }
     
     override init(frame: CGRect) {
@@ -80,6 +91,7 @@ class CollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        rankImage.image = nil
     }
     
 }

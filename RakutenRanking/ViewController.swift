@@ -210,6 +210,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return convertedPrice
     }
     
+    private func selectIcon(rank: Int) -> UIImage? {
+        switch rank {
+        case 1:
+            return UIImage(named: "No.1")!
+        case 2:
+            return UIImage(named: "No.2")!
+        case 3:
+            return UIImage(named: "No.3")!
+        default:
+            return nil
+        }
+    }
+    
     // MARK: UITableViewDatasource
     
     // セクション数
@@ -249,6 +262,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.itemPrice.text = "¥ \(self.convertPrice(price: item.price!))"
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
+        // アイコン画像を設定
+        cell.rankImage.image = self.selectIcon(rank: indexPath.row + 1)
         return cell
     }
     
@@ -299,7 +314,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         if self.rankingManager.isFavorite(item: item) {
             cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
         }
-        cell.itemRank.text = " \(indexPath.row + 1)位"
+        cell.itemRank.text = "\(indexPath.row + 1)"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
@@ -311,6 +326,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             // 画像の非同期取得
             cell.itemImage.setImageWith(URL(string: image)!)
         }
+        // アイコン画像の設定
+        cell.rankImage.image = self.selectIcon(rank: indexPath.row + 1)
         return cell
     }
     
@@ -381,11 +398,21 @@ extension ViewController: UIScrollViewDelegate {
         // ページごとのlabelの生成
         for i in 0..<page {
             let item = self.rankingItemList[i]
+            // １位から３位までのアイコン画像生成
+            let rankImage: UIImageView = UIImageView()
+            rankImage.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 10, width: 40, height: 40)
+            rankImage.image = self.selectIcon(rank: i + 1)
             // 順位のlabel生成
             let itemRank = UILabel()
-            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/5, width: 300, height: 40)
+            itemRank.frame = CGRect(x: CGFloat(i) * width + width/2 - 120, y: height/5 + 15, width: 40, height: 40)
             itemRank.textAlignment = .center
-            itemRank.text = "\(i + 1)位"
+            itemRank.font = UIFont(name: "Gill Sans", size: 22)
+            if rankImage.image == nil {
+                itemRank.backgroundColor = UIColor.lightGray.withAlphaComponent(0.50)
+                itemRank.layer.cornerRadius = 20
+                itemRank.clipsToBounds = true
+            }
+            itemRank.text = "\(i + 1)"
             // 商品名のlabel生成
             let itemName: UILabel = UILabel()
             itemName.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/2 + 50, width: 300, height: 80)
@@ -417,7 +444,7 @@ extension ViewController: UIScrollViewDelegate {
                 favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
             }
             
-            
+            scrollView.addSubview(rankImage)
             scrollView.addSubview(itemName)
             scrollView.addSubview(itemPrice)
             scrollView.addSubview(itemRank)

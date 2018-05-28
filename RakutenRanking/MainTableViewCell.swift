@@ -15,6 +15,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var rankImage: UIImageView!
     
     @IBAction func favoriteButton(_ sender: Any) {
         self.onTapFavoriteButton()
@@ -38,6 +39,7 @@ class MainTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        rankImage.image = nil
     }
 
 }
