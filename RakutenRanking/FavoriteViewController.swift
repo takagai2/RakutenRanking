@@ -65,7 +65,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
-            cell.itemPrice.text = "\(price)円"
+            cell.itemPrice.text = "¥ " + ViewController.convertPrice(price: price)
         }
         if let reviewCount: Int = item.reviewCount {
             cell.itemReviewCount.text = "\(reviewCount)件のレビュー"
