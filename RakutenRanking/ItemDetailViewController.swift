@@ -29,7 +29,7 @@ class ItemDetailViewController: UIViewController {
         self.name.text = sendItem.name!
         self.price.text = "¥ " + ViewController.convertPrice(price: sendItem.price!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
-        self.reviewCount.text = String(sendItem.reviewCount)
+        self.reviewCount.text = "レビュー: " + String(sendItem.reviewCount) + "件"
     }
     
     private func saveOrDeleteFavoriteItem(item: Item) {

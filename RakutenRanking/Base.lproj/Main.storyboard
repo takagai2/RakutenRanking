@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="ihM-OM-6Wk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
-                                <color key="textColor" red="0.92196100950241089" green="0.14730733633041382" blue="0.041172586381435394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
@@ -50,13 +50,20 @@
                                     <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJt-w2-CRV">
-                                <rect key="frame" x="60" y="418.5" width="42" height="18"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReviewCount" translatesAutoresizingMaskIntoConstraints="NO" id="bnb-5j-km9">
+                                <rect key="frame" x="60" y="420" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="dx0-Me-xXg"/>
+                                    <constraint firstAttribute="width" constant="22" id="4Vn-1c-e2d"/>
+                                    <constraint firstAttribute="height" constant="22" id="qkn-fy-2q1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJt-w2-CRV">
+                                <rect key="frame" x="91" y="422" width="42" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="nN3-AS-aiC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="13"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -65,15 +72,19 @@
                             <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="tCP-yF-YDO" secondAttribute="trailing" constant="60" id="6xc-OY-VJz"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="top" secondItem="62m-xE-sPt" secondAttribute="top" constant="45" id="7se-UG-gSa"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="BPn-x6-Qd8"/>
+                            <constraint firstItem="LJt-w2-CRV" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="13.5" id="DUK-eD-SHQ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LJt-w2-CRV" secondAttribute="trailing" constant="20" symbolic="YES" id="FWA-p8-ukr"/>
                             <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="269" id="GVe-JP-P5l"/>
                             <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="60" id="GfD-M0-pVF"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
-                            <constraint firstItem="LJt-w2-CRV" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="OhC-Fy-D3Y"/>
+                            <constraint firstItem="LJt-w2-CRV" firstAttribute="leading" secondItem="bnb-5j-km9" secondAttribute="trailing" constant="9" id="TSP-Wp-7br"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="20" symbolic="YES" id="WwG-es-6Zs"/>
+                            <constraint firstItem="bnb-5j-km9" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="ah6-b2-Gc8"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
-                            <constraint firstItem="LJt-w2-CRV" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="10" id="eM3-rP-1wM"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
                             <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="106.5" id="oDn-hk-5SX"/>
+                            <constraint firstItem="bnb-5j-km9" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="11.5" id="tkQ-hF-Car"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>
                     </view>
@@ -519,6 +530,7 @@
     </scenes>
     <resources>
         <image name="NotFavorite" width="16" height="16"/>
+        <image name="ReviewCount" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jvl-Fl-qlr"/>
