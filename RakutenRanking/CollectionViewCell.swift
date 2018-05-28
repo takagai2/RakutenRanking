@@ -24,10 +24,10 @@ class CollectionViewCell: UICollectionViewCell {
     // 値段のlabelを生成
     let itemPrice: UILabel = {
         let label = UILabel()
-        label.frame = CGRect(x: 0, y: 95, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
+        label.frame = CGRect(x: 5, y: 100, width: screenSize.width / 3.0 - 5, height: screenSize.width / 3.0)
         label.textColor = UIColor.darkGray
-        label.font = UIFont.systemFont(ofSize: 14, weight: .thin)
-        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        label.textAlignment = .left
         return label
     }()
     
@@ -60,7 +60,7 @@ class CollectionViewCell: UICollectionViewCell {
     // お気に入り登録ボタンを生成
     let favoriteButton: UIButton = {
         let button = UIButton()
-        button.frame = CGRect(x: 90, y: 155, width: 40, height: 40)
+        button.frame = CGRect(x: 90, y: 145, width: 40, height: 40)
         button.setImage(UIImage(named: "NotFavorite"), for: .normal)
         button.addTarget(self, action: #selector(ViewController.saveToOrDeleteFromFavoritesOnGridView(_:)), for: .touchUpInside)
         return button
