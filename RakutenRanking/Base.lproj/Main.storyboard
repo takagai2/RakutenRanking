@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,38 +31,28 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="255" id="jfL-0d-MN3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is6-2k-Dvi">
-                                <rect key="frame" x="60" y="383" width="50" height="25.5"/>
+                                <rect key="frame" x="60" y="383" width="54" height="31.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="ihM-OM-6Wk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="26"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
-                                <rect key="frame" x="271" y="454" width="44" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="WRh-Gm-Uuk"/>
-                                </constraints>
-                                <state key="normal" title="Favo" image="NotFavorite"/>
-                                <connections>
-                                    <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
-                                </connections>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ReviewCount" translatesAutoresizingMaskIntoConstraints="NO" id="bnb-5j-km9">
-                                <rect key="frame" x="60" y="420" width="22" height="22"/>
+                                <rect key="frame" x="60" y="426" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="22" id="4Vn-1c-e2d"/>
                                     <constraint firstAttribute="height" constant="22" id="qkn-fy-2q1"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJt-w2-CRV">
-                                <rect key="frame" x="91" y="422" width="42" height="16"/>
+                                <rect key="frame" x="91" y="428" width="42" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="nN3-AS-aiC"/>
                                 </constraints>
@@ -69,6 +60,16 @@
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
+                                <rect key="frame" x="283" y="397.5" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="MTa-G4-xCP"/>
+                                </constraints>
+                                <state key="normal" title="Favo" image="NotFavorite"/>
+                                <connections>
+                                    <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -77,16 +78,16 @@
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="BPn-x6-Qd8"/>
                             <constraint firstItem="LJt-w2-CRV" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="13.5" id="DUK-eD-SHQ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LJt-w2-CRV" secondAttribute="trailing" constant="20" symbolic="YES" id="FWA-p8-ukr"/>
-                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="60" id="GfD-M0-pVF"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
+                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="48" id="Q2h-Br-gGe"/>
                             <constraint firstItem="LJt-w2-CRV" firstAttribute="leading" secondItem="bnb-5j-km9" secondAttribute="trailing" constant="9" id="TSP-Wp-7br"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="20" symbolic="YES" id="WwG-es-6Zs"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="ah6-b2-Gc8"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
-                            <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="271" id="g8d-nP-yBu"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="tFh-yQ-X2s" secondAttribute="leadingMargin" constant="267" id="e28-V2-CYr"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
-                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="106.5" id="oDn-hk-5SX"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="50" id="oDn-hk-5SX"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="11.5" id="tkQ-hF-Car"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>

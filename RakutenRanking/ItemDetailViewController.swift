@@ -32,6 +32,10 @@ class ItemDetailViewController: UIViewController {
         self.price.text = "¥ " + ViewController.convertPrice(price: sendItem.price!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
         self.reviewCount.text = "レビュー: " + String(sendItem.reviewCount) + "件"
+        self.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
+        favoriteButton.imageView?.contentMode = .scaleAspectFit
+        favoriteButton.contentHorizontalAlignment = .fill
+        favoriteButton.contentVerticalAlignment = .fill
         if rankingManager.isFavorite(item: sendItem) {
             favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
         }
