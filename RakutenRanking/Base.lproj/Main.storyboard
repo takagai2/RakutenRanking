@@ -30,23 +30,35 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="255" id="jfL-0d-MN3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is6-2k-Dvi">
-                                <rect key="frame" x="60" y="383" width="255" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="60" y="383" width="50" height="25.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="ihM-OM-6Wk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
+                                <color key="textColor" red="0.92196100950241089" green="0.14730733633041382" blue="0.041172586381435394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
-                                <rect key="frame" x="269" y="429" width="46" height="30"/>
+                                <rect key="frame" x="269" y="454" width="46" height="30"/>
                                 <state key="normal" title="Favo"/>
                                 <connections>
                                     <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJt-w2-CRV">
+                                <rect key="frame" x="60" y="418.5" width="42" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="dx0-Me-xXg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <color key="textColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -57,10 +69,11 @@
                             <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="60" id="GfD-M0-pVF"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
+                            <constraint firstItem="LJt-w2-CRV" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="OhC-Fy-D3Y"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
-                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="60" id="jI0-im-nzu"/>
-                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="25" id="mbX-r4-OuW"/>
+                            <constraint firstItem="LJt-w2-CRV" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="10" id="eM3-rP-1wM"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="106.5" id="oDn-hk-5SX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>
                     </view>
@@ -68,11 +81,12 @@
                         <outlet property="image" destination="C4H-Ep-fzA" id="GXt-ag-WK2"/>
                         <outlet property="name" destination="tCP-yF-YDO" id="2yc-Jf-fhM"/>
                         <outlet property="price" destination="is6-2k-Dvi" id="biB-L3-M4G"/>
+                        <outlet property="reviewCount" destination="LJt-w2-CRV" id="iUz-AB-Kqk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjg-cy-iHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1290" y="1155"/>
+            <point key="canvasLocation" x="1288.8" y="1154.5727136431785"/>
         </scene>
         <!--Favorite View Controller-->
         <scene sceneID="SDO-HY-JNT">

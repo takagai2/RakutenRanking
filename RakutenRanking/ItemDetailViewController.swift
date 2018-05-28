@@ -14,6 +14,7 @@ class ItemDetailViewController: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var reviewCount: UILabel!
     
     @IBAction func favoriteButton(_ sender: Any) {
         // お気に入り登録機能実装
@@ -26,8 +27,9 @@ class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.name.text = sendItem.name!
-        self.price.text = sendItem.price!
+        self.price.text = "¥ " + ViewController.convertPrice(price: sendItem.price!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
+        self.reviewCount.text = String(sendItem.reviewCount)
     }
     
     private func saveOrDeleteFavoriteItem(item: Item) {
