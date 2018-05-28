@@ -310,7 +310,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
         if self.rankingManager.isFavorite(item: item) {
             cell.favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
         }
-        cell.itemRank.text = " \(indexPath.row + 1)位"
+        cell.itemRank.text = "\(indexPath.row + 1)"
         // nilチェックしてからcellに代入
         if let name: String = item.name {
             cell.itemName.text = "\(name)"
