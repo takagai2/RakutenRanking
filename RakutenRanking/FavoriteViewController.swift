@@ -12,7 +12,7 @@ import AFNetworking
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var favoriteList: UITableView!
-        
+    
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
         sortItem(index: sender.selectedSegmentIndex)
     }
