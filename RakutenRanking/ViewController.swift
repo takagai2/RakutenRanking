@@ -201,14 +201,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.showPageView()
     }
     
-    static func convertPrice(price: String) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = NumberFormatter.Style.decimal
-        formatter.groupingSeparator = ","
-        formatter.groupingSize = 3
-        let convertedPrice = formatter.string(from: Int(price)! as NSNumber)!
-        return convertedPrice
-    }
+//    static func convertPrice(price: String) -> String {
+//        let formatter = NumberFormatter()
+//        formatter.numberStyle = NumberFormatter.Style.decimal
+//        formatter.groupingSeparator = ","
+//        formatter.groupingSize = 3
+//        let convertedPrice = formatter.string(from: Int(price)! as NSNumber)!
+//        return convertedPrice
+//    }
     
     private func selectIcon(rank: Int) -> UIImage? {
         switch rank {
@@ -259,7 +259,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 商品の情報に関するviewを設定
         cell.rank.text = "\(indexPath.row + 1)"
         cell.itemName.text = "\(item.name!)"
-        cell.itemPrice.text = "¥ \(ViewController.convertPrice(price: item.price!))"
+        cell.itemPrice.text = "¥ " + NumberEditor.insertCommaIn(number: Int(item.price)!)
         // 画像の非同期取得
         cell.itemImage.setImageWith(URL(string: item.sSizeImageUrl!)!)
         // アイコン画像を設定
@@ -320,7 +320,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
             cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
-            cell.itemPrice.text = "¥ \(ViewController.convertPrice(price: price))"
+            cell.itemPrice.text = "¥ " + NumberEditor.insertCommaIn(number: Int(price)!)
         }
         if let image: String = item.mSizeImageUrl {
             // 画像の非同期取得
@@ -427,7 +427,7 @@ extension ViewController: UIScrollViewDelegate {
             itemPrice.frame = CGRect(x: CGFloat(i) * width + width/2 - 150, y: height/1.5, width: 300, height: 40)
             itemPrice.textAlignment = .center
             if let price: String = item.price {
-                itemPrice.text = "¥ \(ViewController.convertPrice(price: price))"
+                itemPrice.text = "¥ " + NumberEditor.insertCommaIn(number: Int(price)!)
             }
             // 商品画像を表示するimageView生成
             let itemImage: UIImageView = UIImageView()

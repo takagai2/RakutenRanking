@@ -29,7 +29,7 @@ class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.name.text = sendItem.name!
-        self.price.text = "¥ " + ViewController.convertPrice(price: sendItem.price!)
+        self.price.text = "¥ " + NumberEditor.insertCommaIn(number: Int(sendItem.price)!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
         self.reviewCount.text = "レビュー: " + String(sendItem.reviewCount) + "件"
         self.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
