@@ -201,15 +201,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.showPageView()
     }
     
-//    static func convertPrice(price: String) -> String {
-//        let formatter = NumberFormatter()
-//        formatter.numberStyle = NumberFormatter.Style.decimal
-//        formatter.groupingSeparator = ","
-//        formatter.groupingSize = 3
-//        let convertedPrice = formatter.string(from: Int(price)! as NSNumber)!
-//        return convertedPrice
-//    }
-    
     private func selectIcon(rank: Int) -> UIImage? {
         switch rank {
         case 1:

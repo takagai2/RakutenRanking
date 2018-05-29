@@ -31,7 +31,7 @@ class ItemDetailViewController: UIViewController {
         self.name.text = sendItem.name!
         self.price.text = "¥ " + NumberEditor.insertCommaIn(number: Int(sendItem.price)!)
         self.image.setImageWith(URL(string: sendItem.mSizeImageUrl!)!)
-        self.reviewCount.text = "レビュー: " + String(sendItem.reviewCount) + "件"
+        self.reviewCount.text = "レビュー: " + NumberEditor.insertCommaIn(number: sendItem.reviewCount) + "件"
         self.favoriteButton.setImage(UIImage(named: "NotFavorite"), for: .normal)
         favoriteButton.imageView?.contentMode = .scaleAspectFit
         favoriteButton.contentHorizontalAlignment = .fill
