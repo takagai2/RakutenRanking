@@ -14,6 +14,7 @@ class FavoriteTableViewCell: UITableViewCell {
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemReviewCount: UILabel!
+    @IBOutlet weak var revireImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

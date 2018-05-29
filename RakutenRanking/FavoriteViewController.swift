@@ -12,7 +12,7 @@ import AFNetworking
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var favoriteList: UITableView!
-    
+        
     @IBAction func sortFavoriteList(_ sender: UISegmentedControl) {
         sortItem(index: sender.selectedSegmentIndex)
     }
@@ -68,7 +68,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.itemPrice.text = "¥ " + ViewController.convertPrice(price: price)
         }
         if let reviewCount: Int = item.reviewCount {
-            cell.itemReviewCount.text = "\(reviewCount)件のレビュー"
+            cell.itemReviewCount.text = "\(reviewCount)件"
         }
         if let image: String = item.sSizeImageUrl {
             cell.itemImage.setImageWith(URL(string: image)!)
