@@ -82,12 +82,4 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
             return Age.notKnown
         }
     }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if let controller = viewController as? ViewController {
-            controller.gender = genderType
-            controller.age = ageType
-        }
-    }
-    
 }
