@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0683333FD30193348C390594 /* Pods_RakutenRankingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */; };
+		593A321E20BCFD8C0048CB46 /* NumberEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593A321D20BCFD8C0048CB46 /* NumberEditor.swift */; };
 		595702FB20779126002BAC97 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595702FA20779126002BAC97 /* ItemDetailViewController.swift */; };
 		5969F2E2208EC18800468D03 /* FavoriteObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5969F2E1208EC18700468D03 /* FavoriteObject.swift */; };
 		59761EA42064EBCA0067964D /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59761EA32064EBCA0067964D /* CollectionViewCell.swift */; };
@@ -52,6 +53,7 @@
 		1698E0936E8228B9BC9A6DBF /* Pods_RakutenRankingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRankingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RakutenRanking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5490878A1F451790E6A03BE8 /* Pods-RakutenRankingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		593A321D20BCFD8C0048CB46 /* NumberEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberEditor.swift; sourceTree = "<group>"; };
 		595702FA20779126002BAC97 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		5969F2E1208EC18700468D03 /* FavoriteObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteObject.swift; sourceTree = "<group>"; };
 		59761EA32064EBCA0067964D /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				5969F2E1208EC18700468D03 /* FavoriteObject.swift */,
 				59C5D7922088602600A28DCD /* DataGateway.swift */,
 				598E08E92088655400E5938D /* DataGatewayProtocol.swift */,
+				593A321D20BCFD8C0048CB46 /* NumberEditor.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				59F66C75206354AE00A86F41 /* ConfigViewController.swift in Sources */,
 				59B937B6206B4E580076D56D /* RankingGateway.swift in Sources */,
 				59E646FB20561A7700EFD54C /* AppDelegate.swift in Sources */,
+				593A321E20BCFD8C0048CB46 /* NumberEditor.swift in Sources */,
 				59C5D7932088602600A28DCD /* DataGateway.swift in Sources */,
 				599560FC207E07D900F05AEA /* AccessKey.sample.swift in Sources */,
 			);
