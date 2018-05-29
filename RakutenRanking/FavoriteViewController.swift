@@ -65,10 +65,10 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
             cell.itemName.text = "\(name)"
         }
         if let price: String = item.price {
-            cell.itemPrice.text = "¥ " + ViewController.convertPrice(price: price)
+            cell.itemPrice.text = "¥ " + NumberEditor.insertCommaIn(number: Int(price)!)
         }
         if let reviewCount: Int = item.reviewCount {
-            cell.itemReviewCount.text = "\(reviewCount)件"
+            cell.itemReviewCount.text = NumberEditor.insertCommaIn(number: reviewCount) + "件"
         }
         if let image: String = item.sSizeImageUrl {
             cell.itemImage.setImageWith(URL(string: image)!)
