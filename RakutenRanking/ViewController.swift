@@ -74,6 +74,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
         self.age = type.age
+        MenuViewController.gender = self.gender
+        MenuViewController.age = self.age
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
