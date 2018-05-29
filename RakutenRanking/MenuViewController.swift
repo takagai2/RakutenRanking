@@ -37,6 +37,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // 起動時に表示する種別が総合でない場合は、該当の条件に予めチェックを入れておく
+        checkedRankingType(gender: MenuViewController.gender, age: MenuViewController.age)
         // リスト表示の行に予めチェックを入れておく
         checkedDisplayPattern()
     }
@@ -164,6 +166,34 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func convertFrom(gender: Gender) -> Int? {
+        switch gender {
+        case .male:
+            return 0
+        case .female:
+            return 1
+        default:
+            return nil
+        }
+    }
+
+    private func convertFrom(age: Age) -> Int? {
+        switch age {
+        case .teens:
+            return 0
+        case .twenties:
+            return 1
+        case .thirties:
+            return 2
+        case .forties:
+            return 3
+        case .fiftiesOver:
+            return 4
+        default:
+            return nil
+        }
+    }
+
     private func checkedDisplayPattern() {
         let indexPath = NSIndexPath(row: MenuViewController.displayPattern, section: 2)
         if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
@@ -171,6 +201,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func checkedRankingType(gender: Gender, age: Age) {
+        if gender != .notKnown {
+            let indexPath = NSIndexPath(row: convertFrom(gender: gender)!, section: 0)
+            if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+                myCell.accessoryType = .checkmark
+            }
+        }
+        if age != .notKnown {
+            let indexPath = NSIndexPath(row: convertFrom(age: age)!, section: 1)
+            if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+                myCell.accessoryType = .checkmark
+            }
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
