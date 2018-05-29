@@ -146,6 +146,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
+        self.removePageView()
+        self.showPageView()
     }
     
     private func showMenu() {
