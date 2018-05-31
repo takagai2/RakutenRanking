@@ -21,12 +21,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
         Realm.Configuration.defaultConfiguration = config
         
+        // ページを格納する配列
+        var viewControllers: [UIViewController] = []
+        // 1ページ目になるViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        let menuVC = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
-        let navigationController = UINavigationController(rootViewController: mainVC)
-        let viewController = SlideViewController(mainViewController: navigationController, leftMenuViewController: menuVC)
+        let firstVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 1)
+        let first = UINavigationController(rootViewController: firstVC)
+        viewControllers.append(first)
+        // 2ページ目になるViewController
+        let secondVC = storyboard.instantiateViewController(withIdentifier: "Favorite") as! FavoriteViewController
+        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        let second = UINavigationController(rootViewController: secondVC)
+        viewControllers.append(second)
+        // 3ページ目になるViewController
+        let thirdVC = storyboard.instantiateViewController(withIdentifier: "Config") as! ConfigViewController
+        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        let third = UINavigationController(rootViewController: thirdVC)
+        viewControllers.append(third)
         
+        // TabBarControllerの子ビューにviewControllersをセット
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers(viewControllers, animated: false)
+        // SlideMenuViewControllerのメイン画面、メニュー画面にそれぞれViewControllerをセット
+        let menuVC = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
+        let menu = UINavigationController(rootViewController: menuVC)
+        let viewController = SlideViewController(mainViewController: tabBarController, leftMenuViewController: menu)
+        // アプリのrootViewControllerにviewController(中身はSMVC/NC/TBC/各ビュー)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
         

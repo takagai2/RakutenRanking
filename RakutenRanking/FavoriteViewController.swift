@@ -27,7 +27,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.favoriteList.delegate = self
         self.favoriteList.dataSource = self
-        self.navigationItem.title = "お気に入りリスト"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +34,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.getFavoriteItem()
         sortItem(index: sortPattern)
+        self.parent?.navigationItem.title = "お気に入りリスト"
     }
     
     private func getFavoriteItem() {
