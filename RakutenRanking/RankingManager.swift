@@ -8,16 +8,6 @@
 
 import Foundation
 
-enum Age: Int {
-    
-    case notKnown = 0
-    case teens = 10
-    case twenties = 20
-    case thirties = 30
-    case forties = 40
-    case fiftiesOver = 50
-}
-
 class RankingManager {
     
     private let rankingGateway: RankingGatewayProtocol = RankingGateway()

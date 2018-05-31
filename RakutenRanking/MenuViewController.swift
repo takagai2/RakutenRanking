@@ -107,7 +107,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 case 0:
                     MenuViewController.gender = Gender.setGenderByIndex(index: indexPath.row)
                 case 1:
-                    self.setAge(index: indexPath.row)
+                    MenuViewController.age = Age.setAgeByIndex(index: indexPath.row)
                 case 2:
                     MenuViewController.displayPattern = indexPath.row
                 default:
@@ -137,40 +137,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
-    private func setAge(index: Int) {
-        switch index {
-        case 0:
-            MenuViewController.age = .teens
-        case 1:
-            MenuViewController.age = .twenties
-        case 2:
-            MenuViewController.age = .thirties
-        case 3:
-            MenuViewController.age = .forties
-        case 4:
-            MenuViewController.age = .fiftiesOver
-        default:
-            MenuViewController.age = .notKnown
-        }
-    }
-
-    private func convertFrom(age: Age) -> Int? {
-        switch age {
-        case .teens:
-            return 0
-        case .twenties:
-            return 1
-        case .thirties:
-            return 2
-        case .forties:
-            return 3
-        case .fiftiesOver:
-            return 4
-        default:
-            return nil
-        }
-    }
 
     private func checkedDisplayPattern() {
         let indexPath = NSIndexPath(row: MenuViewController.displayPattern, section: 2)
@@ -187,7 +153,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
         if age != .notKnown {
-            let indexPath = NSIndexPath(row: convertFrom(age: age)!, section: 1)
+            let indexPath = NSIndexPath(row: Age.convertAgeToInt(age: age)!, section: 1)
             if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
                 myCell.accessoryType = .checkmark
             }

@@ -23,7 +23,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     @IBAction func chooseAge(_ sender: UISegmentedControl) {
-        ageType = getAgeBySelectNum(num: sender.selectedSegmentIndex)
+        ageType = Age.getAgeBySelectedNum(num: sender.selectedSegmentIndex)
     }
     
     @IBAction func saveSettings(_ sender: Any) {
@@ -55,20 +55,4 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
-    private func getAgeBySelectNum(num: Int) -> Age {
-        switch num {
-        case 1:
-            return Age.teens
-        case 2:
-            return Age.twenties
-        case 3:
-            return Age.thirties
-        case 4:
-            return Age.forties
-        case 5:
-            return Age.fiftiesOver
-        default:
-            return Age.notKnown
-        }
-    }
 }
