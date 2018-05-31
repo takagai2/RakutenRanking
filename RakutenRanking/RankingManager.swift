@@ -63,11 +63,13 @@ class RankingManager {
         dataGateway.saveRankingType(genderType: gender, ageType: age, displayPattern: pattern)
     }
     
-    func getRankingTypeAtStartup() -> (gender: Gender, age: Age) {
+    func getRankingTypeAtStartup() -> (gender: Gender, age: Age, pattern: Int) {
         let type = dataGateway.getRankingType()
         let gender = type.genderType
         let age = type.ageType
-        return(gender, age)
+        let pattern = type.displayPattern
+        
+        return(gender, age, pattern)
     }
 }
 

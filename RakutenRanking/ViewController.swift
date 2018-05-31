@@ -74,8 +74,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
         self.age = type.age
+        ViewController.displayPattern = type.pattern
         MenuViewController.gender = self.gender
         MenuViewController.age = self.age
+        MenuViewController.displayPattern = ViewController.displayPattern
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
@@ -127,6 +129,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.reloadData()
         self.removePageView()
         self.showPageView()
+        
+        setRankingPattern()
     }
     
     private func showMenu() {

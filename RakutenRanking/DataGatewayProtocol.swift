@@ -28,5 +28,5 @@ protocol DataGatewayProtocol {
     
     func saveRankingType(genderType: Gender, ageType: Age, displayPattern: Int)
     
-    func getRankingType() -> (genderType: Gender, ageType: Age)
+    func getRankingType() -> (genderType: Gender, ageType: Age, displayPattern: Int)
 }

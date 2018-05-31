@@ -149,10 +149,11 @@ class DataGateway: DataGatewayProtocol {
         userDefaults.set(displayPattern, forKey: "displayPattern")
     }
     
-    func getRankingType() -> (genderType: Gender, ageType: Age) {
+    func getRankingType() -> (genderType: Gender, ageType: Age, displayPattern: Int) {
         // Key値を指定して値を取得
         let genderType: Gender = Gender(rawValue: userDefaults.integer(forKey: "genderType"))!
         let ageType: Age = Age(rawValue: userDefaults.integer(forKey: "ageType"))!
-        return(genderType, ageType)
+        let displayPattern: Int = userDefaults.integer(forKey: "displayPattern")
+        return(genderType, ageType, displayPattern)
     }
 }
