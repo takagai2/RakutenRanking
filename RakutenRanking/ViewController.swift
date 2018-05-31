@@ -106,17 +106,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
-        let genderType: String
+        let genderTitle = Gender.convertGenderToString(gender: gender)
         let ageType: String
-        // 性別による分類
-        switch gender {
-        case .male:
-            genderType = "男性"
-        case .female:
-            genderType = "女性"
-        default:
-            genderType = ""
-        }
         // 年代による分類
         switch age {
         case .teens:
@@ -132,7 +123,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         default:
             ageType = ""
         }
-        return ageType + genderType
+        return ageType + genderTitle
     }
     
     // ランキングデータを取得し、配列に格納する

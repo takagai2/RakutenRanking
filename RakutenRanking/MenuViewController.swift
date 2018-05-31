@@ -105,7 +105,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // チェックマークをつけた動作をセクション毎に変更する
                 switch indexPath.section {
                 case 0:
-                    self.setGender(index: indexPath.row)
+                    MenuViewController.gender = Gender.setGenderByIndex(index: indexPath.row)
                 case 1:
                     self.setAge(index: indexPath.row)
                 case 2:
@@ -138,17 +138,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    private func setGender(index: Int) {
-        switch index {
-        case 0:
-            MenuViewController.gender = .male
-        case 1:
-            MenuViewController.gender = .female
-        default:
-            MenuViewController.gender = .notKnown
-        }
-    }
-    
     private func setAge(index: Int) {
         switch index {
         case 0:
@@ -163,17 +152,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             MenuViewController.age = .fiftiesOver
         default:
             MenuViewController.age = .notKnown
-        }
-    }
-    
-    private func convertFrom(gender: Gender) -> Int? {
-        switch gender {
-        case .male:
-            return 0
-        case .female:
-            return 1
-        default:
-            return nil
         }
     }
 
@@ -203,7 +181,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     private func checkedRankingType(gender: Gender, age: Age) {
         if gender != .notKnown {
-            let indexPath = NSIndexPath(row: convertFrom(gender: gender)!, section: 0)
+            let indexPath = NSIndexPath(row: Gender.convertGenderToInt(gender: gender)!, section: 0)
             if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
                 myCell.accessoryType = .checkmark
             }

@@ -19,7 +19,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     @IBOutlet weak var ageSegment: UISegmentedControl!
 
     @IBAction func chooseGender(_ sender: UISegmentedControl) {
-        genderType = getGenderBySelectNum(num: sender.selectedSegmentIndex)
+        genderType = Gender.setGenderBySelectedNum(num: sender.selectedSegmentIndex)
     }
     
     @IBAction func chooseAge(_ sender: UISegmentedControl) {
@@ -52,17 +52,6 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         }
         if ageType != Age.notKnown {
             ageSegment.selectedSegmentIndex = ageType.rawValue / 10
-        }
-    }
-    
-    private func getGenderBySelectNum(num: Int) -> Gender {
-        switch num {
-        case 1:
-            return Gender.male
-        case 2:
-            return Gender.female
-        default:
-            return Gender.notKnown
         }
     }
     

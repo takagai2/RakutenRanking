@@ -36,6 +36,7 @@
 		59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */; };
 		59F66C7B20639F5500A86F41 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */; };
 		59F66C7D2063A47D00A86F41 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */; };
+		59FE0AF420BFA041006672F8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FE0AF320BFA041006672F8 /* Gender.swift */; };
 		8DF89DC683602D09790FB8C2 /* Pods_RakutenRanking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A67EA6E6CB9B16842D66EF3 /* Pods_RakutenRanking.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		59F66C7820638B4900A86F41 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		59F66C7A20639F5500A86F41 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		59F66C7C2063A47D00A86F41 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		59FE0AF320BFA041006672F8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		6D72478A18FF06AC27D0D175 /* Pods-RakutenRanking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.release.xcconfig"; sourceTree = "<group>"; };
 		72998DECDA49A14BB7FAD41E /* Pods-RakutenRankingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRankingTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRankingTests/Pods-RakutenRankingTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3AE5A68245543CFA08C1639 /* Pods-RakutenRanking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RakutenRanking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RakutenRanking/Pods-RakutenRanking.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				59C5D7922088602600A28DCD /* DataGateway.swift */,
 				598E08E92088655400E5938D /* DataGatewayProtocol.swift */,
 				593A321D20BCFD8C0048CB46 /* NumberEditor.swift */,
+				59FE0AF320BFA041006672F8 /* Gender.swift */,
 			);
 			path = RakutenRanking;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				59B937B8206B4ECA0076D56D /* RankingManager.swift in Sources */,
 				59E646FD20561A7700EFD54C /* ViewController.swift in Sources */,
 				5969F2E2208EC18800468D03 /* FavoriteObject.swift in Sources */,
+				59FE0AF420BFA041006672F8 /* Gender.swift in Sources */,
 				59F66C7720636ABE00A86F41 /* MenuViewController.swift in Sources */,
 				59F2E42320A3E21E00B309C1 /* SlideViewController.swift in Sources */,
 				59F66C7920638B4900A86F41 /* MenuTableViewCell.swift in Sources */,
