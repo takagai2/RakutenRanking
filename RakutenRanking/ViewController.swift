@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var gender: Gender = Gender.notKnown
     var age: Age = Age.notKnown
     // 表示方法のタイプを数値で保持
-    private var displayPattern: Int = 0
+    static var displayPattern: Int = 0
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -140,8 +140,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             getRankingItem(gender: gender, age: age)
         }
         
-        if self.displayPattern != MenuViewController.displayPattern {
-            self.displayPattern = MenuViewController.displayPattern
+        if ViewController.displayPattern != MenuViewController.displayPattern {
+            ViewController.displayPattern = MenuViewController.displayPattern
             setRankingPattern()
         }
         // ランキングタイトルを表示
@@ -149,7 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func setRankingPattern() {
-        switch displayPattern {
+        switch ViewController.displayPattern {
         case 0:
             displayListView()
         case 1:

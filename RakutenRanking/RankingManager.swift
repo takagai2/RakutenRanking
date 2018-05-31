@@ -59,8 +59,8 @@ class RankingManager {
         dataGateway.deleteAllFavoriteObject()
     }
     
-    func saveRankingTypeAtStartup(gender: Gender, age: Age) {
-        dataGateway.saveRankingType(genderType: gender, ageType: age)
+    func saveRankingTypeAtStartup(gender: Gender, age: Age, pattern: Int) {
+        dataGateway.saveRankingType(genderType: gender, ageType: age, displayPattern: pattern)
     }
     
     func getRankingTypeAtStartup() -> (gender: Gender, age: Age) {

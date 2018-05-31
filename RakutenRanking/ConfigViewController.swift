@@ -28,7 +28,7 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBAction func saveSettings(_ sender: Any) {
         // 選択した条件をアプリ起動時のランキングに反映させる
-        rankingManager.saveRankingTypeAtStartup(gender: self.genderType, age: self.ageType)
+        rankingManager.saveRankingTypeAtStartup(gender: self.genderType, age: self.ageType, pattern: ViewController.displayPattern)
     }
     
     @IBAction func cacheClearBtn() {
