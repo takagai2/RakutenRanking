@@ -355,11 +355,6 @@
                                 <action selector="showMenuView:" destination="BYZ-38-t0r" id="e16-Pg-AVN"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="6ru-dT-Wt6">
-                            <connections>
-                                <action selector="showFavoriteView:" destination="BYZ-38-t0r" id="CCN-zR-fz7"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="mainRanking" destination="t0X-rQ-m8Q" id="6P6-6A-klC"/>

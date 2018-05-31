@@ -25,18 +25,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var viewControllers: [UIViewController] = []
         // 1ページ目になるViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let firstVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 1)
+        let firstVC = storyboard.instantiateViewController(withIdentifier: "Config") as! ConfigViewController
+        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
         let first = UINavigationController(rootViewController: firstVC)
         viewControllers.append(first)
         // 2ページ目になるViewController
-        let secondVC = storyboard.instantiateViewController(withIdentifier: "Favorite") as! FavoriteViewController
-        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 2)
+        let secondVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
+        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
         let second = UINavigationController(rootViewController: secondVC)
         viewControllers.append(second)
         // 3ページ目になるViewController
-        let thirdVC = storyboard.instantiateViewController(withIdentifier: "Config") as! ConfigViewController
-        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 3)
+        let thirdVC = storyboard.instantiateViewController(withIdentifier: "Favorite") as! FavoriteViewController
+        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
         let third = UINavigationController(rootViewController: thirdVC)
         viewControllers.append(third)
         
@@ -50,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // アプリのrootViewControllerにviewController(中身はSMVC/NC/TBC/各ビュー)
         self.window?.rootViewController = viewController
         self.window?.makeKeyAndVisible()
+        // 起動時の表示を真ん中のランキング画面にする
+        tabBarController.selectedIndex = 1
         
         return true
     }
