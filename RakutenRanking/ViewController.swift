@@ -92,6 +92,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         getRankingItem(gender: gender, age: age)
         // ランキングタイトルを表示
         self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [kCTFontAttributeName: UIFont(name: "STHeitiTC-Medium", size: 15)!] as [NSAttributedStringKey : Any]
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -35,6 +35,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         self.getFavoriteItem()
         sortItem(index: sortPattern)
         self.navigationItem.title = "お気に入りリスト"
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [kCTFontAttributeName: UIFont(name: "STHeitiTC-Medium", size: 15)!] as [NSAttributedStringKey : Any]
     }
     
     private func getFavoriteItem() {
