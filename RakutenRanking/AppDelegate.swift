@@ -26,17 +26,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 1ページ目になるViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let firstVC = storyboard.instantiateViewController(withIdentifier: "Config") as! ConfigViewController
-        firstVC.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 1)
+        firstVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "Setting"), tag: 1)
         let first = UINavigationController(rootViewController: firstVC)
         viewControllers.append(first)
         // 2ページ目になるViewController
         let secondVC = storyboard.instantiateViewController(withIdentifier: "Main") as! ViewController
-        secondVC.tabBarItem = UITabBarItem(tabBarSystemItem: .mostViewed, tag: 2)
+        secondVC.tabBarItem = UITabBarItem(title: "Rankings", image: UIImage(named: "Ranking"), tag: 2)
         let second = UINavigationController(rootViewController: secondVC)
         viewControllers.append(second)
         // 3ページ目になるViewController
         let thirdVC = storyboard.instantiateViewController(withIdentifier: "Favorite") as! FavoriteViewController
-        thirdVC.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 3)
+        thirdVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(named: "FavoriteList"), tag: 3)
         let third = UINavigationController(rootViewController: thirdVC)
         viewControllers.append(third)
         
