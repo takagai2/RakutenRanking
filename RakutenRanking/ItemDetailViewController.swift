@@ -39,6 +39,13 @@ class ItemDetailViewController: UIViewController {
         if rankingManager.isFavorite(item: sendItem) {
             favoriteButton.setImage(UIImage(named: "Favorite"), for: .normal)
         }
+        let backButton = UIBarButtonItem(
+            title: "",
+            style: UIBarButtonItemStyle.plain,
+            target: nil,
+            action: nil
+        )
+        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
     }
     
     private func saveOrDeleteFavoriteItem(item: Item) {
