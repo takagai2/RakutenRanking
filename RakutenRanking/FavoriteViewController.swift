@@ -34,7 +34,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.getFavoriteItem()
         sortItem(index: sortPattern)
-        self.parent?.navigationItem.title = "お気に入りリスト"
+        self.navigationItem.title = "お気に入りリスト"
     }
     
     private func getFavoriteItem() {

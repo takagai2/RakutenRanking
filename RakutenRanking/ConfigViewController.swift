@@ -57,6 +57,6 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.parent?.navigationItem.title = "設定画面"
+        self.navigationItem.title = "設定画面"
     }
 }

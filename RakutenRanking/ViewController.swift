@@ -91,7 +91,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         getRankingItem(gender: gender, age: age)
         // ランキングタイトルを表示
-        self.parent?.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -100,7 +100,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.reloadData()
         self.removePageView()
         self.showPageView()
-        self.parent?.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {
@@ -144,11 +143,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.age = MenuViewController.age
             getRankingItem(gender: gender, age: age)
         }
-        
         if ViewController.displayPattern != MenuViewController.displayPattern {
             ViewController.displayPattern = MenuViewController.displayPattern
             setRankingPattern()
         }
+        self.navigationItem.title = "\(selectTitleByRankingType(gender, age))総合ランキング"
     }
     
     private func setRankingPattern() {
