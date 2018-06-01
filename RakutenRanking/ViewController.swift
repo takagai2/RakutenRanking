@@ -56,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var gender: Gender = Gender.notKnown
     var age: Age = Age.notKnown
     // 表示方法のタイプを数値で保持
-    private var displayPattern: Int = 0
+    static var displayPattern: Int = 0
     
     // RankingManagerのインスタンス作成
     private let rankingManager = RankingManager()
@@ -74,6 +74,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let type = rankingManager.getRankingTypeAtStartup()
         self.gender = type.gender
         self.age = type.age
+        ViewController.displayPattern = type.pattern
+        MenuViewController.gender = self.gender
+        MenuViewController.age = self.age
+        MenuViewController.displayPattern = ViewController.displayPattern
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refreshRanking(_:)), for: .valueChanged)
@@ -104,33 +108,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func selectTitleByRankingType(_ gender: Gender, _ age: Age) -> String {
-        let genderType: String
-        let ageType: String
-        // 性別による分類
-        switch gender {
-        case .male:
-            genderType = "男性"
-        case .female:
-            genderType = "女性"
-        default:
-            genderType = ""
-        }
-        // 年代による分類
-        switch age {
-        case .teens:
-            ageType = "10代"
-        case .twenties:
-            ageType = "20代"
-        case .thirties:
-            ageType = "30代"
-        case .forties:
-            ageType = "40代"
-        case .fiftiesOver:
-            ageType = "50代以上"
-        default:
-            ageType = ""
-        }
-        return ageType + genderType
+        let genderTitle = Gender.convertGenderToString(gender: gender)
+        let ageTitle = Age.convertAgeToString(age: age)
+        
+        return ageTitle + genderTitle
     }
     
     // ランキングデータを取得し、配列に格納する
@@ -146,6 +127,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.rankingItemList = array
         self.mainRanking.reloadData()
         self.collectionView.reloadData()
+        self.removePageView()
+        self.showPageView()
+        
+        setRankingPattern()
     }
     
     private func showMenu() {
@@ -159,8 +144,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             getRankingItem(gender: gender, age: age)
         }
         
-        if self.displayPattern != MenuViewController.displayPattern {
-            self.displayPattern = MenuViewController.displayPattern
+        if ViewController.displayPattern != MenuViewController.displayPattern {
+            ViewController.displayPattern = MenuViewController.displayPattern
             setRankingPattern()
         }
         // ランキングタイトルを表示
@@ -168,7 +153,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     private func setRankingPattern() {
-        switch displayPattern {
+        switch ViewController.displayPattern {
         case 0:
             displayListView()
         case 1:

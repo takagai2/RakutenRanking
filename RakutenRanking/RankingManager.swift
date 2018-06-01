@@ -8,23 +8,6 @@
 
 import Foundation
 
-enum Gender: Int {
-    
-    case notKnown = 0
-    case male = 1
-    case female = 2
-}
-
-enum Age: Int {
-    
-    case notKnown = 0
-    case teens = 10
-    case twenties = 20
-    case thirties = 30
-    case forties = 40
-    case fiftiesOver = 50
-}
-
 class RankingManager {
     
     private let rankingGateway: RankingGatewayProtocol = RankingGateway()
@@ -76,15 +59,17 @@ class RankingManager {
         dataGateway.deleteAllFavoriteObject()
     }
     
-    func saveRankingTypeAtStartup(gender: Gender, age: Age) {
-        dataGateway.saveRankingType(genderType: gender, ageType: age)
+    func saveRankingTypeAtStartup(gender: Gender, age: Age, pattern: Int) {
+        dataGateway.saveRankingType(genderType: gender, ageType: age, displayPattern: pattern)
     }
     
-    func getRankingTypeAtStartup() -> (gender: Gender, age: Age) {
+    func getRankingTypeAtStartup() -> (gender: Gender, age: Age, pattern: Int) {
         let type = dataGateway.getRankingType()
         let gender = type.genderType
         let age = type.ageType
-        return(gender, age)
+        let pattern = type.displayPattern
+        
+        return(gender, age, pattern)
     }
 }
 

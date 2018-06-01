@@ -37,6 +37,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // 起動時に表示する種別が総合でない場合は、該当の条件に予めチェックを入れておく
+        checkedRankingType(gender: MenuViewController.gender, age: MenuViewController.age)
         // リスト表示の行に予めチェックを入れておく
         checkedDisplayPattern()
     }
@@ -103,9 +105,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 // チェックマークをつけた動作をセクション毎に変更する
                 switch indexPath.section {
                 case 0:
-                    self.setGender(index: indexPath.row)
+                    MenuViewController.gender = Gender.setGenderByIndex(index: indexPath.row)
                 case 1:
-                    self.setAge(index: indexPath.row)
+                    MenuViewController.age = Age.setAgeByIndex(index: indexPath.row)
                 case 2:
                     MenuViewController.displayPattern = indexPath.row
                 default:
@@ -135,35 +137,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-    
-    private func setGender(index: Int) {
-        switch index {
-        case 0:
-            MenuViewController.gender = .male
-        case 1:
-            MenuViewController.gender = .female
-        default:
-            MenuViewController.gender = .notKnown
-        }
-    }
-    
-    private func setAge(index: Int) {
-        switch index {
-        case 0:
-            MenuViewController.age = .teens
-        case 1:
-            MenuViewController.age = .twenties
-        case 2:
-            MenuViewController.age = .thirties
-        case 3:
-            MenuViewController.age = .forties
-        case 4:
-            MenuViewController.age = .fiftiesOver
-        default:
-            MenuViewController.age = .notKnown
-        }
-    }
-    
+
     private func checkedDisplayPattern() {
         let indexPath = NSIndexPath(row: MenuViewController.displayPattern, section: 2)
         if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
@@ -171,6 +145,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    private func checkedRankingType(gender: Gender, age: Age) {
+        if gender != .notKnown {
+            let indexPath = NSIndexPath(row: Gender.convertGenderToInt(gender: gender)!, section: 0)
+            if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+                myCell.accessoryType = .checkmark
+            }
+        }
+        if age != .notKnown {
+            let indexPath = NSIndexPath(row: Age.convertAgeToInt(age: age)!, section: 1)
+            if let myCell = menuList.cellForRow(at: indexPath as IndexPath) {
+                myCell.accessoryType = .checkmark
+            }
+        }
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
