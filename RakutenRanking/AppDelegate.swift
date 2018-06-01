@@ -52,6 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         // 起動時の表示を真ん中のランキング画面にする
         tabBarController.selectedIndex = 1
+        // ナビゲーションバーの下の影を無くす
+        UINavigationBar.appearance().shadowImage = UIImage()
         
         return true
     }
