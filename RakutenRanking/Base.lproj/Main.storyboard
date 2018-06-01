@@ -350,7 +350,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Ranking" id="3vb-HP-mjE">
-                        <barButtonItem key="leftBarButtonItem" title="menu" id="Ebu-ie-6tn">
+                        <barButtonItem key="leftBarButtonItem" title="menu" image="Menu" id="Ebu-ie-6tn">
                             <connections>
                                 <action selector="showMenuView:" destination="BYZ-38-t0r" id="e16-Pg-AVN"/>
                             </connections>
@@ -520,6 +520,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Menu" width="23" height="23"/>
         <image name="NotFavorite" width="16" height="16"/>
         <image name="ReviewCount" width="32" height="32"/>
     </resources>
