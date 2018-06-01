@@ -102,6 +102,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.collectionView.reloadData()
         self.removePageView()
         self.showPageView()
+        // 画面スワイプ時に感知する左からの横幅
+        SlideMenuOptions.leftBezelWidth = 200
     }
     
     @objc func refreshRanking(_ sender: UIRefreshControl) {

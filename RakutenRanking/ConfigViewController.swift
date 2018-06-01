@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SlideMenuControllerSwift
 
 class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -57,6 +58,8 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // 画面スワイプ時に感知する左からの横幅
+        SlideMenuOptions.leftBezelWidth = 0
         self.navigationItem.title = "設定画面"
         self.navigationController?.navigationBar.titleTextAttributes
             = [kCTFontAttributeName: UIFont(name: "STHeitiTC-Medium", size: 15)!] as [NSAttributedStringKey : Any]
