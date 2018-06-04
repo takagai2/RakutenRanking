@@ -21,10 +21,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
         Realm.Configuration.defaultConfiguration = config
         
-        // ページを格納する配列
+        // StoryBoardを取得
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // TabBarControllerを生成
+        let tabBarController = setUpTabBarController(storyboard)
+        // SlideMenuViewControllerのメイン画面、メニュー画面をセット
+        let menuVC = setMenuViewController(storyboard)
+        let viewController = SlideViewController(mainViewController: tabBarController, leftMenuViewController: menuVC)
+        // アプリのrootViewControllerを設定する
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
+        // アプリ全体のnavigationBarの設定
+        setUpNavigationBar()
+        
+        return true
+    }
+    
+    private func setUpTabBarController(_ storyboard: UIStoryboard) -> UITabBarController {
+        // TabBarControllerの子ビューにviewControllersをセット
+        let tabBarController = UITabBarController()
+        var viewControllers: [UIViewController] = []
+        viewControllers = createViewControllerArray(storyboard)
+        tabBarController.setViewControllers(viewControllers, animated: false)
+        // 起動時の表示を真ん中のランキング画面にする
+        tabBarController.selectedIndex = 1
+        
+        return tabBarController
+    }
+    
+    private func createViewControllerArray(_ storyboard: UIStoryboard) -> [UIViewController] {
+        // ViewControllerを配列にまとめる
         var viewControllers: [UIViewController] = []
         // 1ページ目になるViewController
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let firstVC = storyboard.instantiateViewController(withIdentifier: "Config") as! ConfigViewController
         firstVC.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "Setting"), tag: 1)
         let first = UINavigationController(rootViewController: firstVC)
@@ -40,22 +68,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let third = UINavigationController(rootViewController: thirdVC)
         viewControllers.append(third)
         
-        // TabBarControllerの子ビューにviewControllersをセット
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers(viewControllers, animated: false)
-        // SlideMenuViewControllerのメイン画面、メニュー画面にそれぞれViewControllerをセット
+        return viewControllers
+    }
+    
+    private func setMenuViewController(_ storyboard: UIStoryboard) -> UINavigationController {
+        // MenuViewControllerの生成
         let menuVC = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
         let menu = UINavigationController(rootViewController: menuVC)
-        let viewController = SlideViewController(mainViewController: tabBarController, leftMenuViewController: menu)
-        // アプリのrootViewControllerにviewController(中身はSMVC/NC/TBC/各ビュー)
-        self.window?.rootViewController = viewController
-        self.window?.makeKeyAndVisible()
-        // 起動時の表示を真ん中のランキング画面にする
-        tabBarController.selectedIndex = 1
+        return menu
+    }
+    
+    private func setUpNavigationBar() {
         // ナビゲーションバーの下の影を無くす
         UINavigationBar.appearance().shadowImage = UIImage()
-        
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
