@@ -75,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // MenuViewControllerの生成
         let menuVC = storyboard.instantiateViewController(withIdentifier: "Menu") as! MenuViewController
         let menu = UINavigationController(rootViewController: menuVC)
+        menu.navigationBar.barTintColor = .darkGray
         return menu
     }
     

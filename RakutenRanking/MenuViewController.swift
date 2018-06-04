@@ -17,7 +17,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     private let ageType = ["10代", "20代", "30代", "40代", "50代 以上"]
     private let displayType = ["リスト表示", "グリッド表示", "ページ表示"]
     // セクションに使う配列
-    private let sections = ["性別 で絞り込む", "年齢 で絞り込む", "表示方法 を選ぶ"]
+    private let sections = ["  性別 で絞り込む", "  年齢 で絞り込む", "  表示方法 を選ぶ"]
     
     // 選択されたランキング種別を保持する
     static var gender: Gender = .notKnown
@@ -30,9 +30,16 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.menuList.delegate = self
         self.menuList.dataSource = self
+        // セクションの高さを変更
+        menuList.sectionHeaderHeight = 50
+        menuList.backgroundColor = .darkGray
+        // タイトルを設定
+        self.navigationItem.title = "M E N U"
+        // タイトルのフォント、サイズ、色を指定
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [NSAttributedStringKey.font: UIFont(name: "Gill Sans", size: 22)!, NSAttributedStringKey.foregroundColor : UIColor.white]
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,10 +76,20 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // この関数内でセクションの設定を行う
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label : UILabel = UILabel()
+        label.backgroundColor = .darkGray
+        label.textColor = .lightGray
+        label.text = sections[section]
+        label.font = UIFont(name: "STHeitiTC-Medium", size: 16)
+        return label
+    }
+    
     // セル内容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuTableViewCell
-        
+        cell.backgroundColor = .darkGray
         switch indexPath.section {
         case 0:
             cell.menuList.text = genderType[indexPath.row]
