@@ -61,11 +61,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plx-pe-ZDM">
-                                <rect key="frame" x="283" y="397.5" width="44" height="44"/>
+                                <rect key="frame" x="283" y="408" width="30" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="MTa-G4-xCP"/>
+                                    <constraint firstAttribute="width" constant="30" id="Kq7-We-I6G"/>
+                                    <constraint firstAttribute="height" constant="30" id="qIo-JA-8Oj"/>
                                 </constraints>
-                                <state key="normal" title="Favo" image="NotFavorite"/>
+                                <state key="normal" image="NotFavorite"/>
                                 <connections>
                                     <action selector="favoriteButton:" destination="5lQ-Fk-rcO" eventType="touchUpInside" id="V8M-1O-Lpw"/>
                                 </connections>
@@ -80,14 +81,13 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LJt-w2-CRV" secondAttribute="trailing" constant="20" symbolic="YES" id="FWA-p8-ukr"/>
                             <constraint firstItem="C4H-Ep-fzA" firstAttribute="centerX" secondItem="tFh-yQ-X2s" secondAttribute="centerX" id="H2e-Oi-YQ9"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="35" id="IvV-b2-c2E"/>
-                            <constraint firstItem="62m-xE-sPt" firstAttribute="trailing" secondItem="plx-pe-ZDM" secondAttribute="trailing" constant="48" id="Q2h-Br-gGe"/>
                             <constraint firstItem="LJt-w2-CRV" firstAttribute="leading" secondItem="bnb-5j-km9" secondAttribute="trailing" constant="9" id="TSP-Wp-7br"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="is6-2k-Dvi" secondAttribute="trailing" constant="20" symbolic="YES" id="WwG-es-6Zs"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="ah6-b2-Gc8"/>
                             <constraint firstItem="is6-2k-Dvi" firstAttribute="leading" secondItem="62m-xE-sPt" secondAttribute="leading" constant="60" id="bPO-em-hDb"/>
                             <constraint firstItem="plx-pe-ZDM" firstAttribute="leading" secondItem="tFh-yQ-X2s" secondAttribute="leadingMargin" constant="267" id="e28-V2-CYr"/>
                             <constraint firstItem="tCP-yF-YDO" firstAttribute="top" secondItem="C4H-Ep-fzA" secondAttribute="bottom" constant="45" id="n59-Na-DfW"/>
-                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="50" id="oDn-hk-5SX"/>
+                            <constraint firstItem="plx-pe-ZDM" firstAttribute="top" secondItem="tCP-yF-YDO" secondAttribute="bottom" constant="60" id="oDn-hk-5SX"/>
                             <constraint firstItem="bnb-5j-km9" firstAttribute="top" secondItem="is6-2k-Dvi" secondAttribute="bottom" constant="11.5" id="tkQ-hF-Car"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="62m-xE-sPt"/>
