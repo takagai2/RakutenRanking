@@ -55,4 +55,10 @@ class ConfigViewController: UIViewController, UINavigationControllerDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "設定画面"
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [kCTFontAttributeName: UIFont(name: "STHeitiTC-Medium", size: 15)!] as [NSAttributedStringKey : Any]
+    }
 }
