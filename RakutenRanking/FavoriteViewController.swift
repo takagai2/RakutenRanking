@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import SlideMenuControllerSwift
 
 class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -31,7 +32,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        // 画面スワイプ時に感知する左からの横幅
+        SlideMenuOptions.leftBezelWidth = 0
         self.getFavoriteItem()
         sortItem(index: sortPattern)
         self.navigationItem.title = "お気に入りリスト"
